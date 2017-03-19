@@ -1,5 +1,5 @@
 # mtools
 MATLAB tools: 
 
-[misc]
----- ctime: creates string with current date-time (yyyymmdd_hhmmss[fff])
+[misc] <br />
+---- ctime: creates string with current date-time (yyyymmdd_hhmmss[fff]) <br />
