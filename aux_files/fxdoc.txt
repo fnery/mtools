@@ -1,0 +1,47 @@
+Function documentation template:
+
+function [outputs] = fxname(inputs)
+% fxname: 1-liner about this function
+%   
+% Syntax:
+%    1) [outputs] = fxname(inputs)
+%    OR
+%    1) [outputs] = fxname('opt1', value1, 'opt2', value2, 'opt3', value3)
+%
+% Description:
+%    1) Extended documentation about this function
+%
+% Inputs:
+%    (STANDARD INPUTS)
+%    1) input1: description
+%    2) inputn: description
+%    (NAME-VALUE PAIR INPUTS)
+%    ----------------------------- MANDATORY -------------------------------
+%    <in1>     type    :    Description of input argument 1
+%    <in2>     type    :    Description of input argument 2
+%    ------------------------------ OPTIONAL -------------------------------
+%    <in3>     type    :    Description of input argument 3
+% 
+% Outputs:
+%    1) output1: description
+%    2) outputn: description
+%
+% Notes/Assumptions: 
+%    1) Additional notes if necessary
+%    2) Additional notes if necessary
+%
+% References:
+%    [1] Ref1
+%    [1] Ref2
+%
+% Required functions:
+%    1) fcn1.m
+%    2) fcnn.m
+%
+% Required files:
+%    1) file1.ext
+% 
+% Examples:
+%    codewhichisreadytorun
+%    >> command line result (if applicable)
+%
