@@ -1,4 +1,5 @@
 # mtools
-MATLAB tools
+MATLAB tools: 
 
-Selection of MATLAB tools I frequently use within my code.
+[misc]
+---- ctime: creates string with current date-time (yyyymmdd_hhmmss[fff])
