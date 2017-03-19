@@ -1,5 +1,5 @@
 function cTime = ctime(fmt)
-% ctime: creates string with current date-time (yyyymmdd_hhmmss[fff])
+% ctime.m: creates string with current date-time (yyyymmdd_hhmmss[fff])
 %   
 % Syntax:
 %    1) cTime = ctime;

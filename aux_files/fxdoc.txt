@@ -1,4 +1,7 @@
 Function documentation template:
+--------------------------------
+fnery, 20160301: original version
+fnery, 20170319: now indents = 4 spaces
 
 function [outputs] = fxname(inputs)
 % fxname: 1-liner about this function

@@ -2,4 +2,5 @@
 MATLAB tools: 
 
 [misc] <br />
----- ctime: creates string with current date-time (yyyymmdd_hhmmss[fff]) <br />
+---- ctime.m: creates string with current date-time (yyyymmdd_hhmmss[fff]) <br />
+---- fxdoc.m: prints function documentation template to command window <br />

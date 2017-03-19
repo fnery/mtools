@@ -1,5 +1,5 @@
 function fxdoc
-% fxdoc: prints function documentation template to command window
+% fxdoc.m: prints function documentation template to command window
 %   
 % Syntax:
 %    1) fxdoc
