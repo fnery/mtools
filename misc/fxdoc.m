@@ -21,7 +21,7 @@ function fxdoc
 %    []
 %
 % Required functions:
-%    1) getabovedirectory.m
+%    1) getabovedir.m
 %    2) authstr.m
 %
 % Required files:
@@ -37,7 +37,7 @@ function fxdoc
 EXPECTED_FILE_FOLDER  = 'aux_files'; 
 EXPECTED_FILE_NAME = 'fxdoc.txt';
 
-masterDir = getabovedirectory(mfilename('fullpath'), 2);
+masterDir = getabovedir(mfilename('fullpath'), 2);
 
 expectedFileDir = fullfile(masterDir, EXPECTED_FILE_FOLDER);
 
