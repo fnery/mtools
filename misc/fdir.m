@@ -46,7 +46,8 @@ function [List, n] = fdir(varargin)
 %   []
 %
 % Required functions:
-%   1) sortstruct.m
+%   1) filepartscell.m
+%   2) sortstruct.m
 %
 % Required files:
 %   []
