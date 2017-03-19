@@ -1,5 +1,7 @@
 # mtools
-MATLAB tools: 
+MATLAB tools
+
+[figs] <br />
 
 [misc] <br />
 ---- authstr.m: creates author string for function documentation <br />
@@ -9,3 +11,4 @@ MATLAB tools:
 ---- fxdoc.m: prints function documentation template to command window <br />
 ---- getabovedir.m: returns path of directories closer to the root <br />
 ---- sortstruct.m: sorts struct according to one of its fields <br />
+
