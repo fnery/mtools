@@ -10,5 +10,6 @@ MATLAB tools
 ---- filepartscell.m: extends matlab's fileparts for "cell of strings" inputs <br />
 ---- fxdoc.m: prints function documentation template to command window <br />
 ---- getabovedir.m: returns path of directories closer to the root <br />
+---- is1d: check if input is 1D "vector" <br />
 ---- sortstruct.m: sorts struct according to one of its fields <br />
 
