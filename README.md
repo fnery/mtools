@@ -11,5 +11,6 @@ MATLAB tools
 ---- fxdoc.m: prints function documentation template to command window <br />
 ---- getabovedir.m: returns path of directories closer to the root <br />
 ---- is1d: check if input is 1D "vector" <br />
+---- scriptdoc.m: prints script documentation template to command window <br />
 ---- sortstruct.m: sorts struct according to one of its fields <br />
 
