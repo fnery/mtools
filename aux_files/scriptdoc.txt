@@ -5,6 +5,7 @@ fnery, 20160301: original version
 fnery, 20170319: now indents = 4 spaces
 
 % scriptname.m (example)
+% scriptname.m: 1-liner about this script
 %
 % Description:
 %    1) Extended documentation about this script, especially which of my
