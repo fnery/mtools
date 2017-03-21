@@ -1,0 +1,32 @@
+Script documentation template:
+(typically to save practical applications of my custom functions)
+-----------------------------------------------------------------
+fnery, 20160301: original version
+fnery, 20170319: now indents = 4 spaces
+
+% scriptname.m (example)
+%
+% Description:
+%    1) Extended documentation about this script, especially which of my
+%       custom functions are being used and why
+%   
+% Outputs:
+%    1) output1: description
+%    2) outputn: description
+%    (any files created?)
+%
+% Notes/Assumptions: 
+%    1) Additional notes if necessary
+%    2) Additional notes if necessary
+%
+% References:
+%    [1] Ref1
+%    [1] Ref2
+%
+% Required functions:
+%    1) fcn1.m
+%    2) fcnn.m
+%
+% Required files:
+%    1) file1.ext
+%
