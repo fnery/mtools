@@ -13,5 +13,6 @@ MATLAB tools
 ---- is1d: check if input is 1D "vector" <br />
 ---- scriptdoc.m: prints script documentation template to command window <br />
 ---- sortstruct.m: sorts struct according to one of its fields <br />
+---- uniquesubstr.m: remove duplicate substrings from string <br />
 ---- vec2str.m: converts a 1D-vector to a string <br />
 

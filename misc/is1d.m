@@ -1,5 +1,5 @@
 function [out] = is1d(in, flagDisplayWarnings)
-% is1d: check if input is 1D "vector"
+% is1d.m: check if input is 1D "vector"
 %   
 % Syntax:
 %    1) [out] = is1d(in)
