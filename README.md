@@ -10,7 +10,8 @@ MATLAB tools
 ---- filepartscell.m: extends matlab's fileparts for "cell of strings" inputs <br />
 ---- fxdoc.m: prints function documentation template to command window <br />
 ---- getabovedir.m: returns path of directories closer to the root <br />
----- is1d: check if input is 1D "vector" <br />
+---- is1d.m: check if input is 1D "vector" <br />
+---- isint.m: checks if the input is an integer <br />
 ---- matrix2string.m: converts 2D matrix to text (figure displaying purposes) <br />
 ---- m2sharr.m: convert cell of strings to space-delimited list (like bash arrays) <br />
 ---- scriptdoc.m: prints script documentation template to command window <br />
