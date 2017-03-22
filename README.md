@@ -16,6 +16,7 @@ MATLAB tools
 ---- m2sharr.m: convert cell of strings to space-delimited list (like bash arrays) <br />
 ---- scriptdoc.m: prints script documentation template to command window <br />
 ---- sortstruct.m: sorts struct according to one of its fields <br />
+---- squeezext.m: extends squeeze.m (specify singleton dimensions keep/remove) <br />
 ---- strpad.m: pad string with spaces to achieve a certain length <br />
 ---- sumn.m: sum of array elements along multiple dimensions (sum in a loop) <br />
 ---- uniquesubstr.m: remove duplicate substrings from string <br />
