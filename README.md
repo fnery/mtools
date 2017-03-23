@@ -14,6 +14,7 @@ MATLAB tools
 ---- getabovedir.m: returns path of directories closer to the root <br />
 ---- is1d.m: check if input is 1D "vector" <br />
 ---- isint.m: checks if the input is an integer <br />
+---- lsfile.m: list files in dir and pick according to file # index
 ---- matrix2string.m: converts 2D matrix to text (figure displaying purposes) <br />
 ---- m2sharr.m: convert cell of strings to space-delimited list (like bash arrays) <br />
 ---- mkdirf.m: extends mkdir.m function (automatic name/overwrite control) <br />
