@@ -5,6 +5,7 @@ MATLAB tools
 
 [misc] <br />
 ---- authstr.m: creates author string for function documentation <br />
+---- bwcircle.m: Creates binary (logical) image with a 1-valued circle <br />
 ---- cell2str.m: converts [n x 1] cell of strings to a [n x nChars] string <br />
 ---- ctime.m: creates string with current date-time (yyyymmdd_hhmmss[fff]) <br />
 ---- fdir.m: custom dir function <br />
