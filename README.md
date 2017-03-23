@@ -16,6 +16,7 @@ MATLAB tools
 ---- isint.m: checks if the input is an integer <br />
 ---- matrix2string.m: converts 2D matrix to text (figure displaying purposes) <br />
 ---- m2sharr.m: convert cell of strings to space-delimited list (like bash arrays) <br />
+---- mkdirf.m: extends mkdir.m function (automatic name/overwrite control) <br />
 ---- nvargins2struct.m: converts cell of argins (name-value pairs) into a struct <br />
 ---- reparrew.m: replicate array (element-wise) <br />
 ---- scriptdoc.m: prints script documentation template to command window <br />
