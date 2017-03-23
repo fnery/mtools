@@ -1,4 +1,4 @@
-function scriptdoc
+function scriptdoc(auth)
 % scriptdoc.m: prints script documentation template to command window
 %   
 % Syntax:
@@ -7,6 +7,8 @@ function scriptdoc
 % Description:
 %    1) scriptdoc prints template for scripts documentation (comment lines 
 %       in the file "scriptdoc.txt")
+%    2) scriptdoc(auth) does the same as 1) but allows to specify the author's
+%       id
 %
 % Inputs:
 %    []
@@ -31,6 +33,7 @@ function scriptdoc
 %    []
 %
 % fnery, 20170321: original version
+% fnery, 20170323: added auth argin
 
 EXPECTED_FILE_FOLDER  = 'aux_files'; 
 EXPECTED_FILE_NAME = 'scriptdoc.txt';
@@ -52,8 +55,14 @@ while ischar(tLine)
     tLine = fgetl(f);
 end
 
-% Print original version string
-disp(authstr)
+% Print author string
+if nargin == 0
+    disp(authstr)
+elseif nargin == 1
+    disp(authstr('', auth))
+else
+    error('Error: Too many input arguments');
+end
 
 % Close file
 fclose(f);

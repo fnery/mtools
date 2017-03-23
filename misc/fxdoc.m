@@ -1,12 +1,14 @@
-function fxdoc
+function fxdoc(auth)
 % fxdoc.m: prints function documentation template to command window
 %   
 % Syntax:
 %    1) fxdoc
+%    2) fxdoc(auth)
 %
 % Description:
 %    1) fxdoc prints template for function's documentation (comment lines 
 %       in the file "fxdoc.txt")
+%    2) fxdoc(auth) does the same as 1) but allows to specify the author's id
 %
 % Inputs:
 %    []
@@ -33,6 +35,7 @@ function fxdoc
 % fnery, 20160301: original version
 % fnery, 20160530: now prints 'original version' string at the end
 % fnery, 20170319: now indents = 4 spaces
+% fnery, 20170323: added auth argin
 
 EXPECTED_FILE_FOLDER  = 'aux_files'; 
 EXPECTED_FILE_NAME = 'fxdoc.txt';
@@ -54,8 +57,14 @@ while ischar(tLine)
     tLine = fgetl(f);
 end
 
-% Print original version string
-disp(authstr)
+% Print author string
+if nargin == 0
+    disp(authstr)
+elseif nargin == 1
+    disp(authstr('', auth))
+else
+    error('Error: Too many input arguments');
+end
 
 % Close file
 fclose(f);
