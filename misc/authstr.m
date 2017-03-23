@@ -36,7 +36,7 @@ function out = authstr(msg, auth)
 %        >> <name here>, 20170323: added auth argin
 %
 % fnery, 20160329: original version
-% fnery, 20170323: added auth argin
+% fnery, 20170323: added 'auth' argin, now 'msg' can be empty
 
 % Defaults 
 AUTH         = 'fnery';            % default for auth
@@ -45,7 +45,7 @@ DEFAULT_MSG  = 'original version';
 if nargin < 2
     auth = AUTH;
 end
-if nargin < 1
+if nargin < 1 || isempty(msg)
     msg = DEFAULT_MSG;
 end
 if nargin > 2 
