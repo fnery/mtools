@@ -57,6 +57,7 @@ function out = matrix2string(in, nSpaces, fmt)
 %
 % fnery, 20160825: original version
 % fnery, 20161118: added 'nSpaces' option
+% fnery, 20170323: removed the last newline from 'out'
 
 % Defaults
 if nargin < 3
@@ -89,5 +90,7 @@ out = [];
 for iLine = 1:size(tmp, 1)
     out = sprintf('%s%s\n', out, tmp(iLine,:));
 end
+
+out(end) = [];
 
 end
