@@ -5,7 +5,7 @@ function mtools
 %    1) mtools
 %
 % Description:
-%    1) mtools displays mtools\aux_files\mtools.txt in the command window, 
+%    1) mtools displays mtools\aux\mtools.txt in the command window, 
 %       providing a quick index of the functions available in this toolbox
 %
 % Inputs:
@@ -15,7 +15,7 @@ function mtools
 %    [] (prints text in the command window)
 %
 % Notes/Assumptions: 
-%    1) Assumes "mtools.txt" is in mtools\aux_files
+%    1) Assumes "mtools.txt" is in mtools\aux
 %
 % References:
 %    []
@@ -31,14 +31,14 @@ function mtools
 %
 % fnery, 20150525: original version
 
-EXPECTED_FILE_FOLDER  = 'aux_files'; 
+EXPECTED_FILE_FOLDER  = 'aux'; 
 EXPECTED_FILE_NAME = 'mtools.txt';
 
 masterDir = getabovedir(mfilename('fullpath'), 2);
 
 expectedFileDir = fullfile(masterDir, EXPECTED_FILE_FOLDER);
 
-% Load 'mtools.txt' file (located at mtools\aux_files)
+% Load 'mtools.txt' file (located at mtools\aux)
 f = fopen(fullfile(expectedFileDir, EXPECTED_FILE_NAME), 'r');
 tmp = textscan(f, '%s', 'delimiter', '\n');
 tmp = tmp{1};

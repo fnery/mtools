@@ -17,7 +17,7 @@ function fxdoc(auth)
 %    [] (just prints in command window)
 %
 % Notes/Assumptions: 
-%    1) Assumes "fxdoc.txt" is in the same directory as this function
+%    1) Assumes "fxdoc.txt" is in mtools\aux
 %
 % References:
 %    []
@@ -37,7 +37,7 @@ function fxdoc(auth)
 % fnery, 20170319: now indents = 4 spaces
 % fnery, 20170323: added auth argin
 
-EXPECTED_FILE_FOLDER  = 'aux_files'; 
+EXPECTED_FILE_FOLDER  = 'aux'; 
 EXPECTED_FILE_NAME = 'fxdoc.txt';
 
 masterDir = getabovedir(mfilename('fullpath'), 2);
