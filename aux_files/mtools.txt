@@ -1,0 +1,34 @@
+% #mtools - function index
+% this file is displayed in matlab's command window when mtools.m is called
+% providing a quick index of the functions available in this toolbox
+% if this file is moved from this directory (aux_files), then mtools.m will
+% no longer work (all lines started with '%' are ignored by mtools.m)
+% -------------------------------------------------------------------------
+% 
+[figs]
+[misc]
+---- authstr.m: creates author string for function documentation
+---- bwcircle.m: Creates binary (logical) image with a 1-valued circle
+---- cell2str.m: converts [n x 1] cell of strings to a [n x nChars] string
+---- cleanstr.m: replace spaces by underscores and remove non-alphanum char
+---- ctime.m: creates string with current date-time (yyyymmdd_hhmmss[fff])
+---- dispstrcell.m: generate matlab code to re-create cell of strings variable
+---- fdir.m: custom dir function
+---- filepartscell.m: extends matlab's fileparts for "cell of strings" inputs
+---- fxdoc.m: prints function documentation template to command window
+---- getabovedir.m: returns path of directories closer to the root
+---- is1d.m: check if input is 1D "vector"
+---- isint.m: checks if the input is an integer
+---- lsfile.m: list files in dir and pick according to file # index
+---- m2sharr.m: convert cell of strings to space-delimited list (like bash arrays)
+---- matrix2string.m: converts 2D matrix to text (figure displaying purposes)
+---- mkdirf.m: extends mkdir.m function (automatic name/overwrite control)
+---- nvargins2struct.m: converts cell of argins (name-value pairs) into a struct
+---- reparrew.m: replicate array (element-wise)
+---- scriptdoc.m: prints script documentation template to command window
+---- sortstruct.m: sorts struct according to one of its fields
+---- squeezext.m: extends squeeze.m (specify singleton dimensions keep/remove)
+---- strpad.m: pad string with spaces to achieve a certain length
+---- sumn.m: sum of array elements along multiple dimensions (sum in a loop)
+---- uniquesubstr.m: remove duplicate substrings from string
+---- vec2str.m: converts a 1D-vector to a string
