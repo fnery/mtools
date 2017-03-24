@@ -5,7 +5,8 @@
 % no longer work (all lines started with '%' are ignored by mtools.m)
 % -------------------------------------------------------------------------
 % 
-[figs]
+[fig]
+---- selectroi.m: draw ROIs in the displayed image and create corresponding masks
 [misc]
 ---- authstr.m: creates author string for function documentation
 ---- bwcircle.m: Creates binary (logical) image with a 1-valued circle

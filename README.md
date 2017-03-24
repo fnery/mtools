@@ -1,8 +1,8 @@
 # mtools
 MATLAB tools
 
-[figs] <br />
-
+[fig] <br />
+---- selectroi.m: draw ROIs in the displayed image and create corresponding masks <br />
 [misc] <br />
 ---- authstr.m: creates author string for function documentation <br />
 ---- bwcircle.m: Creates binary (logical) image with a 1-valued circle <br />
