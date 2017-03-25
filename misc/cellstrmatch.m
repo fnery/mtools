@@ -1,14 +1,14 @@
-function out = cellstrmatch(in, subStr, opt)
+function [out, idxs] = cellstrmatch(in, subStr, opt)
 % cellstrmatch.m: create new cell from matching(or not) strings in input cell
 %   
 % Syntax:
-%    1) out = cellstrmatch(in, subStr)
-%    2) out = cellstrmatch(in, subStr, opt)
+%    1) [out, idxs] = cellstrmatch(in, subStr)
+%    2) [out, idxs] = cellstrmatch(in, subStr, opt)
 %
 % Description:
-%    1) out = cellstrmatch(in, subStr) creates a new cell with the strings
+%    1) [out, idxs] = cellstrmatch(in, subStr) creates a new cell with the strings
 %       in the input cell 'in' that contain the sub-string 'substr'.
-%    2) out = cellstrmatch(in, subStr, opt)
+%    2) [out, idxs] = cellstrmatch(in, subStr, opt)
 %           - if opt: true  - same as 1)
 %           - if opt: false - creates a new cell with the strings in the 
 %             input cell 'in' that DO NOT contain the sub-string 'substr'.
@@ -21,6 +21,7 @@ function out = cellstrmatch(in, subStr, opt)
 % 
 % Outputs:
 %    1) out (cell): reduced cell
+%    1) idxs (logical): indexes of cell elements to remove
 %
 % Notes/Assumptions: 
 %    []
@@ -55,12 +56,14 @@ function out = cellstrmatch(in, subStr, opt)
 %
 % fnery, 20170322: original version
 
-if nargin == 2;
+if nargin == 2
     opt = true;
 end
 
 if opt
-    out = in(~cellfun('isempty', regexp(in, subStr)));
+    idxs = ~cellfun('isempty', regexp(in, subStr));
+    out = in(idxs);
 else
-    out = in( cellfun('isempty', regexp(in, subStr)));
+    idxs = cellfun('isempty', regexp(in, subStr));
+    out = in(idxs);
 end
