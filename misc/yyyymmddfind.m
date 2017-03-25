@@ -1,12 +1,12 @@
 function [dates, startIdxs] = yyyymmddfind(str)
-% yyyymmddfind.m: finds and extracts date substrings of format 'yyyymmddfind'
+% yyyymmddfind.m: finds and extracts date substrings of format 'yyyymmdd'
 %   
 % Syntax:
 %    1) [dates, startIdxs] = yyyymmddfind(str)
 %
 % Description:
 %    1) [dates, startIdxs] = yyyymmddfind(str) uses regular expressions to 
-%       find and extract date substrings of format 'yyyymmddfind'
+%       find and extract date substrings of format 'yyyymmdd'
 %
 % Inputs:
 %    1) str (char): input string
