@@ -26,6 +26,7 @@ mtools index:
   - `is1d.m`: check if input is 1D "vector" <br />
   - `isallequal.m`: checks if all elements in the array are equal <br />
   - `isint.m`: checks if the input is an integer <br />
+  - `logic2str.m`: converts logical scalar to string <br />
   - `lsfile.m`: list files in dir and pick according to file # index <br />
   - `m2sharr.m`: convert cell of strings to space-delimited list (like bash arrays) <br />
   - `matrix2string.m`: converts 2D matrix to text (figure displaying purposes) <br />
