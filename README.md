@@ -46,7 +46,7 @@ mtools index:
 External code
 -------------
 
-Some of the functions in the above list use code written by others, which I typically get from [MATLAB's File Exchange](mathworks.com/matlabcentral/fileexchange/) or other GitHub repositories. For simplicity, copies of such code are incorporated in this repository (`ext` folder), each function in its specific subdirectory. Attribution and licenses are included whenever possible. A summary of the external code is as follows included in this repository is as follows:
+Some of the functions in the above list use code written by others, which I typically get from [MATLAB's File Exchange](mathworks.com/matlabcentral/fileexchange/) or other GitHub repositories. For simplicity, copies of such code are incorporated in this repository (`ext` folder), each function in its specific subdirectory. Attribution and licenses are included whenever possible. A summary of the external code included in this repository is as follows:
 
 ### External code index
 
