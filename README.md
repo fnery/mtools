@@ -1,6 +1,5 @@
 # mtools
-Assorted MATLAB tools I use throughout my MATLAB code. I try to capture common tasks in MATLAB functions, in an attempt to keep my code clean and modular. Essentially I'm trying [not to repeat myself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). Hopefully, each one of these functions is self-contained and can be re-used in different scenarios. <br />
-Feel free to do whatever to this code. If you spot any issues please let me know. If you would like to enlighten me with better ways to code any of this that would be really cool. <br />
+Assorted MATLAB tools I use throughout my MATLAB code. I try to capture common tasks in MATLAB functions, in an attempt to keep my code clean and modular. Essentially I'm trying [not to repeat myself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). Hopefully, each one of these functions is self-contained and can be re-used in different scenarios. Do use this code for whatever purpose. If you spot any issues please let me know. Feel free to enlighten me with better ways to code any of this :thumbsup:. <br />
 Email me at: `regexprep({'fabio-nery-13_ucl-ac-uk'}, {'-','_'}, {'.','@'})`. <br />
 
 mtools index:

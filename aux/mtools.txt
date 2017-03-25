@@ -11,6 +11,7 @@
 ---- authstr.m: creates author string for function documentation
 ---- bwcircle.m: Creates binary (logical) image with a 1-valued circle
 ---- cell2str.m: converts [n x 1] cell of strings to a [n x nChars] string
+---- cellstrmatch.m: create new cell from matching(or not) strings in input cell
 ---- cleanstr.m: replace spaces by underscores and remove non-alphanum char
 ---- ctime.m: creates string with current date-time (yyyymmdd_hhmmss[fff])
 ---- dispstrcell.m: generate matlab code to re-create cell of strings variable
