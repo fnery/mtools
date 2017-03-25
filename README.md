@@ -6,6 +6,7 @@ mtools index:
 -------------
 
 - **[dcm]**
+  - `dcmfind.m`: List DICOM files in dir (and its subdirs)
   - `dcmsiemensisolateascconv.m`: isolates ASCCONV part in Siemens CSA headers <br />
   - `dcmsiemenscsa.m`: parse DICOM Siemens CSA header (ASCCONV subset only) <br />
 - **[fig]**
