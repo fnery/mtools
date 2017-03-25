@@ -5,6 +5,8 @@
 % no longer work (all lines started with '%' are ignored by mtools.m)
 % -------------------------------------------------------------------------
 % 
+[dcm]
+---- dcmsiemenscsa.m: parse DICOM Siemens CSA header (ASCCONV subset only)
 [fig]
 ---- selectroi.m: draw ROIs in the displayed image and create corresponding masks
 [misc]
