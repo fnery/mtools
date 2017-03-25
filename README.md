@@ -41,6 +41,7 @@ mtools index:
   - `sumn.m`: sum of array elements along multiple dimensions (sum in a loop) <br />
   - `uniquesubstr.m`: remove duplicate substrings from string <br />
   - `vec2str.m`: converts a 1D-vector to a string <br />
+  - `yyyymmddfind.m`: finds and extracts date substrings of format 'yyyymmddfind'
 
 External code
 -------------
