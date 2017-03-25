@@ -41,7 +41,7 @@ function out = cellstrmatch(in, subStr, opt)
 %          '0023_ss'; ...
 %          '0024_ns'; ...
 %          '0025_di'};
-%    SUB_STR = '_di_';
+%    SUB_STR = '_di';
 %    out1 = cellstrmatch(IN, SUB_STR, true)
 %    out2 = cellstrmatch(IN, SUB_STR, false)
 %    >> out1 = 
