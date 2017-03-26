@@ -17,7 +17,7 @@ function scriptdoc(auth)
 %    [] (just prints in command window)
 %
 % Notes/Assumptions: 
-%    1) Assumes "scriptdoc.txt" is in mtools\aux
+%    1) Assumes "scriptdoc.txt" is in mtools\auxl
 %
 % References:
 %    []
@@ -35,7 +35,7 @@ function scriptdoc(auth)
 % fnery, 20170321: original version
 % fnery, 20170323: added auth argin
 
-EXPECTED_FILE_FOLDER  = 'aux'; 
+EXPECTED_FILE_FOLDER  = 'auxl'; 
 EXPECTED_FILE_NAME = 'scriptdoc.txt';
 
 masterDir = getabovedir(mfilename('fullpath'), 2);
