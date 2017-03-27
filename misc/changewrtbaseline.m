@@ -32,7 +32,11 @@ function [res, idxs] = changewrtbaseline(varargin)
 %    2) idxs (numeric): indexes of baseline measurements [subjects x 1]
 %
 % Notes/Assumptions: 
-%    []
+%    1) The for loop in the 'prc' calculation can be replaced simply
+%       by the following line:
+%       >> res = ((in - baseVals) ./ baseVals) * 100;
+%       but this is only possible after the feature "Implicit Expansion"
+%       being added to MATLAB (which was added in R2016b)
 %
 % References:
 %    []
@@ -114,7 +118,7 @@ end
 if ~exist('base', 'var'); base = 'first'; end
 if ~exist('type', 'var'); type = 'ratio'; end
 
-nS = size(in, 1);
+[nS, nM] = size(in);
 
 % Get value of baseline measurements
 if strcmp(base, 'first')
@@ -128,7 +132,14 @@ end
 if strcmp(type, 'ratio')
     res = in ./ baseVals;
 elseif strcmp(type, 'prc')
-    res = ((in - baseVals) ./ baseVals) * 100;
+    % See Note 1)
+    res = NaN(nS, nM);
+    for iM = 1:nM
+        res(:, iM) = ((in(:,iM) - baseVals) ./ baseVals) * 100;
+    end
+    if any(isnan(res(:)))
+        error('Error: something went wront in ratio-prc calculation');
+    end
 end
 
 end
