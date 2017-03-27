@@ -45,6 +45,6 @@ function [outputs] = fxname(inputs)
 %    1) file1.ext
 % 
 % Examples:
-%    codewhichisreadytorun
-%    >> command line result (if applicable)
+%    >> codewhichisreadytorun
+%           command line result (if applicable)
 %
