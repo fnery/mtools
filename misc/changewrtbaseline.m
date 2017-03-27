@@ -21,9 +21,11 @@ function [res, idxs] = changewrtbaseline(varargin)
 %    <base>   char       :  baseline measurement:
 %                           - 'first': first measurement is baseline
 %                           - 'max': largest measurement is baseline
+%                           [default = 'first']
 %    <type>   char       :  method used to compute <in>
 %                           - 'ratio': simple division by baseline
 %                           - 'prc': percentage w.r.t. baseline
+%                           [default = 'ratio']
 % 
 % Outputs:
 %    1) res (numeric): 2D "change" matrix [subjects x measurements]
