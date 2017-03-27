@@ -42,8 +42,22 @@ function [res, idxs] = changewrtbaseline(varargin)
 %    []
 % 
 % Examples:
-%    codewhichisreadytorun
-%    >> command line result (if applicable)
+%   >> [res, idxs] = changewrtbaseline('in', in, 'base', 'first', 'type', 'ratio')
+%   >> [res, idxs] = changewrtbaseline('in', in, 'base', 'max'  , 'type', 'prc')
+%          res =
+%              1.0000    1.3000    1.6000
+%              1.0000    2.6000    3.2000
+%          idxs =
+%          
+%               1
+%               1
+%          res =
+%          
+%            -37.5000  -18.7500         0
+%            -68.7500  -18.7500         0
+%          idxs =
+%               3
+%               3
 %
 % fnery, 20170327: original version
 
@@ -62,7 +76,7 @@ for iOptIn = 1:2:numel(varargin)
         case {'in'}
             % verify if 'in' is valid
             isNumeric = isnumeric(cVal);
-            hasCorrectDims = ismatrix(in);
+            hasCorrectDims = ismatrix(cVal);
             if isNumeric && hasCorrectDims
                 in = cVal;
             else
@@ -112,7 +126,7 @@ end
 if strcmp(type, 'ratio')
     res = in ./ baseVals;
 elseif strcmp(type, 'prc')
-    res = (in - baseVals) ./ baseVals;
+    res = ((in - baseVals) ./ baseVals) * 100;
 end
 
 end
