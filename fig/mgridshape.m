@@ -101,12 +101,11 @@ nColsExists = exist('nCols'  , 'var');
 if ~nRowsExists ; nRows = [] ; end;
 if ~nColsExists ; nCols = [] ; end;
 
-if nRows > nIms || nCol > nIms
-    error('Error: <nRows> and <nCols> must be smaller than <nIms>');
-end
-
 % User-defined mGrid shape
 if ~isempty(nRows) && ~isempty(nCols)
+    if nRows > nIms || nCol > nIms
+        error('Error: <nRows> and <nCols> must be smaller than <nIms>');
+    end
     if nRows*nCols>=nIms
         mGrid = [nRows, nCols];
     else
