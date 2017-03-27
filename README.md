@@ -16,6 +16,7 @@ mtools index:
   - `bwcircle.m`: Creates binary (logical) image with a 1-valued circle <br />
   - `cell2str.m`: converts [n x 1] cell of strings to a [n x nChars] string <br />
   - `cellstrmatch.m`: create new cell from matching(or not) strings in input cell <br />
+  - `changewrtbaseline.m`: change in measurements with respect to a "baseline" <br />
   - `cleanstr.m`: replace spaces by underscores and remove non-alphanum chars <br />
   - `ctime.m`: creates string with current date-time (yyyymmdd_hhmmss[fff]) <br />
   - `dispstrcell.m`: generate matlab code to re-create cell of strings variable <br />
