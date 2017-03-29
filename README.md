@@ -12,6 +12,7 @@ mtools index:
 - **[fig]**
   - `mgridshape.m`: get montage grid shape (can constrain nRows/nColumns)
   - `selectroi.m`: draw ROIs in the displayed image and create corresponding masks <br />
+  - `xyz2xy.m`: convert point 3D (xyz) to 2D (xy) coordinates (as in montage) <br />
 - **[misc]**
   - `authstr.m`: creates author string for function documentation <br />
   - `bwcircle.m`: Creates binary (logical) image with a 1-valued circle <br />
