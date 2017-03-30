@@ -12,6 +12,7 @@
 [fig]
 ---- mgridshape.m: get montage grid shape (can constrain nRows/nColumns)
 ---- selectroi.m: draw ROIs in the displayed image and create corresponding masks
+---- vol2mont.m: converts a 3D volume into a 2D montage
 ---- xyz2xy.m: convert point 3D (xyz) to 2D (xy) coordinates (as in montage)
 [misc]
 ---- authstr.m: creates author string for function documentation

@@ -10,8 +10,9 @@ mtools index:
   - `dcmsiemensisolateascconv.m`: isolates ASCCONV part in Siemens CSA headers <br />
   - `dcmsiemenscsa.m`: parse DICOM Siemens CSA header (ASCCONV subset only) <br />
 - **[fig]**
-  - `mgridshape.m`: get montage grid shape (can constrain nRows/nColumns)
+  - `mgridshape.m`: get montage grid shape (can constrain nRows/nColumns) <br />
   - `selectroi.m`: draw ROIs in the displayed image and create corresponding masks <br />
+  - `vol2mont.m`: converts a 3D volume into a 2D montage <br />
   - `xyz2xy.m`: convert point 3D (xyz) to 2D (xy) coordinates (as in montage) <br />
 - **[misc]**
   - `authstr.m`: creates author string for function documentation <br />
