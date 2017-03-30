@@ -118,11 +118,11 @@ function h = imx(varargin)
 %    ch(2,:) = [175, 122, 3];
 %    
 %    % Display
-%    figure; imx2('im', im, 'rint', [0 1]);
-%    figure; imx2('im', im, 'mgrid', [3 2]);
-%    figure; imx2('im', im, 'mgrid', [3 2], 'divw', 3, ...
+%    figure; imx('im', im, 'rint', [0 1]);
+%    figure; imx('im', im, 'mgrid', [3 2]);
+%    figure; imx('im', im, 'mgrid', [3 2], 'divw', 3, ...
 %        'divc', [1 0 0]);
-%    figure; imx2('im', im, 'mgrid', [1 6], 'divw', 1, ...
+%    figure; imx('im', im, 'mgrid', [1 6], 'divw', 1, ...
 %        'divc', [1 0 0], 'ch', 'grid', 'chc', [0 1 0]);
 %    
 %    % Display image above with parametric map (which is the same as 'im')
@@ -131,7 +131,7 @@ function h = imx(varargin)
 %    mask(30:110, 30:60, 1) = true;
 %    mask(130:160, 130:210, 3) = true;
 %    ImxOv = imxov(map, mask);
-%        figure; imx2('im', im, 'mgrid', [1 6], 'divw', 1, ...
+%        figure; imx('im', im, 'mgrid', [1 6], 'divw', 1, ...
 %        'divc', [1 0 0], 'ch', ch, 'chc', [0 1 0], 'chl', 30, ...
 %        'ov', ImxOv);
 %
