@@ -2,7 +2,7 @@ function mGrid = mgridshape(varargin)
 % mgridshape.m: get montage grid shape (can constrain nRows/nColumns)
 %   
 % Syntax:
-%    1) mGrid = mgridshape('nIms', nIms, 'nRows', nRows, 'nCols', nCols>)
+%    1) mGrid = mgridshape('nIms', nIms, 'nRows', nRows, 'nCols', nCols)
 %
 % Description:
 %    1) mGrid = mgridshape('nIms', nIms, 'nRows', nRows, 'nCols', nCols)
@@ -103,7 +103,7 @@ if ~nColsExists ; nCols = [] ; end;
 
 % User-defined mGrid shape
 if ~isempty(nRows) && ~isempty(nCols)
-    if nRows > nIms || nCol > nIms
+    if nRows > nIms || nCols > nIms
         error('Error: <nRows> and <nCols> must be smaller than <nIms>');
     end
     if nRows*nCols>=nIms
