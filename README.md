@@ -10,6 +10,7 @@ mtools index:
   - `dcmsiemensisolateascconv.m`: isolates ASCCONV part in Siemens CSA headers <br />
   - `dcmsiemenscsa.m`: parse DICOM Siemens CSA header (ASCCONV subset only) <br />
 - **[fig]**
+  - `imx.m`: custom imshow/montage function
   - `imxov.m`: create ImxOv struct for parametric map overlay in imx.m <br />
   - `mgridshape.m`: get montage grid shape (can constrain nRows/nColumns) <br />
   - `selectroi.m`: draw ROIs in the displayed image and create corresponding masks <br />
