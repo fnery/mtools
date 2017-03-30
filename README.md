@@ -13,6 +13,7 @@ mtools index:
   - `mgridshape.m`: get montage grid shape (can constrain nRows/nColumns) <br />
   - `selectroi.m`: draw ROIs in the displayed image and create corresponding masks <br />
   - `vol2mont.m`: converts a 3D volume into a 2D montage <br />
+  - `xy2xyz.m`: convert point 2D (xy (as in montage)) to 3D (xyz) coordinates <br />
   - `xyz2xy.m`: convert point 3D (xyz) to 2D (xy) coordinates (as in montage) <br />
 - **[misc]**
   - `authstr.m`: creates author string for function documentation <br />

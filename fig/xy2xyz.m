@@ -1,18 +1,18 @@
-function xy = xyz2xy(varargin)
-% xyz2xy.m: convert point 3D (xyz) to 2D (xy) coordinates (as in montage)
+function xyz = xy2xyz(varargin)
+% xy2xyz.m: convert point 2D (xy (as in montage)) to 3D (xyz) coordinates 
 %   
 % Syntax:
-%    1) xy = xyz2xy(varargin)
+%    1) xyz = xy2xyz(varargin)
 %
 % Description:
-%    1) xy = xyz2xy('xyz', xyz, 'sz', sz) takes a list of xyz coordinates 
-%       of several points and converts them to 2D coordinates as they are 
-%       displayed in a montage
+%    1) xy = xyz2xy(varargin) takes a list of xy coordinates of several
+%       points as they are displayed in a montage and converts them to 3D
+%       coordinates 
 %
 % Inputs:
 %    ----------------------------- MANDATORY ------------------------------ 
-%    <xyz>      int>0    :  [x,y,z] coords of points to convert to [x,y]
-%                             - size [Nx3]: "N" points to convert
+%    <xy>       int>0    :  [x,y] coordinates of points to convert to [x,y,z]
+%                             - size [Nx2]: "N" points to convert
 %    <sz>       int>0    :  size of 3D image corresponding to <xyz>
 %                             - [1x3]: [rows, columns, slices]
 %    ----------------------------- OPTIONAL -------------------------------
@@ -21,23 +21,23 @@ function xy = xyz2xy(varargin)
 %    ----------------------------------------------------------------------
 %
 % Outputs:
-%    1) xy: 2D (xy) coordinates (as in montage)
+%   1) xyz: 3D (xy) coordinates
 %
 % Notes/Assumptions: 
 %    1) Used in imx.m
 %
 % References:
-%    []
+%   []
 %
 % Required functions:
-%    1) is1d.m
-%    2) mgridshape.m
+%   1) is1d.m
+%   2) mgridshape.m
 %
 % Required files:
-%    []
+%   []
 % 
 % Examples:
-%    []
+%   []
 %
 % fnery, 20160612: original version
 
@@ -53,15 +53,15 @@ for iOptIn = 1:2:numel(varargin)
     cVal = varargin{iOptIn+1};
     % attempt to recognise options
     switch lower(cOpt)
-        case {'xyz'}
-            % verify if 'xyz' is valid
+        case {'xy'}
+            % verify if 'xy' is valid
             isNumeric = isnumeric(cVal);
             isMatrix = ismatrix(cVal);
-            hasCorrectDims = size(cVal,2)==3;
+            hasCorrectDims = size(cVal,2)==2;
             if isNumeric && isMatrix && hasCorrectDims
-                xyz = cVal;
+                xy = cVal;
             else
-                error('Error: ''xyz'' is invalid')
+                error('Error: ''xy'' is invalid')
             end
         case {'sz'}
             % verify if 'sz' is valid
@@ -89,43 +89,47 @@ end
 
 % Check we have all mandatory options in the workspace
 allMandatoryOptsExist =        ...
-    exist('xyz' , 'var') & ...    
+    exist('xy'  , 'var') & ...    
     exist('sz'  , 'var');
 if ~allMandatoryOptsExist
     error('Error: One or more mandatory options are missing');
 end
 
 % Check which argins were provided
-mGridExists = exist('mGrid', 'var');
-if ~mGridExists ; mGrid = mgridshape('nIms', sz(3)) ; end; % default <mgrid>
+mgridExists = exist('mGrid', 'var');
+if ~mgridExists ; mGrid = mgridshape('nIms', sz(3)) ; end; % default mGrid
 
-nPts = size(xyz, 1);
+nPts = size(xy, 1);
 
 % Aux variable: slice indexes in "mgrid" format
 montIdxs = reshape(1:prod(mGrid), mGrid(end:-1:1))';
 
-xy = NaN(nPts, 2); % pre-allocate
+xyz = NaN(nPts, 3); % pre-allocate
  
 for iPt = 1:nPts
     
     % Current point xyz coordinates
-    cPt = xyz(iPt,:); 
+    cPt = xy(iPt,:); 
     
-    % Compute xy coordinates in montage
-    [yFact, xFact] = ind2sub(mGrid, find(montIdxs == cPt(3)));
+    xFact = ceil(cPt(1)/sz(2));
+    yFact = ceil(cPt(2)/sz(1));
     
     if yFact > mGrid(1) || yFact > mGrid(2)
-        % invalid
-        xy = [0 0]; % to remove later
+        % invalid, to remove later
+        cX = 0;
+        cY = 0;
+        cZ = 0;
     else
-        % valid
-        cX = (xFact-1)*sz(2)+cPt(1);
-        cY = (yFact-1)*sz(1)+cPt(2);
-    end
-    
+        % valid, compute xyz coordinates
+        cX = cPt(1)-(xFact-1)*sz(2);
+        cY = cPt(2)-(yFact-1)*sz(1);
+        cZ = montIdxs(yFact, xFact);
+    end    
+
     % Save
-    xy(iPt, 1) = cX;
-    xy(iPt, 2) = cY;
+    xyz(iPt, 1) = cX;
+    xyz(iPt, 2) = cY;
+    xyz(iPt, 3) = cZ;
 
 end
 
