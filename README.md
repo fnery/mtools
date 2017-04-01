@@ -10,11 +10,11 @@ mtools index:
   - `dcmsiemensisolateascconv.m`: isolates ASCCONV part in Siemens CSA headers <br />
   - `dcmsiemenscsa.m`: parse DICOM Siemens CSA header (ASCCONV subset only) <br />
 - **[fig]**
-  - `crop.m`: crop image and/or sets of coordinates
-  - `imcheckerboard.m`: display checkerboard of two images
-  - `imclipint.m`: clip image intensities
-  - `imtest.m`: loads 2D or 3D test image from MATLAB's MRI dataset
-  - `imx.m`: custom imshow/montage function
+  - `crop.m`: crop image and/or sets of coordinates <br />
+  - `imcheckerboard.m`: display checkerboard of two images <br />
+  - `imclipint.m`: clip image intensities <br />
+  - `imtest.m`: loads 2D or 3D test image from MATLAB's MRI dataset <br />
+  - `imx.m`: custom imshow/montage function <br />
   - `imxov.m`: create ImxOv struct for parametric map overlay in imx.m <br />
   - `mgridshape.m`: get montage grid shape (can constrain nRows/nColumns) <br />
   - `selectroi.m`: draw ROIs in the displayed image and create corresponding masks <br />
@@ -52,6 +52,7 @@ mtools index:
   - `sumn.m`: sum of array elements along multiple dimensions (sum in a loop) <br />
   - `uniquesubstr.m`: remove duplicate substrings from string <br />
   - `vec2str.m`: converts a 1D-vector to a string <br />
+  - `yyyymmdddiff.m`: difference (days) between two dates of format 'yyyymmdd' <br />
   - `yyyymmddfind.m`: finds and extracts date substrings of format 'yyyymmdd' <br />
 
 External code

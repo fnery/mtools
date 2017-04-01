@@ -52,4 +52,5 @@
 ---- sumn.m: sum of array elements along multiple dimensions (sum in a loop)
 ---- uniquesubstr.m: remove duplicate substrings from string
 ---- vec2str.m: converts a 1D-vector to a string
+---- yyyymmdddiff.m: difference (days) between two dates of format 'yyyymmdd'
 ---- yyyymmddfind.m: finds and extracts date substrings of format 'yyyymmdd'
