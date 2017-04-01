@@ -689,4 +689,6 @@ end
 line([xMin xMax], [y    y   ], 'Color', chC, 'LineWidth', chW, 'LineStyle', '--');
 line([x    x   ], [yMin yMax], 'Color', chC, 'LineWidth', chW, 'LineStyle', '--');
 
+pause(0.05); drawnow; pause(0.05);
+
 end
