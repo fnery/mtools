@@ -50,6 +50,7 @@ mtools index:
   - `squeezext.m`: extends squeeze.m (specify singleton dimensions keep/remove) <br />
   - `strpad.m`: pad string with spaces to achieve a certain length <br />
   - `sumn.m`: sum of array elements along multiple dimensions (sum in a loop) <br />
+  - `textheading.m`: creates a text heading/separator string for documentation <br />
   - `uniquesubstr.m`: remove duplicate substrings from string <br />
   - `vec2str.m`: converts a 1D-vector to a string <br />
   - `yyyymmdddiff.m`: difference (days) between two dates of format 'yyyymmdd' <br />

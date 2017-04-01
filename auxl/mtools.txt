@@ -50,6 +50,7 @@
 ---- squeezext.m: extends squeeze.m (specify singleton dimensions keep/remove)
 ---- strpad.m: pad string with spaces to achieve a certain length
 ---- sumn.m: sum of array elements along multiple dimensions (sum in a loop)
+---- textheading.m: creates a text heading/separator string for documentation
 ---- uniquesubstr.m: remove duplicate substrings from string
 ---- vec2str.m: converts a 1D-vector to a string
 ---- yyyymmdddiff.m: difference (days) between two dates of format 'yyyymmdd'
