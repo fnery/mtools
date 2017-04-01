@@ -11,6 +11,7 @@ mtools index:
   - `dcmsiemenscsa.m`: parse DICOM Siemens CSA header (ASCCONV subset only) <br />
 - **[fig]**
   - `crop.m`: crop image and/or sets of coordinates <br />
+  - `ccc.m`: cleans MATLAB's cmd window, workspace, figures, etc...
   - `imcheckerboard.m`: display checkerboard of two images <br />
   - `imclipint.m`: clip image intensities <br />
   - `imtest.m`: loads 2D or 3D test image from MATLAB's MRI dataset <br />
