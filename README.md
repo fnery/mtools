@@ -11,7 +11,6 @@ mtools index:
   - `dcmsiemenscsa.m`: parse DICOM Siemens CSA header (ASCCONV subset only) <br />
 - **[fig]**
   - `crop.m`: crop image and/or sets of coordinates <br />
-  - `ccc.m`: cleans MATLAB's cmd window, workspace, figures, etc...
   - `imcheckerboard.m`: display checkerboard of two images <br />
   - `imclipint.m`: clip image intensities <br />
   - `imtest.m`: loads 2D or 3D test image from MATLAB's MRI dataset <br />
@@ -25,6 +24,7 @@ mtools index:
 - **[misc]**
   - `authstr.m`: creates author string for function documentation <br />
   - `bwcircle.m`: Creates binary (logical) image with a 1-valued circle <br />
+  - `ccc.m`: cleans MATLAB's cmd window, workspace, figures, etc... <br />
   - `cell2str.m`: converts [n x 1] cell of strings to a [n x nChars] string <br />
   - `cellstrmatch.m`: create new cell from matching(or not) strings in input cell <br />
   - `changewrtbaseline.m`: change in measurements with respect to a "baseline" <br />
