@@ -11,6 +11,7 @@ mtools index:
   - `dcmsiemenscsa.m`: parse DICOM Siemens CSA header (ASCCONV subset only) <br />
 - **[fig]**
   - `crop.m`: crop image and/or sets of coordinates
+  - `imclipint.m`: clip image intensities
   - `imtest.m`: loads 2D or 3D test image from MATLAB's MRI dataset
   - `imx.m`: custom imshow/montage function
   - `imxov.m`: create ImxOv struct for parametric map overlay in imx.m <br />
