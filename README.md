@@ -64,10 +64,12 @@ mtools index:
 External code
 -------------
 
-Some of the functions in the above list use code written by others, which I typically get from [MATLAB's File Exchange](mathworks.com/matlabcentral/fileexchange/) or other GitHub repositories. For simplicity, copies of such code are incorporated in this repository (`ext` folder), each function in its specific subdirectory. Attribution and licenses are included whenever possible. A summary of the external code included in this repository is as follows:
+Some of the functions in the above list use code written by others, which I typically get from [MATLAB's File Exchange](mathworks.com/matlabcentral/fileexchange/) or other GitHub repositories. For simplicity, copies of such code are incorporated in this repository (`ext` folder), each function in its specific subdirectory. Attribution and licenses are included therewith whenever possible. A summary of the external code included in this repository is as follows:
 
 ### External code index
-
+- `[jsonlab]`: a toolbox to encode/decode JSON files
+  - Copyright (c) 2017, Qianqian Fang
+  - Retrieved from [FEX-JSONlab](https://uk.mathworks.com/matlabcentral/fileexchange/33381-jsonlab--a-toolbox-to-encode-decode-json-files) on 20170325
 - `progressbar.m`: simple, efficient, and user friendly replacement for waitbar
   - Copyright (c) 2005, Steve Hoelzer
   - Retrieved from [FEX-progressbar](https://uk.mathworks.com/matlabcentral/fileexchange/6922-progressbar) on 20170324
