@@ -45,6 +45,7 @@ mtools index:
   - `matrix2string.m`: converts 2D matrix to text (figure displaying purposes) <br />
   - `mkdirf.m`: extends mkdir.m function (automatic name/overwrite control) <br />
   - `mtools.m`: displays index of functions in mtools in the command window <br />
+  - `nameinpath.m`: isolates name of file(s) from its complete path(s) <br />
   - `nvargins2struct.m`: converts cell of argins (name-value pairs) into a struct <br />
   - `reparrew.m`: replicate array (element-wise) <br />
   - `scriptdoc.m`: prints script documentation template to command window <br />
