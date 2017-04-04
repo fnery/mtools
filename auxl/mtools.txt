@@ -60,7 +60,7 @@
 ---- vec2str.m: converts a 1D-vector to a string
 ---- yyyymmdddiff.m: difference (days) between two dates of format 'yyyymmdd'
 ---- yyyymmddfind.m: finds and extracts date substrings of format 'yyyymmdd'
-[ext]
----- [jsonlab].m: a toolbox to encode/decode JSON files
----- progressbar.m: simple, efficient, and user friendly replacement for waitbar
----- subdir.m: performs a recursive file search
+[ext] (third party code, see subdirectories of each for licenses)
+---- [jsonlab]: a toolbox to encode/decode JSON files (by Qianqian Fang)
+---- progressbar.m: simple, efficient, and user friendly replacement for waitbar (by Steve Hoelzer)
+---- subdir.m: performs a recursive file search (by Kelly Kearney)
