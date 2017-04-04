@@ -6,7 +6,7 @@ mtools index:
 -------------
 
 - **[dcm]**
-  - `dcmfind.m`: List DICOM files in dir (and its subdirs)
+  - `dcmfind.m`: List DICOM files in dir (and its subdirs) <br />
   - `dcmsiemensisolateascconv.m`: isolates ASCCONV part in Siemens CSA headers <br />
   - `dcmsiemenscsa.m`: parse DICOM Siemens CSA header (ASCCONV subset only) <br />
 - **[fig]**
@@ -33,6 +33,7 @@ mtools index:
   - `dispstrcell.m`: generate matlab code to re-create cell of strings variable <br />
   - `fdir.m`: custom dir function <br />
   - `filepartscell.m`: extends matlab's fileparts for "cell of strings" inputs <br />
+  - `folderinpath.m`: extracts folder from a full file path <br />
   - `fxdoc.m`: prints function documentation template to command window <br />
   - `getabovedir.m`: returns path of directories closer to the root <br />
   - `is1d.m`: check if input is 1D "vector" <br />
