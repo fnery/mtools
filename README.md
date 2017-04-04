@@ -31,6 +31,7 @@ mtools index:
   - `cleanstr.m`: replace spaces by underscores and remove non-alphanum chars <br />
   - `ctime.m`: creates string with current date-time (yyyymmdd_hhmmss[fff]) <br />
   - `dispstrcell.m`: generate matlab code to re-create cell of strings variable <br />
+  - `ensurecolumnvector.m`: ensure input is a column vector (transpose if needed) <br />
   - `ensurerowstring.m`: ensure row string (i.e. readable) (transpose if needed) <br />
   - `fdir.m`: custom dir function <br />
   - `filepartscell.m`: extends matlab's fileparts for "cell of strings" inputs <br />
