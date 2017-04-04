@@ -56,7 +56,7 @@ function out = mkdirf(varargin)
 %                  added <overwrite> option
 % fnery, 20170311: now includes methods $a and $b
 
-UNIQUE_NAME = sprintf('tmp_%s', ctime(1)); % not used if <name> exists
+UNIQUE_NAME = sprintf('tmp_%s', ctime('ymdhmsf')); % not used if <name> exists
 
 % Pause for an instant to ensure uniqueness of folder name
 pause(0.01);
