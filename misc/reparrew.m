@@ -33,7 +33,26 @@ function [output] = reparrew(array, replicationCounts)
 %
 % fnery, 20130319: original version
 % fnery, 20150815: updated documentation
-% fnery, 20160226: replicationCounts now accepts zeros
+% fnery, 20160226: 'replicationCounts' now accepts zeros
+% fnery, 20170429: now 'replicationCounts' can be a single-element vector
+
+if nargin ~= 2
+    error('Error: the number of input arguments must be 2');
+end
+
+n    = numel(array);
+nRep = numel(replicationCounts);
+
+
+if nRep == 1;
+    % ensure 'replicationCounts' can be a single-element vector
+    replicationCounts = repmat(replicationCounts, [1 n]);
+elseif nRep == n
+    % all good, do nothing
+else
+    error('Error: numel(''replicationCounts'') must be 1 or equal to numel(''array'')')
+end
+
 
 % Ensure replicationCounts can accept zeros (ignores these indexes)
 zIdxs = find(replicationCounts == 0);
