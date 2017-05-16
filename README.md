@@ -13,6 +13,7 @@ mtools index:
   - `crop.m`: crop image and/or sets of coordinates <br />
   - `imcheckerboard.m`: display checkerboard of two images <br />
   - `imclipint.m`: clip image intensities <br />
+  - `imfusion.m`: create fusion image (composite of two images) <br />
   - `imtest.m`: loads 2D or 3D test image from MATLAB's MRI dataset <br />
   - `imx.m`: custom imshow/montage function <br />
   - `imxov.m`: create ImxOv struct for parametric map overlay in imx.m <br />

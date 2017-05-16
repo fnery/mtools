@@ -13,6 +13,7 @@
 ---- crop.m: crop image and/or sets of coordinates
 ---- imcheckerboard.m: display checkerboard of two images
 ---- imclipint.m: clip image intensities
+---- imfusion.m: create fusion image (composite of two images)
 ---- imtest.m: loads 2D or 3D test image from MATLAB's MRI dataset
 ---- imx.m: custom imshow/montage function
 ---- imxov.m: create ImxOv struct for parametric map overlay in imx.m
