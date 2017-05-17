@@ -142,8 +142,8 @@ end
 w2 = 1 - w1;
 
 % Normalise intensities (see note 1 above)
-im1 = im1./max(im1(:));
-im2 = im2./max(im2(:));
+im1 = mat2gray(im1);
+im2 = mat2gray(im2);
 
 im2 = repmat(im2, [1 1 3]);
 
