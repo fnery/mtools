@@ -1,4 +1,4 @@
-function out = imclipint(varargin)
+function [out, int] = imclipint(varargin)
 % imclipint.m: clip image intensities
 %   
 % Syntax:
@@ -24,6 +24,7 @@ function out = imclipint(varargin)
 %
 % Outputs:
 %    1) out: new image, with modified intensities
+%    2) int: new intensity range of resulting image [newMin newMax]
 %
 % Notes/Assumptions: 
 %    1) Created for assisting when showing overlays
@@ -44,17 +45,17 @@ function out = imclipint(varargin)
 %           min(im1)=0.0; max(im1)=88.0
 %    >> % 1) 
 %    >> int  = [10 60];
-%    >> im2  = imclipint2('im', im1, 'int', int);
+%    >> im2  = imclipint('im', im1, 'int', int);
 %    >> fprintf('min(im)=%.1f; max(im)=%.1f\n', min(im2(:)), max(im2(:)))
 %           min(im2)=10.0; max(im2)=60.0
 %    >> % 2)
 %    >> rInt = [0.1 0.8];
-%    >> im3  = imclipint2('im', im1, 'rint', rInt);
+%    >> im3  = imclipint('im', im1, 'rint', rInt);
 %    >> fprintf('min(im)=%.1f; max(im)=%.1f\n', min(im3(:)), max(im3(:)))
 %           min(im3)=0.0; max(im3)=70.4
 %    >> % 3)
 %    >> pInt = [20 80];
-%    >> im4  = imclipint2('im', im1, 'pint', pInt);
+%    >> im4  = imclipint('im', im1, 'pint', pInt);
 %    >> fprintf('min(im)=%.1f; max(im)=%.1f\n', min(im3(:)), max(im4(:)))
 %           min(im4)=0.0; max(im4)=23.0
 %
@@ -157,5 +158,6 @@ im(im<newMin) = newMin;
 im(im>newMax) = newMax;
 
 out = im;
+int = [newMin newMax];
 
 end
