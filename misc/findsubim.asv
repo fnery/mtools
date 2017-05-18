@@ -41,7 +41,7 @@ function [mask, subIm] = findsubim(im, shape, opt)
 % 
 % Examples:
 %    % This example shows how this may be useful to extract parts of the
-%    % foreground and background in image data
+%    foreground and background in image data
 %    % Create test dataset, options for findsubim.m and run the function
 %    im = imtest(6);
 %    shape1 = [50,70,3];
@@ -98,7 +98,7 @@ else
     error('Error: ''opt'' must be either ''min'' or ''max''');
 end
 
-mask = false(size(im));
+mask = zeros(size(im));
 
 % Here comes ugly - works, but improve in the future
 cmd = [];
