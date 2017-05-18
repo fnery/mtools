@@ -35,6 +35,7 @@
 ---- ensurecolumnvector.m: ensure input is a column vector (transpose if needed)
 ---- ensurerowstring.m: ensure row string (i.e. readable) (transpose if needed)
 ---- fdir.m: custom dir function
+---- findsubim.m: find region (sub-image) of image with max/min mean intensity
 ---- filepartscell.m: extends matlab's fileparts for "cell of strings" inputs
 ---- folderinpath.m: extracts folder from a full file path
 ---- fxdoc.m: prints function documentation template to command window
