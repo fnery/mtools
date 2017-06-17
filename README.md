@@ -28,6 +28,7 @@ mtools index:
   - `ccc.m`: cleans MATLAB's cmd window, workspace, figures, etc... <br />
   - `cell2str.m`: converts [n x 1] cell of strings to a [n x nChars] string <br />
   - `cellstrmatch.m`: create new cell from matching(or not) strings in input cell <br />
+  - `cf`: [c]urrent [f]older - dir where calling function lives <br />
   - `changewrtbaseline.m`: change in measurements with respect to a "baseline" <br />
   - `cleanstr.m`: replace spaces by underscores and remove non-alphanum chars <br />
   - `ctime.m`: creates string with current date-time (yyyymmdd_hhmmss[fff]) <br />

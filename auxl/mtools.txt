@@ -28,6 +28,7 @@
 ---- ccc.m: cleans MATLAB's cmd window, workspace, figures, etc...
 ---- cell2str.m: converts [n x 1] cell of strings to a [n x nChars] string
 ---- cellstrmatch.m: create new cell from matching(or not) strings in input cell
+---- cf: [c]urrent [f]older - dir where calling function lives
 ---- changewrtbaseline.m: change in measurements with respect to a "baseline"
 ---- cleanstr.m: replace spaces by underscores and remove non-alphanum char
 ---- ctime.m: creates string with current date-time (yyyymmdd_hhmmss[fff])
