@@ -47,6 +47,7 @@ mtools index:
   - `logic2str.m`: converts logical scalar to string <br />
   - `lsfile.m`: list files in dir and pick according to file # index <br />
   - `m2sharr.m`: convert cell of strings to space-delimited list (like bash arrays) <br />
+  - `matinfo.m`: info struct to attach to any automatically generated .mat file <br />
   - `matrix2string.m`: converts 2D matrix to text (figure displaying purposes) <br />
   - `mkdirf.m`: extends mkdir.m function (automatic name/overwrite control) <br />
   - `mtools.m`: displays index of functions in mtools in the command window <br />
