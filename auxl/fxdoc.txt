@@ -2,10 +2,11 @@ Function documentation template:
 --------------------------------
 fnery, 20160301: original version
 fnery, 20170319: now indents = 4 spaces
+fnery, 20170723: max line length 79
 
 function [outputs] = fxname(inputs)
 % fxname.m: 1-liner about this function
-%   
+%
 % Syntax:
 %    1) [outputs] = fxname(inputs)
 %    OR
@@ -19,12 +20,15 @@ function [outputs] = fxname(inputs)
 %    1) input1: description
 %    2) inputn: description
 %    (NAME-VALUE PAIR INPUTS)
-%    ----------------------------- MANDATORY -------------------------------
-%    <in1>     type    :    Description of input argument 1
-%    <in2>     type    :    Description of input argument 2
-%    ------------------------------ OPTIONAL -------------------------------
-%    <in3>     type    :    Description of input argument 3
-% 
+%    -------------------------------- MANDATORY -------------------------------
+%    <in1>  $1   type    :    Description of input argument 1
+%    <in2>  $2   type    :    Description of input argument 2
+%    --------------------------------- OPTIONAL -------------------------------
+%    <in3>       type    :    Description of input argument 3
+%    --------------------------------------------------------------------------
+%    $1 - 
+%    $2 - 
+%
 % Outputs:
 %    1) output1: description
 %    2) outputn: description
@@ -43,8 +47,9 @@ function [outputs] = fxname(inputs)
 %
 % Required files:
 %    1) file1.ext
-% 
+%
 % Examples:
 %    >> codewhichisreadytorun
 %           command line result (if applicable)
+%
 %
