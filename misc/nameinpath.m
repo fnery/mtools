@@ -54,5 +54,3 @@ end
 function name = getname(pathToSingleFile)
 name = fliplr(strtok(fliplr(pathToSingleFile), filesep));
 end
-
-end
