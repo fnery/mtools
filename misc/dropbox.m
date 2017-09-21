@@ -51,8 +51,14 @@ startIdx(2:end) = [];
 
 % Get index of path separator immediately before 1st appearance of 'Dropbox'
 pSepIdxs = regexpi(p, pSep);
-pSepIdxs(pSepIdxs > startIdx) = [];
-pSepIdxs = pSepIdxs(end);
+
+if all(pSepIdxs>startIdx)
+    % means "Dropbox" appears in the first path which never has a 'pSep' behind
+    pSepIdxs = 0;
+else
+    pSepIdxs(pSepIdxs > startIdx) = [];
+    pSepIdxs = pSepIdxs(end);
+end
 
 % Build output string based on above + length of 'Dropbox'
 out = p(pSepIdxs+1:startIdx+length(TO_FIND)-1);
