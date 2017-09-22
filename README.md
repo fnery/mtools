@@ -37,6 +37,7 @@ mtools index:
   - `ensurecolumnvector.m`: ensure input is a column vector (transpose if needed) <br />
   - `ensurerowstring.m`: ensure row string (i.e. readable) (transpose if needed) <br />
   - `fdir.m`: custom dir function <br />
+  - `fileparts2.m`: extends fileparts.m to work in files with 2 exts (e.g. .nii.gz) <br />
   - `filepartscell.m`: extends matlab's fileparts for "cell of strings" inputs <br />
   - `filesepfix.m`: ensure hardcoded paths have separator suitable for current system <br />  
   - `findsubim.m`: find region (sub-image) of image with max/min mean intensity <br />  
