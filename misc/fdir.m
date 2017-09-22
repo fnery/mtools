@@ -46,7 +46,7 @@ function [List, n] = fdir(varargin)
 %   []
 %
 % Required functions:
-%   1) filepartscell.m
+%   1) fileparts2.m
 %   2) sortstruct.m
 %
 % Required files:
@@ -66,6 +66,7 @@ function [List, n] = fdir(varargin)
 % fnery, 20170309: now size in KBytes
 %                  now struct includes 'ext' and 'fullpath' fields
 %                  'ext' now a column in the optional output table
+% fnery, 20170922: now calls fileparts2.m instead of filepartscell.m
 
 BYTES_TO_KBYTES = 0.001;
 
@@ -187,7 +188,7 @@ end
 
 % Add file extensions to List struct and remove them from List.name
 nFiles = length(List);
-[~, names, exts] = filepartscell({List.name});
+[~, names, exts] = fileparts2({List.name});
 for iFile = 1:nFiles
     List(iFile).ext = exts{iFile};
     List(iFile).name = names{iFile};
