@@ -37,8 +37,7 @@
 ---- ensurecolumnvector.m: ensure input is a column vector (transpose if needed)
 ---- ensurerowstring.m: ensure row string (i.e. readable) (transpose if needed)
 ---- fdir.m: custom dir function
----- fileparts2.m: extends fileparts.m to work in files with 2 exts (e.g. .nii.gz)
----- filepartscell.m: extends matlab's fileparts for "cell of strings" inputs
+---- fileparts2.m: extends fileparts.m
 ---- filesepfix.m: ensure hardcoded paths have separator suitable for current system
 ---- findsubim.m: find region (sub-image) of image with max/min mean intensity
 ---- folderinpath.m: extracts folder from a full file path
