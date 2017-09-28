@@ -1,7 +1,7 @@
 % #mtools - function index
 % this file is displayed in matlab's command window when mtools.m is called
 % providing a quick index of the functions available in this toolbox
-% if this file is moved from this directory (aux_files), then mtools.m will
+% if this file is moved from this directory (auxl), then mtools.m will
 % no longer work (all lines started with '%' are ignored by mtools.m)
 % -------------------------------------------------------------------------
 % 
