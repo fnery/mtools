@@ -6,67 +6,67 @@
 % -------------------------------------------------------------------------
 % 
 [dcm]
----- dcmfind.m: List DICOM files in dir (and its subdirs)
----- dcmsiemensisolateascconv.m: isolates ASCCONV part in Siemens CSA headers
----- dcmsiemenscsa.m: parse DICOM Siemens CSA header (ASCCONV subset only)
+---- dcmfind                  : list DICOM files in dir (and its subdirs)
+---- dcmsiemensisolateascconv : isolates ASCCONV part in Siemens CSA headers
+---- dcmsiemenscsa            : parse DICOM Siemens CSA header (ASCCONV subset only)
 [fig]
----- crop.m: crop image and/or sets of coordinates
----- imcheckerboard.m: display checkerboard of two images
----- imclipint.m: clip image intensities
----- imfusion.m: create fusion image (composite of two images)
----- imtest.m: loads 2D or 3D test image from MATLAB's MRI dataset
----- imx.m: custom imshow/montage function
----- imxov.m: create ImxOv struct for parametric map overlay in imx.m
----- mgridshape.m: get montage grid shape (can constrain nRows/nColumns)
----- selectroi.m: draw ROIs in the displayed image and create corresponding masks
----- vol2mont.m: converts a 3D volume into a 2D montage
----- xy2xyz.m: convert point 2D (xy (as in montage)) to 3D (xyz) coordinates
----- xyz2xy.m: convert point 3D (xyz) to 2D (xy) coordinates (as in montage)
+---- crop                     : crop image and/or sets of coordinates
+---- imcheckerboard           : display checkerboard of two images
+---- imclipint                : clip image intensities
+---- imfusion                 : create fusion image (composite of two images)
+---- imtest                   : loads 2D or 3D test image from MATLAB's MRI dataset
+---- imx                      : custom imshow/montage function
+---- imxov                    : create ImxOv struct for parametric map overlay in imx.m
+---- mgridshape               : get montage grid shape (can constrain nRows/nColumns)
+---- selectroi                : draw ROIs in the displayed image and create corresponding masks
+---- vol2mont                 : converts a 3D volume into a 2D montage
+---- xy2xyz                   : convert point 2D (xy (as in montage)) to 3D (xyz) coordinates
+---- xyz2xy                   : convert point 3D (xyz) to 2D (xy) coordinates (as in montage)
 [misc]
----- authstr.m: creates author string for function documentation
----- bwcircle.m: Creates binary (logical) image with a 1-valued circle
----- ccc.m: cleans MATLAB's cmd window, workspace, figures, etc...
----- cell2str.m: converts [n x 1] cell of strings to a [n x nChars] string
----- cellstrmatch.m: create new cell from matching(or not) strings in input cell
----- cf: [c]urrent [f]older - dir where calling function lives
----- changewrtbaseline.m: change in measurements with respect to a "baseline"
----- cleanstr.m: replace spaces by underscores and remove non-alphanum char
----- ctime.m: creates string with current date-time (yyyymmdd_hhmmss[fff])
----- dispstrcell.m: generate matlab code to re-create cell of strings variable
----- dropbox.m: retrieves path of main dropbox folder
----- ensurecolumnvector.m: ensure input is a column vector (transpose if needed)
----- ensurerowstring.m: ensure row string (i.e. readable) (transpose if needed)
----- fdir.m: custom dir function
----- fileparts2.m: extends fileparts.m
----- filesepfix.m: ensure hardcoded paths have separator suitable for current system
----- findsubim.m: find region (sub-image) of image with max/min mean intensity
----- folderinpath.m: extracts folder from a full file path
----- fxdoc.m: prints function documentation template to command window
----- getabovedir.m: returns path of directories closer to the root
----- is1d.m: check if input is 1D "vector"
----- isallequal.m: checks if all elements in the array are equal
----- isint.m: checks if the input is an integer
----- logic2str.m: converts logical scalar to string
----- lsfile.m: list files in dir and pick according to file # index
----- m2sharr.m: convert cell of strings to space-delimited list (like bash arrays)
----- matinfo.m: info struct to attach to any automatically generated .mat file
----- matrix2string.m: converts 2D matrix to text (figure displaying purposes)
----- mkdirf.m: extends mkdir.m function (automatic name/overwrite control)
----- mtools.m: displays index of functions in mtools in the command window
----- nameinpath.m: isolates name of file(s) from its complete path(s)
----- nvargins2struct.m: converts cell of argins (name-value pairs) into a struct
----- reparrew.m: replicate array (element-wise)
----- scriptdoc.m: prints script documentation template to command window
----- sortstruct.m: sorts struct according to one of its fields
----- squeezext.m: extends squeeze.m (specify singleton dimensions keep/remove)
----- strpad.m: pad string with spaces to achieve a certain length
----- sumn.m: sum of array elements along multiple dimensions (sum in a loop)
----- textheading.m: creates a text heading/separator string for documentation
----- uniquesubstr.m: remove duplicate substrings from string
----- vec2str.m: converts a 1D-vector to a string
----- yyyymmdddiff.m: difference (days) between two dates of format 'yyyymmdd'
----- yyyymmddfind.m: finds and extracts date substrings of format 'yyyymmdd'
-[ext] (third party code, see subdirectories of each for licenses)
----- [jsonlab]: a toolbox to encode/decode JSON files (by Qianqian Fang)
----- progressbar.m: simple, efficient, and user friendly replacement for waitbar (by Steve Hoelzer)
----- subdir.m: performs a recursive file search (by Kelly Kearney)
+---- authstr                  : creates author string for function documentation
+---- bwcircle                 : creates binary (logical) image with a 1-valued circle
+---- ccc                      : cleans MATLAB's cmd window, workspace, figures, etc...
+---- cell2str                 : converts [n x 1] cell of strings to a [n x nChars] string
+---- cellstrmatch             : create new cell from matching(or not) strings in input cell
+---- cf                       : [c]urrent [f]older - dir where calling function lives
+---- changewrtbaseline        : change in measurements with respect to a "baseline"
+---- cleanstr                 : replace spaces by underscores and remove non-alphanum char
+---- ctime                    : creates string with current date-time (yyyymmdd_hhmmss[fff])
+---- dispstrcell              : generate matlab code to re-create cell of strings variable
+---- dropbox                  : retrieves path of main dropbox folder
+---- ensurecolumnvector       : ensure input is a column vector (transpose if needed)
+---- ensurerowstring          : ensure row string (i.e. readable) (transpose if needed)
+---- fdir                     : custom dir function
+---- fileparts2               : extends fileparts.m
+---- filesepfix               : ensure hardcoded paths have separator suitable for current system
+---- findsubim                : find region (sub-image) of image with max/min mean intensity
+---- folderinpath             : extracts folder from a full file path
+---- fxdoc                    : prints function documentation template to command window
+---- getabovedir              : returns path of directories closer to the root
+---- is1d                     : check if input is 1D "vector"
+---- isallequal               : checks if all elements in the array are equal
+---- isint                    : checks if the input is an integer
+---- logic2str                : converts logical scalar to string
+---- lsfile                   : list files in dir and pick according to file # index
+---- m2sharr                  : convert cell of strings to space-delimited list (like bash arrays)
+---- matinfo                  : info struct to attach to any automatically generated .mat file
+---- matrix2string            : converts 2D matrix to text (figure displaying purposes)
+---- mkdirf                   : extends mkdir.m function (automatic name/overwrite control)
+---- mtools                   : displays index of functions in mtools in the command window
+---- nameinpath               : isolates name of file(s) from its complete path(s)
+---- nvargins2struct          : converts cell of argins (name-value pairs) into a struct
+---- reparrew                 : replicate array (element-wise)
+---- scriptdoc                : prints script documentation template to command window
+---- sortstruct               : sorts struct according to one of its fields
+---- squeezext                : extends squeeze.m (specify singleton dimensions keep/remove)
+---- strpad                   : pad string with spaces to achieve a certain length
+---- sumn                     : sum of array elements along multiple dimensions (sum in a loop)
+---- textheading              : creates a text heading/separator string for documentation
+---- uniquesubstr             : remove duplicate substrings from string
+---- vec2str                  : converts a 1D-vector to a string
+---- yyyymmdddiff             : difference (days) between two dates of format 'yyyymmdd'
+---- yyyymmddfind             : finds and extracts date substrings of format 'yyyymmdd'
+[ext]
+---- [jsonlab]                : a toolbox to encode/decode JSON files (by Qianqian Fang)
+---- progressbar              : simple, efficient, and user friendly replacement for waitbar (by Steve Hoelzer)
+---- subdir                   : performs a recursive file search (by Kelly Kearney)
