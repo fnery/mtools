@@ -88,7 +88,9 @@ Some of the functions in the above list use code written by others, which I typi
 
 In addition, some of my functions may incorporate code snippets from others. This will be detailed in the documentation of each function. 
 
-Furthermore, other dependencies are listed below:
+Additional dependencies
+-----------------------
+
   - `niicrop.m` requires FSL (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) to be installed 
 
 ___
