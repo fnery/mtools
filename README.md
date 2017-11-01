@@ -55,7 +55,6 @@ mtools index:
   - `mtools.m`: displays index of functions in mtools in the command window <br />
   - `nameinpath.m`: isolates name of file(s) from its complete path(s) <br />
   - `nvargins2struct.m`: converts cell of argins (name-value pairs) into a struct <br />
-  - `readcrop.m`: parses .crop files with coordinates for cropping ROIs <br />
   - `reparrew.m`: replicate array (element-wise) <br />
   - `scriptdoc.m`: prints script documentation template to command window <br />
   - `sortstruct.m`: sorts struct according to one of its fields <br />
@@ -67,11 +66,14 @@ mtools index:
   - `vec2str.m`: converts a 1D-vector to a string <br />
   - `yyyymmdddiff.m`: difference (days) between two dates of format 'yyyymmdd' <br />
   - `yyyymmddfind.m`: finds and extracts date substrings of format 'yyyymmdd' <br />
+- **[nii]**
+  - `niicrop.m`: crops .nii file using fslroi according to .crop file <br />
+  - `readcrop.m`: parses .crop files with coordinates for cropping ROIs <br />  
 
 External code
 -------------
 
-Some of the functions in the above list use code written by others, which I typically get from [MATLAB's File Exchange](mathworks.com/matlabcentral/fileexchange/) or other GitHub repositories. For simplicity, copies of such code are incorporated in this repository (`ext` folder), each function in its specific subdirectory. Attribution and licenses are included therewith whenever possible. A summary of the external code included in this repository is as follows:
+Some of the functions in the above list use code written by others, which I typically get from [MATLAB's File Exchange](mathworks.com/matlabcentral/fileexchange/) or other GitHub repositories. For simplicity, where possible copies of such code are incorporated in this repository (`ext` folder), each function in its specific subdirectory. Attribution and licenses are included therewith whenever possible. A summary of the external code included in this repository is as follows:
 
 ### External code index
 - `[jsonlab]`: a toolbox to encode/decode JSON files
@@ -85,6 +87,9 @@ Some of the functions in the above list use code written by others, which I typi
   - Retrieved from [subdir-pkg](https://github.com/kakearney/subdir-pkg) on 20170324
 
 In addition, some of my functions may incorporate code snippets from others. This will be detailed in the documentation of each function. 
+
+Furthermore, other dependencies are listed below:
+  - `niicrop.m` requires FSL (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) to be installed 
 
 ___
 ___
