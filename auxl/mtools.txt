@@ -55,6 +55,7 @@
 ---- mtools                   : displays index of functions in mtools in the command window
 ---- nameinpath               : isolates name of file(s) from its complete path(s)
 ---- nvargins2struct          : converts cell of argins (name-value pairs) into a struct
+---- readcrop                 : parses .crop files with coordinates for cropping ROIs
 ---- reparrew                 : replicate array (element-wise)
 ---- scriptdoc                : prints script documentation template to command window
 ---- sortstruct               : sorts struct according to one of its fields
