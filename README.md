@@ -34,6 +34,7 @@ mtools index:
   - `ctime.m`: creates string with current date-time (yyyymmdd_hhmmss[fff]) <br />
   - `dispstrcell.m`: generate matlab code to re-create cell of strings variable <br />
   - `dropbox.m`: retrieves path of main dropbox folder <br />
+  - `dropboxfix.m`: ensure dropbox substring in preloaded paths matches current machine <br />
   - `ensurecolumnvector.m`: ensure input is a column vector (transpose if needed) <br />
   - `ensurerowstring.m`: ensure row string (i.e. readable) (transpose if needed) <br />
   - `fdir.m`: custom dir function <br />

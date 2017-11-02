@@ -34,6 +34,7 @@
 ---- ctime                    : creates string with current date-time (yyyymmdd_hhmmss[fff])
 ---- dispstrcell              : generate matlab code to re-create cell of strings variable
 ---- dropbox                  : retrieves path of main dropbox folder
+---- dropboxfix               : ensure dropbox substring in preloaded paths matches current machine
 ---- ensurecolumnvector       : ensure input is a column vector (transpose if needed)
 ---- ensurerowstring          : ensure row string (i.e. readable) (transpose if needed)
 ---- fdir                     : custom dir function
