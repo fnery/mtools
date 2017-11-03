@@ -46,6 +46,7 @@ mtools index:
   - `getabovedir.m`: returns path of directories closer to the root <br />
   - `is1d.m`: check if input is 1D "vector" <br />
   - `isallequal.m`: checks if all elements in the array are equal <br />
+  - `isext.m`: check if file matches extension(s) <br />
   - `isint.m`: checks if the input is an integer <br />
   - `logic2str.m`: converts logical scalar to string <br />
   - `lsfile.m`: list files in dir and pick according to file # index <br />

@@ -46,6 +46,7 @@
 ---- getabovedir              : returns path of directories closer to the root
 ---- is1d                     : check if input is 1D "vector"
 ---- isallequal               : checks if all elements in the array are equal
+---- isext                    : check if file matches extension(s)
 ---- isint                    : checks if the input is an integer
 ---- logic2str                : converts logical scalar to string
 ---- lsfile                   : list files in dir and pick according to file # index
