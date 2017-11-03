@@ -68,6 +68,7 @@
 ---- yyyymmdddiff             : difference (days) between two dates of format 'yyyymmdd'
 ---- yyyymmddfind             : finds and extracts date substrings of format 'yyyymmdd'
 [nii]
+---- isnifti                  : lazy nifti file path checker
 ---- niibvalbvec              : generate bval/bvec names/paths from corresponding .nii image
 ---- niicrop                  : crops .nii file using fslroi according to .crop file
 ---- readcrop                 : parses .crop files with coordinates for cropping ROIs
