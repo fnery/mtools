@@ -22,18 +22,16 @@ function out = isnifti(in)
 %    []
 %
 % Required functions:
-%    1) fileparts2.m
+%    1) isext.m
 %
 % Required files:
 %    []
 %
 % Examples:
-%    isnifti('file')
 %    isnifti('file.nii')
 %    isnifti('file.nii.gz')
 %    isnifti('file.nii.gz2')
 %    % OUTPUT
-%    %    ans = 0
 %    %    ans = 1
 %    %    ans = 1
 %    %    ans = 0
@@ -42,20 +40,6 @@ function out = isnifti(in)
 
 EXPECTED_FILE_EXTS = {'.nii', '.nii.gz'};
 
-if ~ischar(in);
-    error('Error: ''in'' must be a file path');
-end
-
-[~, ~, ext] = fileparts2(in);
-
-% Check how many of the EXPECTED_FILE_EXTS ext matches
-matchingExt = cellfun(@(c) strcmp(c, ext), EXPECTED_FILE_EXTS, 'UniformOutput', false);
-nMatches = sum(cell2mat(matchingExt));
-
-if nMatches == 1
-    out = true;
-else
-    out = false;
-end
+out = isext(in, EXPECTED_FILE_EXTS);
 
 end
