@@ -139,6 +139,7 @@ function out = pathfix(in, POSSIBLE_DROPBOX_PATHS, currentDropboxIdx)
 %    1) filesepfix.m
 %
 % fnery, 20171102: original version
+% fnery, 20171102: fixed bug: out not being assigned when input file has dropbox path matching the current machine
 
 if ~ischar(in);
     error('Error: ''in'' must be a single path string')
@@ -170,6 +171,7 @@ if ~isequal(currentFileIdx, currentDropboxIdx);
     out = filesepfix(out);
 else
     % do nothing, input file has dropbox path matching the current machine
+    out = in;
 end
 
 end
