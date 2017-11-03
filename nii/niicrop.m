@@ -2,20 +2,22 @@ function outPath = niicrop(varargin)
 % niicrop.m: crops .nii file using fslroi according to .crop file
 %
 % Syntax:
-%    1) [outPath] = niicrop(niiPath, cropPath)
-%    2) [outPath] = niicrop(niiPath, cropPath, outDir)
+%    1) [outPath] = niicrop('nii', nii, 'crop', crop', 'out', out, 'suffix', suffix)
 %
 % Description:
-%    1) [outPath] = niicrop(niiPath, cropPath) crops a .nii file using 
-%       fslroi according to .crop file, the output .nii file(s) are saved in
-%       the same directory where the input .nii file lives
-%    2) [outPath] = niicrop(niiPath, cropPath, outDir) does the same as 1)
-%       but saves the output .nii file(s) in outDir
+%    1) [outPath] = niicrop('nii', nii, 'crop', crop', 'out', out, 'suffix', suffix)
+%       crops the nifti file given in 'nii' using fslroi according to the .crop
+%       file given in 'crop', saves the output in 'out' with the 'suffix' suffix
+%       appended to the output file names
 %
 % Inputs:
-%    1) niiPath: path to .nii file
-%    2) cropPath: path to .crop file
-%    3) outDir (opt): path to directory where to save output .nii files
+%    -------------------------------- MANDATORY -------------------------------
+%    <nii>      char    :    full path to a nifti file
+%    <crop>     char    :    full path to a .crop file
+%    --------------------------------- OPTIONAL -------------------------------
+%    <out>      char    :    full path to directory where to save output files
+%    <suffix>   char    :    suffix to append to file names of output files
+%    --------------------------------------------------------------------------
 %
 % Outputs:
 %    1) outPath: path(s) of output .nii files
@@ -29,9 +31,11 @@ function outPath = niicrop(varargin)
 %    [2] https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslView
 %
 % Required functions:
-%    1) fileparts2.m
-%    2) readcrop.m
-%    3) fslroi (see Note 1)
+%    1) isnifti.m
+%    2) isext.m
+%    3) fileparts2.m
+%    4) readcrop.m
+%    5) fslroi (see Note 1)
 %
 % Required files:
 %    1) .nii file
@@ -41,24 +45,79 @@ function outPath = niicrop(varargin)
 %    []
 %
 % fnery, 20171101: original version
+% fnery, 20171103: now can specify suffix and inputs are in name-value form
 
-OUT_SUFFIX = '_crop'; 
+CROP_EXT   = '.crop';
+OUT_SUFFIX = 'crop'; 
 
-niiPath = varargin{1};
-cropPath = varargin{2};
-
-[niiDir, niiName, niiExt] = fileparts2(niiPath);
-
-if nargin == 2
-    outDir = niiDir;
-elseif nargin == 3
-    outDir = varargin{3};
-else
-    error('Error: niicrop.m requires 2 or 3 input arguments');
+% _________________________________________________________________________
+%                          Manage input arguments                              
+% _________________________________________________________________________
+for iOptIn = 1:2:numel(varargin);
+    % init option name and value
+    cOpt = varargin{iOptIn};
+    if ~ischar(cOpt)
+        error('Error: Invalid argument list');
+    end
+    cVal = varargin{iOptIn+1};
+    % attempt to recognise options
+    switch lower(cOpt)
+        case {'nii'}
+            % verify if 'nii' is valid
+            if isnifti(cVal)
+                nii = cVal;
+            else
+                error('Error: ''nii'' is invalid')
+            end
+        case {'crop'}
+            % verify if 'crop' is valid 
+            if isext(cVal, CROP_EXT)
+                crop = cVal;
+            else
+                error('Error: ''crop'' is invalid')
+            end
+        case {'out'}
+            % verify if 'out' is valid 
+            if isdir(cVal)
+                out = cVal;
+            else
+                error('Error: ''out'' is invalid');
+            end
+        case {'suffix'}
+            % verify if 'suffix' is valid 
+            if ischar(cVal)
+                suffix = cVal;
+            else
+                error('Error: ''suffix'' is invalid');
+            end                       
+        otherwise
+            error('Error: input argument not recognized');
+    end
 end
 
+% Check we have all mandatory options in the workspace
+allMandatoryOptsExist =     ...
+    exist('nii'  , 'var') & ...
+    exist('crop' , 'var'); 
+if ~allMandatoryOptsExist
+    error('Error: One or more mandatory options are missing');
+end
+
+[niiDir, niiName, niiExt] = fileparts2(nii);
+
+% If 'out' does not exist, save the cropped files in the input file dir
+outExists  = exist('out', 'var');
+if ~outExists;
+    out = niiDir;
+end;
+
+suffixExists  = exist('suffix', 'var');
+if ~suffixExists;
+    suffix = OUT_SUFFIX;
+end;
+
 % Read .crop file
-c = readcrop(cropPath);
+c = readcrop(crop);
 
 % Crop input .nii file
 nROIs = size(c, 1);
@@ -66,13 +125,13 @@ outPath = cell(nROIs, 1);
 for iROI = 1:nROIs
     
    % Build current output file name/path
-   cOutName = sprintf('%s%s_%d_of_%d', niiName, OUT_SUFFIX, iROI, nROIs);
-   cOutPath = fullfile(outDir, [cOutName niiExt]);
+   cOutName = sprintf('%s_%s_%d_of_%d', niiName, suffix, iROI, nROIs);
+   cOutPath = fullfile(out, [cOutName niiExt]);
    
    % Build command string
    cC = c(iROI, :);
    cCmd = sprintf('fslroi %s %s %d %d %d %d %d %d', ...
-       niiPath, cOutPath, cC(1), cC(2), cC(3), cC(4), cC(5), cC(6));
+       nii, cOutPath, cC(1), cC(2), cC(3), cC(4), cC(5), cC(6));
    
    % Run fslroi command
    status = system(cCmd);
