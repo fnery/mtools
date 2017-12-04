@@ -77,7 +77,7 @@ for iOptIn = 1:2:numel(varargin)
             % verify if 'im' is valid
             isNumeric = isnumeric(cVal);
             isLogical = islogical(cVal);
-            hasCorrectDims = ismatrix(cVal) || ndims(cVal) == 3;
+            hasCorrectDims = ismatrix(cVal) || ndims(cVal) == 3 || ndims(cVal) == 4;
             if (isNumeric || isLogical) && hasCorrectDims
                 im = double(cVal);
             else
