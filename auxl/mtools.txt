@@ -5,6 +5,9 @@
 % no longer work (all lines started with '%' are ignored by mtools.m)
 % -------------------------------------------------------------------------
 % 
+[asl]
+---- asl6d                    : organises a 4D ASL volume into a 6D ASL volume
+---- aslorder                 : returns order matrix for ASL experiment
 [dcm]
 ---- dcmfind                  : list DICOM files in dir (and its subdirs)
 ---- dcmsiemensisolateascconv : isolates ASCCONV part in Siemens CSA headers
