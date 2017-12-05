@@ -33,7 +33,6 @@ function Out = asl6d(varargin)
 %                                option 4: 'pms' : [PLDs, measurements, sets]
 %                                option 5: 'mps' : [measurements, PLDs, sets]
 %                                option 6: 'msp' : [measurements, sets, PLDs]
-%    -------------------------------- OPTIONAL --------------------------------
 %    <silent>     logical :  print aslorder matrix to cmd window (true/false)
 %    --------------------------------------------------------------------------
 %    $1 - See Assumption #1
@@ -76,14 +75,13 @@ function Out = asl6d(varargin)
 % Examples:
 %    []
 %
-% fnery, 20171204: original version
-% fnery, 20171204: added 'silent' option
+% fnery, 20171204: original version: STILL NEEDS TESTING
+% fnery, 20171204: original version: STILL NEEDS TESTING
 
 POSSIBLE_SET_ORDERS  = {'ct', 'tc', 'ctd', 'tcd'};
 POSSIBLE_LOOP_ORDERS = {'smp', 'spm', 'psm', 'pms', 'mps', 'msp'};
 N_SETS_OUTPUT = 3; % if difference image does not exist it will be calculated 
                    % in this function so the nSets in the output is always 3
-SILENT_DEFAULT = true;                   
       
 % _________________________________________________________________________
 %                          Manage input arguments                              
@@ -151,10 +149,6 @@ allMandatoryOptsExist =              ...
     exist('loopOrder'     , 'var'); 
 if ~allMandatoryOptsExist
     error('Error: One or more mandatory options are missing');
-end
-
-if ~exist('silent', 'var');
-    silent = SILENT_DEFAULT;
 end
 
 [nRows, nCols, nSlices, nVolumes] = size(data);
