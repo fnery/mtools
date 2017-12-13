@@ -27,7 +27,7 @@ function Out = dcmfind(in)
 %    []
 %
 % Required functions:
-%    1) subdir.m
+%    1) fdirrec.m
 %    2) cellstrmatch.m
 %
 % Required files:
@@ -39,20 +39,18 @@ function Out = dcmfind(in)
 % fnery, 20170308: original version
 % fnery, 20170313: now saves bytes for use with dcmparse.m
 % fnery, 20170325: now uses cellstrmatch.m instead of cellmatchstr.m
+% fnery, 20171213: instead of using subdir.m (ext code) now uses fdirrec.m
 
-Out = subdir(in);
+Out = fdirrec(in);
 
 % Remove dirs
 Out([Out.isdir]) = [];
 
-% From now on I only care about the full filepaths and size in bytes;
-nFiles = length(Out);
-Out = rmfield(Out, {'date'; 'isdir'; 'datenum'});
-
 % Remove all but dicom files
+nFiles = length(Out);
 isdcm = zeros(1, nFiles);
 for iFile = 1:nFiles
-    isdcm(iFile) = isdicom(Out(iFile).name);
+    isdcm(iFile) = isdicom(Out(iFile).fullpath);
 end
 Out(~isdcm) = [];
 
@@ -61,11 +59,11 @@ Out(~isdcm) = [];
 % ======================
 
 % Remove DICOMDIR files
-[~, idxs] = cellstrmatch({Out.name}, '\DICOMDIR', false);
+[~, idxs] = cellstrmatch({Out.fullpath}, '\DICOMDIR', false);
 Out(~idxs) = [];
 
 % Remove .SR files
-[~, idxs] = cellstrmatch({Out.name}, '\.SR', false);
+[~, idxs] = cellstrmatch({Out.fullpath}, '\.SR', false);
 Out(~idxs) = [];
 
 dicomsNotFound = isempty(Out);
