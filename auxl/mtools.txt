@@ -41,6 +41,7 @@
 ---- ensurecolumnvector       : ensure input is a column vector (transpose if needed)
 ---- ensurerowstring          : ensure row string (i.e. readable) (transpose if needed)
 ---- fdir                     : custom dir function
+---- fdirrec                  : list sub-directories and files within them ([rec]ursive fdir.m)
 ---- fileparts2               : extends fileparts.m
 ---- filesepfix               : ensure hardcoded paths have separator suitable for current system
 ---- findsubim                : find region (sub-image) of image with max/min mean intensity

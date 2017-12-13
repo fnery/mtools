@@ -40,6 +40,7 @@ mtools index:
   - `ensurecolumnvector.m`: ensure input is a column vector (transpose if needed) <br />
   - `ensurerowstring.m`: ensure row string (i.e. readable) (transpose if needed) <br />
   - `fdir.m`: custom dir function <br />
+  - `fdirrec.m`: list sub-directories and files within them ([rec]ursive fdir.m) <br />
   - `fileparts2.m`: extends fileparts.m <br />
   - `filesepfix.m`: ensure hardcoded paths have separator suitable for current system <br />  
   - `findsubim.m`: find region (sub-image) of image with max/min mean intensity <br />  
