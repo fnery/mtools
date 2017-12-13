@@ -34,6 +34,7 @@ mtools index:
   - `changewrtbaseline.m`: change in measurements with respect to a "baseline" <br />
   - `cleanstr.m`: replace spaces by underscores and remove non-alphanum chars <br />
   - `ctime.m`: creates string with current date-time (yyyymmdd_hhmmss[fff]) <br />
+  - `dirtree.m`: displays directory tree in the command line <br />
   - `dispstrcell.m`: generate matlab code to re-create cell of strings variable <br />
   - `dropbox.m`: retrieves path of main dropbox folder <br />
   - `dropboxfix.m`: ensure dropbox substring in preloaded paths matches current machine <br />

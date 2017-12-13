@@ -35,6 +35,7 @@
 ---- changewrtbaseline        : change in measurements with respect to a "baseline"
 ---- cleanstr                 : replace spaces by underscores and remove non-alphanum char
 ---- ctime                    : creates string with current date-time (yyyymmdd_hhmmss[fff])
+---- dirtree                  : displays directory tree in the command line 
 ---- dispstrcell              : generate matlab code to re-create cell of strings variable
 ---- dropbox                  : retrieves path of main dropbox folder
 ---- dropboxfix               : ensure dropbox substring in preloaded paths matches current machine
