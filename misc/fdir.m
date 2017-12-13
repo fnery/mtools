@@ -175,7 +175,9 @@ prevDir = find(cellfun(@(S) strcmp('..',S), {List.name}'));
 List([thisDir prevDir]) = [];
 
 if isempty(List)
-    fprintf('''%s'' is empty\n', in);
+    if ~silent
+        fprintf('''%s'' is empty\n', in);
+    end
     List = [];
     return;
 end
