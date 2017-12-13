@@ -89,9 +89,6 @@ Some of the functions in the above list use code written by others, which I typi
 - `progressbar.m`: simple, efficient, and user friendly replacement for waitbar
   - Copyright (c) 2005, Steve Hoelzer
   - Retrieved from [FEX-progressbar](https://uk.mathworks.com/matlabcentral/fileexchange/6922-progressbar) on 20170324
-- `subdir.m`: performs a recursive file search
-  - Copyright (c) 2015 Kelly Kearney
-  - Retrieved from [subdir-pkg](https://github.com/kakearney/subdir-pkg) on 20170324
 
 In addition, some of my functions may incorporate code snippets from others. This will be detailed in the documentation of each function. 
 
