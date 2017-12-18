@@ -43,7 +43,7 @@ mtools index:
   - `fdir.m`: custom dir function <br />
   - `fdirrec.m`: list sub-directories and files within them ([rec]ursive fdir.m) <br />
   - `fileparts2.m`: extends fileparts.m <br />
-  - `filesepfix.m`: ensure hardcoded paths have separator suitable for current system <br />  
+  - `filesepfix.m`: ensure input paths have separator suitable for a given system <br />  
   - `findsubim.m`: find region (sub-image) of image with max/min mean intensity <br />  
   - `folderinpath.m`: extracts folder from a full file path <br />
   - `fxdoc.m`: prints function documentation template to command window <br />
