@@ -70,6 +70,8 @@ mtools index:
   - `textheading.m`: creates a text heading/separator string for documentation <br />
   - `uniquesubstr.m`: remove duplicate substrings from string <br />
   - `vec2str.m`: converts a 1D-vector to a string <br />
+  - `win2wsl.m`: convert Windows path to its Windows Subsystem for Linux (WSL) equivalent <br />
+  - `wsl2win.m`: convert Windows Subsystem for Linux (WSL) path to its Windows equivalent <br />
   - `yyyymmdddiff.m`: difference (days) between two dates of format 'yyyymmdd' <br />
   - `yyyymmddfind.m`: finds and extracts date substrings of format 'yyyymmdd' <br />
 - **[nii]**
