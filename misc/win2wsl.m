@@ -3,11 +3,14 @@ function out = win2wsl(path, winSubStr, wslSubStr)
 %
 % Syntax:
 %    1) out = win2wsl(path, winSubStr, wslSubStr)
+%    2) out = win2wsl(path)
 %    
 % Description:
 %    1) out = win2wsl(path, winSubStr, wslSubStr) converts a path on the 
 %       Windows file system to its equivalent path on the Windows Subsystem
 %       for Linux (WSL) file system
+%    2) out = win2wsl(path) does the same as 1) but assumes the drive
+%       substrings to be 'C:' and '/mnt/c' for windows and WSL respectively
 %
 % Inputs:
 %    1) path: original file OR directory path 
@@ -50,6 +53,13 @@ function out = win2wsl(path, winSubStr, wslSubStr)
 %    >>     '/mnt/c/Users/fnery/file.example'
 %    
 % fnery, 20171218: original version
+% fnery, 20171220: added option for pre-loaded standard C: drive substrings
+
+if nargin == 1
+    % standard C: drive substrings
+    winSubStr = 'C:';
+    wslSubStr = '/mnt/c';
+end
 
 % Convert drive path from windows to WSL
 out = strrep(path, winSubStr, wslSubStr);
