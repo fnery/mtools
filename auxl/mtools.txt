@@ -12,6 +12,8 @@
 ---- dcmfind                  : list DICOM files in dir (and its subdirs)
 ---- dcmsiemensisolateascconv : isolates ASCCONV part in Siemens CSA headers
 ---- dcmsiemenscsa            : parse DICOM Siemens CSA header (ASCCONV subset only)
+[dwi]
+---- bvalbvecinfo             : get scan parameters from bval and bvec files
 [fig]
 ---- crop                     : crop image and/or sets of coordinates
 ---- imcheckerboard           : display checkerboard of two images

@@ -11,6 +11,8 @@ mtools index:
   - `dcmfind.m`: List DICOM files in dir (and its subdirs) <br />
   - `dcmsiemensisolateascconv.m`: isolates ASCCONV part in Siemens CSA headers <br />
   - `dcmsiemenscsa.m`: parse DICOM Siemens CSA header (ASCCONV subset only) <br />
+- **[dwi]**
+  - `bvalbvecinfo.m`: get scan parameters from bval and bvec files <br />
 - **[fig]**
   - `crop.m`: crop image and/or sets of coordinates <br />
   - `imcheckerboard.m`: display checkerboard of two images <br />
