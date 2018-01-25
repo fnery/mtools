@@ -72,6 +72,7 @@
 ---- strpad                   : pad string with spaces to achieve a certain length
 ---- sumn                     : sum of array elements along multiple dimensions (sum in a loop)
 ---- textheading              : creates a text heading/separator string for documentation
+---- uniquecols               : find unique columns in 2D matrix and their row indexes
 ---- uniquesubstr             : remove duplicate substrings from string
 ---- vec2str                  : converts a 1D-vector to a string
 ---- win2wsl                  : convert Windows path to its Windows Subsystem for Linux (WSL) equivalent

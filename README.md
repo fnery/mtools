@@ -71,6 +71,7 @@ mtools index:
   - `strpad.m`: pad string with spaces to achieve a certain length <br />
   - `sumn.m`: sum of array elements along multiple dimensions (sum in a loop) <br />
   - `textheading.m`: creates a text heading/separator string for documentation <br />
+  - `uniquecols.m`: find unique columns in 2D matrix and their row indexes <br />  
   - `uniquesubstr.m`: remove duplicate substrings from string <br />
   - `vec2str.m`: converts a 1D-vector to a string <br />
   - `win2wsl.m`: convert Windows path to its Windows Subsystem for Linux (WSL) equivalent <br />
