@@ -43,7 +43,7 @@ function [bvals, bvecs, idxs] = bvalbvecparse(bval, bvec)
 %    2) bvec file from the corresponding scan of 1)
 %
 % See also:
-%    1) bvalbvecsummary.m (used to be called bvalbvecinfo.m)
+%    1) bvalbvecinfo.m
 %
 % Example:
 %

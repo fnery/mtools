@@ -20,7 +20,9 @@ function bvalbvecinfo(bval, bvec)
 %    [] (text printed to command window)
 %
 % Notes/Assumptions: 
-%    []
+%    1) The main algorithm in this function could be replaced by a call to
+%       bvalbvecparse.m and a couple of other changes. Not a priority but
+%       would clean things up a bit.
 %
 % References:
 %    []
