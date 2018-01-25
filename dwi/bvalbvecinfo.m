@@ -126,7 +126,7 @@ uniqueBvalsStr  = vec2str(uniqueBvals, '%d');
 nUniqueBVecsStr = vec2str(nUniqueBVecs, '%d');
 nAvgsStr        = vec2str(nAvgs, '%d');
 
-fprintf('(bvals/nBvecs/nAvgs = %s/%s/%s\n)', ...
+fprintf('(bvals/nBvecs/nAvgs = %s/%s/%s)\n', ...
     uniqueBvalsStr, nUniqueBVecsStr, nAvgsStr);
 
 end
