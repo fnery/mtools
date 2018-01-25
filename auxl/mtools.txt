@@ -14,6 +14,7 @@
 ---- dcmsiemenscsa            : parse DICOM Siemens CSA header (ASCCONV subset only)
 [dwi]
 ---- bvalbvecinfo             : get scan parameters from bval and bvec files
+---- bvalbvecparse            : parse a dwi dataset using the bval and bvec files
 [fig]
 ---- crop                     : crop image and/or sets of coordinates
 ---- imcheckerboard           : display checkerboard of two images
