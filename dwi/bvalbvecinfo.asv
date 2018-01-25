@@ -52,9 +52,6 @@ function bvalbvecinfo(bval, bvec)
 %    % from the definition of this hypothetical dataset
 %
 % fnery, 20180124: original version
-% fnery, 20180125: now also prints info in a way suitable for copy/pasting in a single line
-
-%#ok<*AGROW>
 
 MAXLEN_BVAL   = 4;
 MAXLEN_NBVECS = 2;
@@ -106,7 +103,7 @@ for iUniqueBVals = 1:nUniqueBVals
     % Compute number of averages for this bval
     cNAvgs = size(cBvecs, 2) / cNUniqueBvecs;
     
-    uniqueBvals(iUniqueBVals)  = cUniqueBVal; 
+    uniqueBvals(iUniqueBVals)  = cUniqueBVal;
     nUniqueBVecs(iUniqueBVals) = cNUniqueBvecs;
     nAvgs(iUniqueBVals)        = cNAvgs;
     
@@ -120,13 +117,7 @@ for iUniqueBVals = 1:nUniqueBVals
         iUniqueBVals, nUniqueBVals, cUniqueBVal, cNUniqueBvecs, cNAvgs);
 end
 
-% Print an additional string which is basically the same as the above
-% "table" but suitable for copy/pasting in a single line
-uniqueBvalsStr  = vec2str(uniqueBvals, '%d');
-nUniqueBVecsStr = vec2str(nUniqueBVecs, '%d');
-nAvgsStr        = vec2str(nAvgs, '%d');
-
-fprintf('(bvals/nBvecs/nAvgs = %s/%s/%s\n)', ...
-    uniqueBvalsStr, nUniqueBVecsStr, nAvgsStr);
+uniqueBvalsStr = vec2str
+a = 1;
 
 end
