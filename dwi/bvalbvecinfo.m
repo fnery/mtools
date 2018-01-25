@@ -33,7 +33,6 @@ function bvalbvecinfo(bval, bvec)
 %    2) bvec file from the corresponding scan of 1)
 %
 % Examples:
-%    1) CODE
 %    % Create bval and bvec data for an hypothetical dataset with
 %    % - b-values: 0, 200 and 400
 %    % - 3 directions at non-zero b-values
