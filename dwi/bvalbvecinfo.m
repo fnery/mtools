@@ -13,8 +13,8 @@ function bvalbvecinfo(bval, bvec)
 %       - number of averages per unique b-value
 %
 % Inputs:
-%    1) bval: bvals (either path to bval file or vector with bvals)
-%    1) bvec: bvals (either path to bvec file or matrix with bvecs)
+%    1) bval: string full path to .bval file
+%    2) bvec: string full path to .bvec file
 %
 % Outputs:
 %    [] (text printed to command window)
@@ -28,7 +28,8 @@ function bvalbvecinfo(bval, bvec)
 %    []
 %
 % Required functions:
-%    1) strpad.m
+%    1) bvalbvecload.m
+%    2) strpad.m
 %
 % Required files:
 %    1) bval file from one given scan
@@ -54,6 +55,7 @@ function bvalbvecinfo(bval, bvec)
 %
 % fnery, 20180124: original version
 % fnery, 20180125: now also prints info in a way suitable for copy/pasting in a single line
+% fnery, 20180126: now calls bvalbvecload.m
 
 %#ok<*AGROW>
 
@@ -61,30 +63,8 @@ MAXLEN_BVAL   = 4;
 MAXLEN_NBVECS = 2;
 MAXLEN_NAVGS  = 2;
 
-% if inputs are paths to bval and bvec files, load them
-if ischar(bval)
-    bval = load(bval);
-end
-
-if ischar(bvec)
-    bvec = load(bvec);
-end
-
-[a, b] = size(bval);
-[c, d] = size(bvec);
-
-% Some error checks
-if ~isequal(b, d)
-    error('Error: ''bval'' and ''bvec'' must have the same number of columns');
-end
-
-if a ~= 1
-    error('Error: ''bval'' must have 1 row');
-end
-
-if c ~= 3
-    error('Error: ''bvec'' must have 3 rows');
-end
+% Load bval and bvec files
+[bval, bvec] = bvalbvecload(bval, bvec);
 
 % Get unique bvals and count how many there are
 bvalsUnique = unique(bval);
