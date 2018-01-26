@@ -13,6 +13,7 @@ mtools index:
   - `dcmsiemenscsa.m`: parse DICOM Siemens CSA header (ASCCONV subset only) <br />
 - **[dwi]**
   - `bvalbvecinfo.m`: get scan parameters from bval and bvec files <br />
+  - `bvalbvecload.m`: load one pair of bval and bvec files <br />  
   - `bvalbvecparse.m`: parse a dwi dataset using the bval and bvec files <br />
 - **[fig]**
   - `crop.m`: crop image and/or sets of coordinates <br />
