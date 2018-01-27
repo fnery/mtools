@@ -16,6 +16,7 @@
 ---- bvalbvecinfo             : get scan parameters from bval and bvec files
 ---- bvalbvecload             : load one pair of bval and bvec files
 ---- bvalbvecparse            : parse a dwi dataset using the bval and bvec files
+---- dwi6d                    : organises a 4D DWI volume into a 6D DWI volume
 [fig]
 ---- crop                     : crop image and/or sets of coordinates
 ---- imcheckerboard           : display checkerboard of two images
