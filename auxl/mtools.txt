@@ -49,6 +49,7 @@
 ---- fdir                     : custom dir function
 ---- fdirrec                  : list sub-directories and files within them ([rec]ursive fdir.m)
 ---- fileparts2               : extends fileparts.m
+---- filesep2.m               : extends filesep.m (user can specify platform)
 ---- filesepfix               : ensure input paths have separator suitable for a given system
 ---- findsubim                : find region (sub-image) of image with max/min mean intensity
 ---- folderinpath             : extracts folder from a full file path
