@@ -58,6 +58,7 @@ mtools index:
   - `isallequal.m`: checks if all elements in the array are equal <br />
   - `isext.m`: check if file matches extension(s) <br />
   - `isint.m`: checks if the input is an integer <br />
+  - `iswinpath.m: checks if input path is from a file in a windows filesystem  <br />
   - `logic2str.m`: converts logical scalar to string <br />
   - `lsfile.m`: list files in dir and pick according to file # index <br />
   - `m2sharr.m`: convert cell of strings to space-delimited list (like bash arrays) <br />
