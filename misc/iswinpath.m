@@ -40,9 +40,9 @@ function tf = iswinpath(in)
 %
 % fnery, 20180220: original version
 
-if contains(in, filesep2('WIN'))
+if ~isempty(strfind(in, filesep2('WIN')))
    tf = true;    
-elseif contains(in, filesep2('UNIX'))
+elseif ~isempty(strfind(in, filesep2('UNIX')))
    tf = false;    
 else
     error('Error: no file separators found');
