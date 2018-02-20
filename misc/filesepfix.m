@@ -14,7 +14,7 @@ function out = filesepfix(in, platform)
 % Inputs:
 %    1) in: input string
 %    2) platform: input string, which can be:
-%           - 'PC': to get a windows filesep i.e. "\"
+%           - 'WIN': to get a windows filesep i.e. "\"
 %           - 'UNIX': to get a unix filesep i.e. "/"
 %
 % Outputs:
@@ -27,7 +27,7 @@ function out = filesepfix(in, platform)
 %    []
 %
 % Required functions:
-%    []
+%    1) filesep2.m
 %
 % Required files:
 %    []
@@ -37,18 +37,19 @@ function out = filesepfix(in, platform)
 %
 % fnery, 20170914: original version
 % fnery, 20171218: added 'platform' argin to specify output filesep type
+% fnery, 20180220: now calls filesep2.m and 'PC' instances are replaced by 'WIN'
 
 POSSIBLE_FILESEPS = '[\\//]';
 
 if nargin == 1
-    fSep = filesep;
+    fSep = filesep2;
 elseif nargin == 2
-    if strcmp(platform, 'PC')
-        fSep = '\';
+    if strcmp(platform, 'WIN')
+        fSep = filesep2('WIN');
     elseif strcmp(platform, 'UNIX')
-        fSep = '/';
+        fSep = filesep2('UNIX');
     else
-        error('Error: ''platform'' must be either ''PC'' or ''UNIX''')
+        error('Error: ''platform'' must be either ''WIN'' or ''UNIX''')
     end
 else
     error('Error: this function requires either 1 or 2 argins')
