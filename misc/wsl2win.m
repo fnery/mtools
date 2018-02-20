@@ -46,6 +46,7 @@ function out = wsl2win(path, wslSubStr, winSubStr)
 %
 % fnery, 20171218: original version
 % fnery, 20171220: added option for pre-loaded standard C: drive substrings
+% fnery, 20180220: 'PC' instance was replaced by 'WIN'
 
 if nargin == 1
     % standard C: drive substrings
@@ -57,6 +58,6 @@ end
 out = strrep(path, wslSubStr, winSubStr);
 
 % Ensure all path separators are appropriate for Windows
-out = filesepfix(out, 'PC');
+out = filesepfix(out, 'WIN');
 
 end
