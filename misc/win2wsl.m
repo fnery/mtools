@@ -1,24 +1,19 @@
-function out = win2wsl(path, winSubStr, wslSubStr)
+function out = win2wsl(path)
 % win2wsl.m: convert Windows path to its Windows Subsystem for Linux (WSL) equivalent
 %
 % Syntax:
-%    1) out = win2wsl(path, winSubStr, wslSubStr)
-%    2) out = win2wsl(path)
+%    1) out = win2wsl(path)
 %    
 % Description:
 %    1) out = win2wsl(path, winSubStr, wslSubStr) converts a path on the 
 %       Windows file system to its equivalent path on the Windows Subsystem
 %       for Linux (WSL) file system
-%    2) out = win2wsl(path) does the same as 1) but assumes the drive
-%       substrings to be 'C:' and '/mnt/c' for windows and WSL respectively
 %
 % Inputs:
-%    1) path: original file OR directory path 
-%    2) winSubStr: drive substring on the windows file system (e.g. 'C:')
-%    3) wslSubStr: drive substring on the WSL file system (e.g. '/mnt/c')
+%    1) path: absolute file/directory path
 %
 % Outputs:
-%    1) out: WSL-converted path
+%    1) out: WSL-compatible path
 %
 % Notes/Assumptions: 
 %    1) Say I'm working on a computer with a Windows OS but want to run 
@@ -36,35 +31,36 @@ function out = win2wsl(path, winSubStr, wslSubStr)
 %    []
 %
 % Required functions:
-%    1) filesepfix.m
+%    1) driveinpath.m
+%    2) filesepfix.m
+%    3) ensuredrive.m
 %
 % Required files:
 %    []
 %
 % Examples:
-%    % 1)
-%    path = 'C:\Users\fnery\file.example'
-%    winSubStr = 'C:';
-%    wslSubStr = '/mnt/c';
-%    out = win2wsl(path, winSubStr, wslSubStr)
-%    >> path =
-%    >>     'C:\Users\fnery\file.example'
+%    in = 'C:\Users\fnery\file.example'
+%    out = win2wsl2(in)
+%    >> in =
+%    >> C:\Users\fnery\file.example
 %    >> out =
-%    >>     '/mnt/c/Users/fnery/file.example'
+%    >> /mnt/c/Users/fnery/file.example
 %    
 % fnery, 20171218: original version
 % fnery, 20171220: added option for pre-loaded standard C: drive substrings
+% fnery, 20180221: major changes: now automatically detects and converts drive substrings
 
-if nargin == 1
-    % standard C: drive substrings
-    winSubStr = 'C:';
-    wslSubStr = '/mnt/c';
-end
+% Extract drive from input string
+drive = driveinpath(path);
 
-% Convert drive path from windows to WSL
-out = strrep(path, winSubStr, wslSubStr);
+% Get original string without drive substring
+pathWithoutDrive = strrep(path, drive, '');
+pathWithoutDrive = filesepfix(pathWithoutDrive, 'UNIX');
 
-% Ensure all path separators are appropriate for WSL (i.e. linux)
-out = filesepfix(out, 'UNIX');
+% Convert drive to WSL format
+driveNew = ensuredrive(drive, 'WSL');
+
+% Build new fullpath
+out = [driveNew pathWithoutDrive];
 
 end
