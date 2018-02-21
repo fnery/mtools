@@ -46,6 +46,7 @@
 ---- dropbox                  : retrieves path of main dropbox folder
 ---- dropboxfix               : ensure dropbox substring in preloaded paths matches current machine
 ---- ensurecolumnvector       : ensure input is a column vector (transpose if needed)
+---- ensuredrive              : ensure drive compatible with desired platform
 ---- ensurerowstring          : ensure row string (i.e. readable) (transpose if needed)
 ---- fdir                     : custom dir function
 ---- fdirrec                  : list sub-directories and files within them ([rec]ursive fdir.m)

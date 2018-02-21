@@ -41,10 +41,11 @@ mtools index:
   - `ctime.m`: creates string with current date-time (yyyymmdd_hhmmss[fff]) <br />
   - `dirtree.m`: displays directory tree in the command line <br />
   - `dispstrcell.m`: generate matlab code to re-create cell of strings variable <br />
-  - `driveinpath.m`: extracts drive substring from absolute filepath
+  - `driveinpath.m`: extracts drive substring from absolute filepath <br />
   - `dropbox.m`: retrieves path of main dropbox folder <br />
   - `dropboxfix.m`: ensure dropbox substring in preloaded paths matches current machine <br />
   - `ensurecolumnvector.m`: ensure input is a column vector (transpose if needed) <br />
+  - `ensuredrive.m`: ensure drive compatible with desired platform <br /> 
   - `ensurerowstring.m`: ensure row string (i.e. readable) (transpose if needed) <br />
   - `fdir.m`: custom dir function <br />
   - `fdirrec.m`: list sub-directories and files within them ([rec]ursive fdir.m) <br />
@@ -59,7 +60,7 @@ mtools index:
   - `isallequal.m`: checks if all elements in the array are equal <br />
   - `isext.m`: check if file matches extension(s) <br />
   - `isint.m`: checks if the input is an integer <br />
-  - `iswinpath.m`: checks if input path is from a file in a windows filesystem  <br />
+  - `iswinpath.m`: checks if input path is from a file in a windows filesystem <br />
   - `logic2str.m`: converts logical scalar to string <br />
   - `lsfile.m`: list files in dir and pick according to file # index <br />
   - `m2sharr.m`: convert cell of strings to space-delimited list (like bash arrays) <br />
