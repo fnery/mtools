@@ -25,10 +25,16 @@ function outPath = niicrop(varargin)
 % Notes/Assumptions: 
 %    1) Requires FSL to be installed (to use fslroi [1])
 %    2) A good idea is to get the cropping coordinates from fslview [2]
+%    3) Assumes that if this function is running on a PC (windows) FSL was
+%       installed in the Windows Subsystem for Linux (WSL). Furthermore 
+%       this function performs the conversion from absolute Windows file
+%       paths to their WSL equivalent (see [3])  
+%       
 %
 % References:
 %    [1] https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
 %    [2] https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslView
+%    [3] https://docs.microsoft.com/en-us/windows/wsl/faq#what-can-i-do-with-wsl
 %
 % Required functions:
 %    1) isnifti.m
@@ -46,6 +52,7 @@ function outPath = niicrop(varargin)
 %
 % fnery, 20171101: original version
 % fnery, 20171103: now can specify suffix and inputs are in name-value form
+% fnery, 20180221: now works in Windows OS (via Windows Subsystem for Linux)
 
 CROP_EXT   = '.crop';
 OUT_SUFFIX = 'crop'; 
@@ -53,7 +60,7 @@ OUT_SUFFIX = 'crop';
 % _________________________________________________________________________
 %                          Manage input arguments                              
 % _________________________________________________________________________
-for iOptIn = 1:2:numel(varargin);
+for iOptIn = 1:2:numel(varargin)
     % init option name and value
     cOpt = varargin{iOptIn};
     if ~ischar(cOpt)
@@ -107,14 +114,14 @@ end
 
 % If 'out' does not exist, save the cropped files in the input file dir
 outExists  = exist('out', 'var');
-if ~outExists;
+if ~outExists
     out = niiDir;
-end;
+end
 
 suffixExists  = exist('suffix', 'var');
-if ~suffixExists;
+if ~suffixExists
     suffix = OUT_SUFFIX;
-end;
+end
 
 % Read .crop file
 c = readcrop(crop);
@@ -127,19 +134,42 @@ for iROI = 1:nROIs
    % Build current output file name/path
    cOutName = sprintf('%s_%s_%d_of_%d', niiName, suffix, iROI, nROIs);
    cOutPath = fullfile(out, [cOutName niiExt]);
+   cOutPathToSave = cOutPath;
+   
+   if iswinpath(nii)
+       nii = win2wsl(nii);
+   end
+   if iswinpath(cOutPath)
+       cOutPath = win2wsl(cOutPath);
+   end       
    
    % Build command string
    cC = c(iROI, :);
-   cCmd = sprintf('fslroi %s %s %d %d %d %d %d %d', ...
-       nii, cOutPath, cC(1), cC(2), cC(3), cC(4), cC(5), cC(6));
+   
+   if strcmp(computer, 'PCWIN64')
+   % assume here we're in a Windows PC, with MATLAB installed in the
+   % Windows system and need to call fslroi via Windows Subsystem for Linux
+       cCmd = sprintf('fsl5.0-fslroi %s %s %d %d %d %d %d %d', ...
+           nii, cOutPath, cC(1), cC(2), cC(3), cC(4), cC(5), cC(6));
+       cCmd = sprintf('bash -c "%s" &', cCmd);
+   else
+   % regular fslroi assuming MATLAB installed in a Linux environment
+       cCmd = sprintf('fslroi %s %s %d %d %d %d %d %d', ...
+           nii, cOutPath, cC(1), cC(2), cC(3), cC(4), cC(5), cC(6));
+   end
    
    % Run fslroi command
    status = system(cCmd);
    if status ~= 0
        error('Error: There was an error when calling fslroi');
    end
+
+   if strcmp(computer, 'PCWIN64')
+       % kill resulting command window
+       pckillcmd;
+   end
    
    % Save outPath
-   outPath{iROI, 1} = cOutPath;
+   outPath{iROI, 1} = cOutPathToSave;
    
 end
