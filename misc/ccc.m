@@ -1,4 +1,3 @@
-function ccc
 % ccc.m: cleans MATLAB's cmd window, workspace, figures, etc...
 %   
 % Syntax:
@@ -44,5 +43,3 @@ delete(findall(0, 'Type', 'figure'));
 set(0,'ShowHiddenHandles','on');
 delete(get(0,'Children'));
 set(0,'ShowHiddenHandles','off');
-
-end
