@@ -5,9 +5,8 @@ function out = win2wsl(path)
 %    1) out = win2wsl(path)
 %    
 % Description:
-%    1) out = win2wsl(path, winSubStr, wslSubStr) converts a path on the 
-%       Windows file system to its equivalent path on the Windows Subsystem
-%       for Linux (WSL) file system
+%    1) out = win2wsl(path) converts a path on the Windows file system to its
+%       equivalent path on the Windows Subsystem for Linux (WSL) file system
 %
 % Inputs:
 %    1) path: absolute file/directory path
@@ -26,6 +25,7 @@ function out = win2wsl(path)
 %       we need to convert it, following the given example, to:
 %           - '/mnt/c/Users/fnery/file.example'
 %       This function automates this task.
+%    2) See several assumptions in the functions that this function calls
 %
 % References:
 %    []
