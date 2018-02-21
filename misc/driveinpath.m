@@ -14,8 +14,10 @@ function out = driveinpath(in)
 %    1) out: drive substring
 %
 % Notes/Assumptions: 
-%    1) ASSUMPTION 1: Windows drives have one ':' char
-%    2) See 2 assumptions of driveinwsl.m subfunction
+%    1) This fuction is only implemented for Windows and Windows subsystem for
+%       Linux (WSL) filesystems
+%    2) ASSUMPTION 1: Windows drives have one ':' char
+%    3) See 2 assumptions of driveinwsl.m subfunction
 %
 % References:
 %    []
