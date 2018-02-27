@@ -40,7 +40,7 @@ function outPath = niicrop(varargin)
 %    1) isnifti.m
 %    2) isext.m
 %    3) fileparts2.m
-%    4) readcrop.m
+%    4) cropread.m
 %    5) fslroi (see Note 1)
 %
 % Required files:
@@ -124,7 +124,7 @@ if ~suffixExists
 end
 
 % Read .crop file
-c = readcrop(crop);
+c = cropread(crop);
 
 % Crop input .nii file
 nROIs = size(c, 1);
