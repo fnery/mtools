@@ -123,9 +123,9 @@ for iMask = 1:nMasks;
     cyMin = yMin(iMask);
     czMin = zMin(iMask);
 
-    cxSz = cxMax-cxMin;
-    cySz = cyMax-cyMin;
-    czSz = czMax-czMin;
+    cxSz = (cxMax-cxMin)+1;
+    cySz = (cyMax-cyMin)+1;
+    czSz = (czMax-czMin)+1;
 
     coordinatesStr = sprintf('%s%d %d %d %d %d %d\n', ...
         coordinatesStr, cxMin, cxSz, cyMin, cySz, czMin, czSz);
