@@ -1,11 +1,11 @@
-function out = readcrop(in)
-% readcrop.m: parses .crop files with coordinates for cropping ROIs
+function out = cropread(in)
+% cropread.m: parses .crop files with coordinates for cropping ROIs
 %
 % Syntax:
-%    1) out = readcrop(in)
+%    1) out = cropread(in)
 %
 % Description:
-%    1) out = readcrop(in) parses .crop files with coordinates for
+%    1) out = cropread(in) parses .crop files with coordinates for
 %       cropping regions of interest (typically for allowing independent
 %       rigid/affine registrations for each kidney of a dataset
 %
@@ -26,23 +26,25 @@ function out = readcrop(in)
 %       13 32 34 48 0 14
 %       54 31 36 49 0 14
 %       }
+%    2) .crop files as the one above can be create with cropwrite.m
 %
 % References:
 %    [1] https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
-%    [1] Ref2
 %
 % Required functions:
-%    1) fcn1.m
-%    2) fcnn.m
+%    []
 %
 % Required files:
 %    1) .crop file
 %
+% See also:
+%    1) cropwrite.m
+%
 % Examples:
 %    []
 %
-%
 % fnery, 20171101: original version
+% fnery, 20180227: renamed from readcrop.m to cropread.m
 
 % Suppress irrelevant warnings
 %#ok<*AGROW>: don't care about pre-allocating out
