@@ -7,7 +7,7 @@ function out = cropread(in)
 % Description:
 %    1) out = cropread(in) parses .crop files with coordinates for
 %       cropping regions of interest (typically for allowing independent
-%       rigid/affine registrations for each kidney of a dataset
+%       rigid/affine registrations for each kidney of a dataset)
 %
 % Inputs:
 %    1) in: full file path to .crop file

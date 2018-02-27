@@ -87,6 +87,7 @@ mtools index:
   - `yyyymmddfind.m`: finds and extracts date substrings of format 'yyyymmdd' <br />
 - **[nii]**
   - `cropread.m`: parses .crop files with coordinates for cropping ROIs <br />
+  - `cropwrite.m: creates .crop files with coordinates for cropping ROIs <br />  
   - `isnifti.m`: lazy nifti file path checker <br />
   - `niibvalbvec.m`: generate bval/bvec names/paths from corresponding .nii image <br />
   - `niicrop.m`: crops .nii file using fslroi according to .crop file <br />  
