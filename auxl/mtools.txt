@@ -93,6 +93,8 @@
 ---- isnifti                  : lazy nifti file path checker
 ---- niibvalbvec              : generate bval/bvec names/paths from corresponding .nii image
 ---- niicrop                  : crops .nii file using fslroi according to .crop file
+---- niiloadim                : load NIfTI image volume and fix orientation
 [ext]
----- [jsonlab]                : a toolbox to encode/decode JSON files (by Qianqian Fang)
----- progressbar              : simple, efficient, and user friendly replacement for waitbar (by Steve Hoelzer)
+---- [jsonlab]                : a toolbox to encode/decode JSON files (Copyright (c) 2017, Qianqian Fang)
+---- [NIfTI_20140122]         : "Tools for NIfTI and ANALYZE image" (Copyright (c) 2014, Jimmy Shen)
+---- progressbar              : simple, efficient, and user friendly replacement for waitbar (Copyright (c) 2005, Steve Hoelzer)

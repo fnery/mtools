@@ -89,9 +89,10 @@ mtools index:
 - **[nii]**
   - `cropread.m`: parses .crop files with coordinates for cropping ROIs <br />
   - `cropwrite.m`: creates .crop files with coordinates for cropping ROIs <br />  
-  - `isnifti.m`: lazy nifti file path checker <br />
-  - `niibvalbvec.m`: generate bval/bvec names/paths from corresponding .nii image <br />
-  - `niicrop.m`: crops .nii file using fslroi according to .crop file <br />  
+  - `isnifti.m`: lazy NIfTI file path checker <br />
+  - `niibvalbvec.m`: generate bval/bvec names/paths from corresponding NIfTI image <br />
+  - `niicrop.m`: crops NIfTI file using fslroi according to .crop file <br />  
+  - `niiloadim.m`: load NIfTI image volume and fix orientation <br />  
 
 External code
 -------------
@@ -102,6 +103,9 @@ Some of the functions in the above list use code written by others, which I typi
 - `[jsonlab]`: a toolbox to encode/decode JSON files
   - Copyright (c) 2017, Qianqian Fang
   - Retrieved from [FEX-JSONlab](https://uk.mathworks.com/matlabcentral/fileexchange/33381-jsonlab--a-toolbox-to-encode-decode-json-files) on 20170325
+- `[NIfTI_20140122]`: "Tools for NIfTI and ANALYZE image"
+  - Copyright (c) 2014, Jimmy Shen
+  - Retrieved from [FEX-8797-tools-for-nifti-and-analyze-image](https://uk.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image) on 20180301  
 - `progressbar.m`: simple, efficient, and user friendly replacement for waitbar
   - Copyright (c) 2005, Steve Hoelzer
   - Retrieved from [FEX-progressbar](https://uk.mathworks.com/matlabcentral/fileexchange/6922-progressbar) on 20170324
@@ -116,7 +120,7 @@ Additional dependencies
 ___
 ___
 
-Copyright (c) 2017, Fabio Nery <br />
+Copyright (c) 2018, Fabio Nery <br />
 All rights reserved. <br />
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
