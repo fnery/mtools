@@ -81,6 +81,7 @@ mtools index:
   - `uniquecols.m`: find unique columns in 2D matrix and their row indexes <br />  
   - `uniquesubstr.m`: remove duplicate substrings from string <br />
   - `vec2str.m`: converts a 1D-vector to a string <br />
+  - `volori.m`: change image volume orientation <br />
   - `win2wsl.m`: convert Windows path to its Windows Subsystem for Linux (WSL) equivalent <br />
   - `wsl2win.m`: convert Windows Subsystem for Linux (WSL) path to its Windows equivalent <br />
   - `yyyymmdddiff.m`: difference (days) between two dates of format 'yyyymmdd' <br />
