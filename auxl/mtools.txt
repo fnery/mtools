@@ -55,6 +55,7 @@
 ---- filesepfix               : ensure input paths have separator suitable for a given system
 ---- findsubim                : find region (sub-image) of image with max/min mean intensity
 ---- folderinpath             : extracts folder from a full file path
+---- fsl2m                    : converts 3D coordinates from FSL to MATLAB formats
 ---- fxdoc                    : prints function documentation template to command window
 ---- getabovedir              : returns path of directories closer to the root
 ---- is1d                     : check if input is 1D "vector"
@@ -64,6 +65,7 @@
 ---- iswinpath                : checks if input path is from a file in a windows filesystem
 ---- logic2str                : converts logical scalar to string
 ---- lsfile                   : list files in dir and pick according to file # index
+---- m2fsl                    : converts 3D coordinates from MATLAB to FSL formats
 ---- m2sharr                  : convert cell of strings to space-delimited list (like bash arrays)
 ---- matinfo                  : info struct to attach to any automatically generated .mat file
 ---- matrix2string            : converts 2D matrix to text (figure displaying purposes)

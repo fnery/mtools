@@ -54,6 +54,7 @@ mtools index:
   - `filesepfix.m`: ensure input paths have separator suitable for a given system <br />  
   - `findsubim.m`: find region (sub-image) of image with max/min mean intensity <br />  
   - `folderinpath.m`: extracts folder from a full file path <br />
+  - `fsl2m.m`: converts 3D coordinates from FSL to MATLAB formats <br />  
   - `fxdoc.m`: prints function documentation template to command window <br />
   - `getabovedir.m`: returns path of directories closer to the root <br />
   - `is1d.m`: check if input is 1D "vector" <br />
@@ -63,6 +64,7 @@ mtools index:
   - `iswinpath.m`: checks if input path is from a file in a windows filesystem <br />
   - `logic2str.m`: converts logical scalar to string <br />
   - `lsfile.m`: list files in dir and pick according to file # index <br />
+  - `m2fsl.m`: converts 3D coordinates from MATLAB to FSL formats <br />  
   - `m2sharr.m`: convert cell of strings to space-delimited list (like bash arrays) <br />
   - `matinfo.m`: info struct to attach to any automatically generated .mat file <br />
   - `matrix2string.m`: converts 2D matrix to text (figure displaying purposes) <br />
