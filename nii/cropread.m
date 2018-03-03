@@ -45,6 +45,9 @@ function out = cropread(in)
 %
 % fnery, 20171101: original version
 % fnery, 20180227: renamed from readcrop.m to cropread.m
+% fnery, 20180303: added warning to use niidotmask.m instead of this function
+
+warning('Using cropwrite.m/cropread.m is discouraged: use niidotmask.m instead...')
 
 % Suppress irrelevant warnings
 %#ok<*AGROW>: don't care about pre-allocating out

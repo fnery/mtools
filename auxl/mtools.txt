@@ -95,6 +95,7 @@
 ---- isnifti                  : lazy nifti file path checker
 ---- niibvalbvec              : generate bval/bvec names/paths from corresponding .nii image
 ---- niicrop                  : crops .nii file using fslroi according to .crop file
+---- niidotmask               : process NIfTI “dotmask” file
 ---- niiloadim                : load NIfTI image volume and fix orientation
 [ext]
 ---- [jsonlab]                : a toolbox to encode/decode JSON files (Copyright (c) 2017, Qianqian Fang)
