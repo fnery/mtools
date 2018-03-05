@@ -10,7 +10,7 @@ function out = mkdirf(varargin)
 %       and additionally provides:
 %       - automatic name for dir to be created if no <name> argin is provided
 %       - <overwrite> flag to control overwritting of dirs/files
-%       - <silent> flag controls whether to print info text to cmd window
+%       - <silent> flag controls whether info text is to be printed to cmd window
 %
 % Inputs:
 %    ----------------------------- OPTIONAL --------------------------------
@@ -59,7 +59,6 @@ function out = mkdirf(varargin)
 % fnery, 20160808: now arguments are name-value pairs
 %                  added <overwrite> option
 % fnery, 20170311: now includes methods $a and $b
-% fnery, 20180305: now includes 'silent' option
 
 DEFAULTS.uniqueName = sprintf('tmp_%s', ctime('ymdhmsf')); % not used if <name> exists
 DEFAULTS.silent     = true;
@@ -157,9 +156,8 @@ end
 
 mkdir(out);
 
-% Optional print info text to cmd window
 if ~silent
-    fprintf('Created directory: %s\n', out);
+    disp('Created directory: %s', out);
 end
 
 end
