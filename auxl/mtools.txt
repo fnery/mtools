@@ -90,11 +90,8 @@
 ---- yyyymmdddiff             : difference (days) between two dates of format 'yyyymmdd'
 ---- yyyymmddfind             : finds and extracts date substrings of format 'yyyymmdd'
 [nii]
----- cropread                 : parses .crop files with coordinates for cropping ROIs
----- cropwrite                : creates .crop files with coordinates for cropping ROIs
 ---- isnifti                  : lazy nifti file path checker
 ---- niibvalbvec              : generate bval/bvec names/paths from corresponding .nii image
----- niicrop                  : crops .nii file using fslroi according to .crop file
 ---- niidotmask               : process NIfTI “dotmask” file
 ---- niiloadim                : load NIfTI image volume and fix orientation
 [ext]

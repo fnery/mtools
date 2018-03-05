@@ -89,11 +89,8 @@ mtools index:
   - `yyyymmdddiff.m`: difference (days) between two dates of format 'yyyymmdd' <br />
   - `yyyymmddfind.m`: finds and extracts date substrings of format 'yyyymmdd' <br />
 - **[nii]**
-  - `cropread.m`: parses .crop files with coordinates for cropping ROIs <br />
-  - `cropwrite.m`: creates .crop files with coordinates for cropping ROIs <br />  
   - `isnifti.m`: lazy NIfTI file path checker <br />
   - `niibvalbvec.m`: generate bval/bvec names/paths from corresponding NIfTI image <br />
-  - `niicrop.m`: crops NIfTI file using fslroi according to .crop file <br />  
   - `niidotmask.m`: process NIfTI “dotmask” file <br /> 
   - `niiloadim.m`: load NIfTI image volume and fix orientation <br />  
 

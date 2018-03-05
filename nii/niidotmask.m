@@ -1,5 +1,5 @@
 function out = niidotmask(varargin)
-% niidotmask.m: process NIfTI “dotmask” file
+% niidotmask.m: process NIfTI 'dotmask' file
 %
 % Syntax:
 %    1) paths = niidotmask('in', in, 'oris', oriS, 'orif', oriF, 'outtype', 'mask', ...
@@ -20,7 +20,7 @@ function out = niidotmask(varargin)
 %    3) Instead of creating NIfTI mask files, the output will be sets of [1x6]
 %       coordinate vectors that can be directly fed to fslroi to crop the NIfTI
 %       file used to generate dotmask, as specified in dropmask to crop NIfTI
-%       datasets with FSL’s fslroi function [2].
+%       datasets with FSL's fslroi function [2].
 %
 % Inputs:
 %    -------------------------------- MANDATORY -------------------------------
@@ -30,7 +30,7 @@ function out = niidotmask(varargin)
 %    <outtype>  string  :  string which can be:
 %                              - mask  : to create NIfTI mask files
 %                              - slice : to retrieve the highlighted slice
-%                              - fics  : compute “[f]slroi [i]nput [c]oordinate[s]”
+%                              - fics  : compute '[f]slroi [i]nput [c]oordinate[s]'
 %    -------------------------------- OPTIONAL --------------------------------
 %    <outdir>   string  :  directory where created NIfTI mask files are to be 
 %                          saved (only allowed when <outtype> is 'mask')
@@ -45,11 +45,11 @@ function out = niidotmask(varargin)
 %
 % Outputs:
 %    1) Depending on the input argument <outtype>:
-%       - If <outtype> is ‘mask’:
+%       - If <outtype> is 'mask':
 %             maskPath: full paths to created NIfTI mask files
-%       - If <outtype> is ‘slice’
+%       - If <outtype> is 'slice'
 %             highlightIdx: index of slice highlighted in dotmask
-%       - If <outtype> is ‘fics’
+%       - If <outtype> is 'fics'
 %             fics: cell of strings with [f]slroi [i]nput [c]oordinate[s]
 %                   each element of the cell is a [1x6] vector (in string
 %                   format to use in the terminal) with format:
