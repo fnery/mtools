@@ -91,6 +91,7 @@ mtools index:
 - **[nii]**
   - `isnifti.m`: lazy NIfTI file path checker <br />
   - `niibvalbvec.m`: generate bval/bvec names/paths from corresponding NIfTI image <br />
+  - `niicrop.m`: FSL's fslroi MATLAB wrapper <br />
   - `niidotmask.m`: process NIfTI “dotmask” file <br /> 
   - `niiloadim.m`: load NIfTI image volume and fix orientation <br />  
 

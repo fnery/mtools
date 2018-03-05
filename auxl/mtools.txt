@@ -92,6 +92,7 @@
 [nii]
 ---- isnifti                  : lazy nifti file path checker
 ---- niibvalbvec              : generate bval/bvec names/paths from corresponding .nii image
+---- niicrop.m                : FSL's fslroi MATLAB wrapper
 ---- niidotmask               : process NIfTI “dotmask” file
 ---- niiloadim                : load NIfTI image volume and fix orientation
 [ext]
