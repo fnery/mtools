@@ -75,6 +75,9 @@ function filePath = cropwrite(xMin, xMax, yMin, yMax, zMin, zMax, fileName, file
 %    And save it in the current directory
 %
 % fnery, 20180227: original version
+% fnery, 20180303: added warning to use niidotmask.m instead of this function
+
+warning('Using cropwrite.m/cropread.m is discouraged: use niidotmask.m instead...')
 
 FILE_FORMAT = '.crop';
 
