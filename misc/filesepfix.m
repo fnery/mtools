@@ -12,7 +12,7 @@ function out = filesepfix(in, platform)
 %       suitable for the system given by 'platform'
 %
 % Inputs:
-%    1) in: input string
+%    1) in: input string or cell of strings
 %    2) platform: input string, which can be:
 %           - 'WIN': to get a windows filesep i.e. "\"
 %           - 'UNIX': to get a unix filesep i.e. "/"
@@ -38,6 +38,7 @@ function out = filesepfix(in, platform)
 % fnery, 20170914: original version
 % fnery, 20171218: added 'platform' argin to specify output filesep type
 % fnery, 20180220: now calls filesep2.m and 'PC' instances are replaced by 'WIN'
+% fnery, 20180314: now works with cell of strings input
 
 POSSIBLE_FILESEPS = '[\\//]';
 
@@ -56,6 +57,18 @@ else
 end
 
 out = in;
-out(regexp(in, POSSIBLE_FILESEPS)) = fSep; 
 
+if iscell(out)
+    nStrings = numel(out);
+    for iString = 1:nStrings
+        cString = out{iString};
+        cString(regexp(cString, POSSIBLE_FILESEPS)) = fSep; 
+        out{iString} = cString;
+    end
+elseif ischar(out)
+    out(regexp(in, POSSIBLE_FILESEPS)) = fSep; 
+else
+    error('Error: ''in'' must be a string or a cell of strings');
+end
+ 
 end
