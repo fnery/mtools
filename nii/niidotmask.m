@@ -238,7 +238,7 @@ function [highlightIdx, dotMaskNoHighlight] = findrmhighlight(dotMask)
 %
 % fnery, 20180303: original version
 
-cc = bwconncomp(dotMask, 6);
+cc = bwconncomp(dotMask, 4);
 
 % Find index of dots that are on at least one boundary of cSlice
 [r, c, s] = ind2sub(size(dotMask), vertcat(cc.PixelIdxList{:}));
