@@ -244,6 +244,10 @@ cc = bwconncomp(dotMask, 6);
 [r, c, s] = ind2sub(size(dotMask), vertcat(cc.PixelIdxList{:}));
 [matchingRows, ~] = find(horzcat(r, c) == 1);
 
+% And also allow the dot in both borders at the same time (if the highlight
+% voxel marker is in the image vertices
+matchingRows = unique(matchingRows);
+
 if isempty(matchingRows)
     % No voxels on the boundary exist, therefore no slice was highlighted
     
