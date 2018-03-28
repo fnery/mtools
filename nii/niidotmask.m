@@ -16,7 +16,8 @@ function out = niidotmask(varargin)
 %    2) allows one slice to be highlighted by adding one 1-valued voxel to the
 %       boundary of the desired slice (see [1] for an example). No mask files
 %       will be created. The only output would be a scalar corresponding to the
-%       index of the slice of interest (see Note 1).
+%       index of the slice of interest (see Note 1), in the "post-cropping" 
+%       volumes (and using 0-indexing).
 %    3) Instead of creating NIfTI mask files, the output will be sets of [1x6]
 %       coordinate vectors that can be directly fed to fslroi to crop the NIfTI
 %       file used to generate dotmask, as specified in dropmask to crop NIfTI
@@ -82,6 +83,7 @@ function out = niidotmask(varargin)
 %    []
 %
 % fnery, 20180303: original version
+% fnery, 20180328: now outputs 'highlightIdxAfterCrop'
 
 POSSIBLE_OUTTYPES = {'mask', 'slice', 'fics'};
 
@@ -177,7 +179,7 @@ dotMask = volori(nii.img, oriS, oriF);
 
 % Find highlight-slice voxel (if it exists) and remove it from the mask for
 % further processing. Also save the index of the highlighted slice.
-[highlightIdx, dotMaskNoHighlight] = findrmhighlight(dotMask);
+[~, highlightIdxAfterCrop, dotMaskNoHighlight] = findrmhighlight(dotMask);
 
 % Create mask by filling dots (see note TKD)
 mask = processmask(dotMaskNoHighlight);
@@ -185,7 +187,7 @@ mask = processmask(dotMaskNoHighlight);
 if outTypeIsSlice
     
     % Here all needed is to get the highlighted slice index (already calculated)
-    out = highlightIdx;
+    out = highlightIdxAfterCrop;
     return;
     
 elseif outTypeIsMask
@@ -211,7 +213,7 @@ end
 % ===== findrmhighlight ===== ---------------------------------------------
 % ===========================
 
-function [highlightIdx, dotMaskNoHighlight] = findrmhighlight(dotMask)
+function [highlightIdx, highlightIdxAfterCrop, dotMaskNoHighlight] = findrmhighlight(dotMask)
 % findrmhighlight.m: find highlighted slice index and removes highlight
 %                    voxel marker from mask
 %
@@ -223,12 +225,18 @@ function [highlightIdx, dotMaskNoHighlight] = findrmhighlight(dotMask)
 % Outputs:
 %    1) highlightIdx: index of slice highlighted in dotmask (empty if it
 %       doesn't exist)
-%    2) dotMaskNoHighlight: dotmask WITHOUT the voxel marker that defines
+%    2) highlightIdxAfterCrop: analogous to highlightIdx but after
+%       accounting for subsequent cropping operation, that is, this index
+%       will correspond to the highlighted slice in the cropped volumes
+%       doesn't exist)
+%    3) dotMaskNoHighlight: dotmask WITHOUT the voxel marker that defines
 %       which slice is highlighted
 %
 % Notes/Assumptions: 
 %    1) Assumes highlight slice voxel marker is on the border of dotmask
 %       (as specified in [1])
+%    2) Both highlightIdx and highlightIdxAfterCrop are stored with
+%       0-indexing as used in FSLview
 %
 % References:
 %    [1] mtools/auxl/richdoc/niidotmask.pdf
@@ -237,6 +245,7 @@ function [highlightIdx, dotMaskNoHighlight] = findrmhighlight(dotMask)
 %    []
 %
 % fnery, 20180303: original version
+% fnery, 20180328: now outputs 'highlightIdxAfterCrop'
 
 cc = bwconncomp(dotMask, 4);
 
@@ -260,7 +269,11 @@ elseif numel(matchingRows) == 1
     boundaryDotIdx = unique(matchingRows);
     
     % Get index of highlighted slice
-    highlightIdx = s(boundaryDotIdx);
+    highlightIdx = s(boundaryDotIdx)-1; % -1: 0-indexing  
+    
+    % Get index of highlighted slice (after cropping)
+    sAfterCrop = s-min(s);
+    highlightIdxAfterCrop = sAfterCrop(boundaryDotIdx)-1; % -1: 0-indexing  
     
     % Remove
     dotMaskNoHighlight = dotMask;
