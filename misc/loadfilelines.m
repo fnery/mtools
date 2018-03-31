@@ -1,5 +1,5 @@
 function lines = loadfilelines(path)
-% loadfilelines.m: load each line from the input .resp file into a cell element
+% loadfilelines.m: load each line of a given file into a cell element
 %
 % Syntax:
 %    1) lines = loadfilelines(path)

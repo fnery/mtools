@@ -62,7 +62,7 @@ mtools index:
   - `isext.m`: check if file matches extension(s) <br />
   - `isint.m`: checks if the input is an integer <br />
   - `iswinpath.m`: checks if input path is from a file in a windows filesystem <br />
-  - `loadfilelines.m`: load each line from the input .resp file into a cell element <br />
+  - `loadfilelines.m`: load each line of a given file into a cell element <br />
   - `logic2str.m`: converts logical scalar to string <br />
   - `lsfile.m`: list files in dir and pick according to file # index <br />
   - `m2fsl.m`: converts 3D coordinates from MATLAB to FSL formats <br />  

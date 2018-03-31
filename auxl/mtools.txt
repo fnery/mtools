@@ -63,7 +63,7 @@
 ---- isext                    : check if file matches extension(s)
 ---- isint                    : checks if the input is an integer
 ---- iswinpath                : checks if input path is from a file in a windows file system
----- loadfilelines            : load each line from the input .resp file into a cell element
+---- loadfilelines            : load each line of a given file into a cell element
 ---- logic2str                : converts logical scalar to string
 ---- lsfile                   : list files in dir and pick according to file # index
 ---- m2fsl                    : converts 3D coordinates from MATLAB to FSL formats
