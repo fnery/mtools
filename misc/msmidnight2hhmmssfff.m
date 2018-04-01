@@ -55,6 +55,6 @@ h   = min*MIN_TO_H_FACTOR;
 min = round(mod(h, 1)/MIN_TO_H_FACTOR);
 h   = floor(h);
 
-hhmmssfff = sprintf('%d:%d:%d:%d', h, min, sec, msec);
+hhmmssfff = sprintf('%02d:%02d:%02d:%03d', h, min, sec, msec);
 
 end
