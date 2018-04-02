@@ -19,6 +19,7 @@
 ---- dwi6d                    : organises a 4D DWI volume into a 6D DWI volume
 [fig]
 ---- crop                     : crop image and/or sets of coordinates
+---- formatdatatip            : change format when displaying plot info using data cursor
 ---- imcheckerboard           : display checkerboard of two images
 ---- imclipint                : clip image intensities
 ---- imfusion                 : create fusion image (composite of two images)
