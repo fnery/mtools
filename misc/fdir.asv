@@ -17,7 +17,7 @@ function [List, n] = fdir(varargin)
 %     
 % Inputs/Options (order irrelevant):
 %   ------------------------------ OPTIONAL -------------------------------
-%    <in>           string: directory to search (see example 5 for wildcards)
+%    <in>           string: directory to search
 %                       [default = pwd]
 %    <sortmethod>   string: sort according to file characteristics
 %                       can be:
@@ -60,15 +60,12 @@ function [List, n] = fdir(varargin)
 %      >> fdir('sortMethod', 'date', 'sortOrder', 'descending' );
 %   4) Same as 3) but don't print table and return sorted List struct
 %      >> List = fdir('sortMethod', 'date', 'sortOrder', 'descending', 'silent', true);
-%   5) Using wildcards to only retrieve .nii.gz files
-%      >> List = fdir('in', '<directory_with_files>/*.nii.gz')
 %
 % fnery, 20160415: original version
 % fnery, 20170309: now size in KBytes
 %                  now struct includes 'ext' and 'fullpath' fields
 %                  'ext' now a column in the optional output table
 % fnery, 20170922: now calls fileparts2.m instead of filepartscell.m
-% fnery, 20180420: now supports wildcards as used in original dir function
 
 BYTES_TO_KBYTES = 0.001;
 
