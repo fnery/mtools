@@ -40,7 +40,9 @@ function tf = iswinpath(in)
 %
 % fnery, 20180220: original version
 
-if ~isempty(strfind(in, filesep2('WIN')))
+%#ok<*STREMP> disable warning telling me to use contains.m
+
+if ~isempty(strfind(in, filesep2('WIN')))  
    tf = true;    
 elseif ~isempty(strfind(in, filesep2('UNIX')))
    tf = false;    
