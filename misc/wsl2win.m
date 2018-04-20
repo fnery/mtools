@@ -1,18 +1,20 @@
 function out = wsl2win(path)
-% wsl2win.m: convert Windows Subsystem for Linux (WSL) path to its Windows equivalent
+% wsl2win.m: convert Windows Subsystem for Linux (WSL) path(s) to Windows equivalent
 %
 % Syntax:
 %    1) out = wsl2win(path)
 %    
 % Description:
-%    1) out = wsl2win(path) converts a path on the Windows Subsystem for Linux
-%       (WSL) file system to its equivalent path on the Windows file system
+%    1) out = wsl2win(path) converts path(s) on the Windows Subsystem for Linux
+%       (WSL) file system to its equivalent path(s) on the Windows file system
 %
 % Inputs:
-%    1) path: original file OR directory path 
+%    1) path: two options 
+%             - string: absolute file/directory path
+%             - cell: cell of strings with absolute file/directory paths
 %
 % Outputs:
-%    1) out: Windows-compatible path
+%    1) out: Windows-compatible path(s)
 %
 % Notes/Assumptions: 
 %    1) This function performs the inverse operation to win2wsl.m. 
@@ -41,7 +43,24 @@ function out = wsl2win(path)
 % fnery, 20171220: added option for pre-loaded standard C: drive substrings
 % fnery, 20180220: 'PC' instance was replaced by 'WIN'
 % fnery, 20180221: major changes: now automatically detects and converts drive substrings
+% fnery, 20180420: now accepts cell of strings argin
 
+if iscell(path)
+    % assume is cell of strings (multiple paths)
+    nPaths = length(path);
+    out = cell(size(path));
+    for iPath = 1:nPaths
+        cPath = path{iPath};
+        out{iPath} = main(cPath);
+    end
+elseif ischar(path)
+    out = main(path);   
+end
+
+end
+
+function out = main(path)
+    
 % Extract drive from input string
 drive = driveinpath(path);
 

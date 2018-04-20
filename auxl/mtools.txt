@@ -88,8 +88,8 @@
 ---- uniquesubstr             : remove duplicate substrings from string
 ---- vec2str                  : converts a 1D-vector to a string
 ---- volori                   : change image volume orientation
----- win2wsl                  : convert Windows path to its Windows Subsystem for Linux (WSL) equivalent
----- wsl2win                  : convert Windows Subsystem for Linux (WSL) path to its Windows equivalent
+---- win2wsl                  : convert Windows path(s) to Windows Subsystem for Linux (WSL) equivalent
+---- wsl2win                  : convert Windows Subsystem for Linux (WSL) path(s) to Windows equivalent
 ---- yyyymmdddiff             : difference (days) between two dates of format 'yyyymmdd'
 ---- yyyymmddfind             : finds and extracts date substrings of format 'yyyymmdd'
 [nii]

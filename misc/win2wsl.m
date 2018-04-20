@@ -1,18 +1,20 @@
 function out = win2wsl(path)
-% win2wsl.m: convert Windows path to its Windows Subsystem for Linux (WSL) equivalent
+% win2wsl.m: convert Windows path(s) to Windows Subsystem for Linux (WSL) equivalent
 %
 % Syntax:
 %    1) out = win2wsl(path)
 %    
 % Description:
-%    1) out = win2wsl(path) converts a path on the Windows file system to its
-%       equivalent path on the Windows Subsystem for Linux (WSL) file system
+%    1) out = win2wsl(path) converts path(s) on the Windows file system to its
+%       equivalent path(s) on the Windows Subsystem for Linux (WSL) file system
 %
 % Inputs:
-%    1) path: absolute file/directory path
+%    1) path: two options 
+%             - string: absolute file/directory path
+%             - cell: cell of strings with absolute file/directory paths
 %
 % Outputs:
-%    1) out: WSL-compatible path
+%    1) out: WSL-compatible path(s)
 %
 % Notes/Assumptions: 
 %    1) Say I'm working on a computer with a Windows OS but want to run 
@@ -49,6 +51,23 @@ function out = win2wsl(path)
 % fnery, 20171218: original version
 % fnery, 20171220: added option for pre-loaded standard C: drive substrings
 % fnery, 20180221: major changes: now automatically detects and converts drive substrings
+% fnery, 20180420: now accepts cell of strings argin
+
+if iscell(path)
+    % assume is cell of strings (multiple paths)
+    nPaths = length(path);
+    out = cell(size(path));
+    for iPath = 1:nPaths
+        cPath = path{iPath};
+        out{iPath} = main(cPath);
+    end
+elseif ischar(path)
+    out = main(path);   
+end
+
+end
+
+function out = main(path)
 
 % Extract drive from input string
 drive = driveinpath(path);
