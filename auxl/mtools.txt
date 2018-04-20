@@ -13,10 +13,12 @@
 ---- dcmsiemensisolateascconv : isolates ASCCONV part in Siemens CSA headers
 ---- dcmsiemenscsa            : parse DICOM Siemens CSA header (ASCCONV subset only)
 [dwi]
+---- bvalbveccat              : concatenate .bval and .bvec files
 ---- bvalbvecinfo             : get scan parameters from bval and bvec files
 ---- bvalbvecload             : load one pair of bval and bvec files
 ---- bvalbvecparse            : parse a dwi dataset using the bval and bvec files
 ---- dwi6d                    : organises a 4D DWI volume into a 6D DWI volume
+---- niibvalbvec              : generate bval/bvec names/paths from corresponding .nii image
 [fig]
 ---- crop                     : crop image and/or sets of coordinates
 ---- formatdatatip            : change format when displaying plot info using data cursor
@@ -95,9 +97,8 @@
 ---- yyyymmddfind             : finds and extracts date substrings of format 'yyyymmdd'
 [nii]
 ---- isnifti                  : lazy nifti file path checker
----- niibvalbvec              : generate bval/bvec names/paths from corresponding .nii image
 ---- niicrop.m                : FSL's fslroi MATLAB wrapper
----- niidotmask               : process NIfTI “dotmask” file
+---- niidotmask               : process NIfTI “dotmask�? file
 ---- niiloadim                : load NIfTI image volume and fix orientation
 [ext]
 ---- [jsonlab]                : a toolbox to encode/decode JSON files (Copyright (c) 2017, Qianqian Fang)
