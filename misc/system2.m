@@ -10,8 +10,8 @@ function [status, cmdout] = system2(command, echo)
 %       allows commands as they are usually called in bash to work when
 %       called from within MATLAB using system.m. For this to happen, when
 %       on a Windows machine (with Windows Subsystem for Linux), it 
-%       encapsulates the bash command in 'bash -c <cmd> &'. If we're on a
-%       Linux machine, this function passes 'command' to system.m unchanged.
+%       encapsulates the bash command in 'bash -c -i <cmd> &'. If we are on
+%       a Linux machine, system2.m passes 'command' to system.m unchanged.
 %    2) [status, cmdout] = system2(command, '-echo') does the same as 1) 
 %       but the second (optional) argin which has to be '-echo' serves the
 %       same purpose as in system.m
@@ -28,6 +28,7 @@ function [status, cmdout] = system2(command, echo)
 %       have Windows Subsystem for Linux configured and working.
 %    2) Not sure if there is a better way but for now works. Not very
 %       pretty since seems to require the use of pckillcmd.m.
+%    3) Using bash's option -i forces bash to read the bashrc file.
 %
 % References:
 %    [1] https://blogs.msdn.microsoft.com/commandline/2016/10/19/interop-between-windows-and-bash/
@@ -40,9 +41,10 @@ function [status, cmdout] = system2(command, echo)
 %
 % Examples:
 %    % Example with fslroi:
-%    system2('fsl5.0-fslroi');
+%    system2('fslroi');
 %
 % fnery, 20180420: original version
+% fnery, 20180422: now runs bash as an interactive shell (using -i option)
 
 if nargin == 1
     doEcho = false;
@@ -57,7 +59,7 @@ isWin = strcmp(computer, 'PCWIN64');
 if isWin
    % assume here we're in a Windows PC, with MATLAB installed in the
    % Windows system and need to call command via Windows Subsystem for Linux
-    command = sprintf('bash -c "%s" &', command);
+    command = sprintf('bash -c -i "%s" &', command);
 end
 
 % Run command
