@@ -69,6 +69,7 @@ function [List, n] = fdir(varargin)
 %                  'ext' now a column in the optional output table
 % fnery, 20170922: now calls fileparts2.m instead of filepartscell.m
 % fnery, 20180420: now supports wildcards as used in original dir function
+% fnery, 20180510: bugfix
 
 BYTES_TO_KBYTES = 0.001;
 
@@ -177,7 +178,9 @@ prevDir = find(cellfun(@(S) strcmp('..',S), {List.name}'));
 List([thisDir prevDir]) = [];
 
 % Remove wildcard from 'in' if it exists
-[in, ~, ~] = fileparts2(in);
+if ~isdir(in) % the use of a wildcard makes 'in' not being a directory
+    [in, ~, ~] = fileparts2(in);
+end
 
 if isempty(List)
     if ~silent
