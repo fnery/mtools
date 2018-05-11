@@ -31,7 +31,7 @@ function path = mkdirtmp
 % fnery, 20180511: original version, inspired by [1]
 
 path = fullfile(tempdir, char(java.util.UUID.randomUUID));
-status = mkdir(tempdir);
+status = mkdir(path);
 if status ~= 1
     error('Error creating ''%s''', oDir);
 end
