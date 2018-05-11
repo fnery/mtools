@@ -73,6 +73,7 @@ mtools index:
   - `matinfo.m`: info struct to attach to any automatically generated .mat file <br />
   - `matrix2string.m`: converts 2D matrix to text (figure displaying purposes) <br />
   - `mkdirf.m`: extends mkdir.m function (automatic name/overwrite control) <br />
+  - `mkdirtmp.m`: make directory in Temp files <br />
   - `msmidnight2hhmmssfff.m`: convert milisseconds since midnight to hh:mm:ss:fff <br />
   - `mtools.m`: displays index of functions in mtools in the command window <br />
   - `nameinpath.m`: isolates name of file(s) from its complete path(s) <br />

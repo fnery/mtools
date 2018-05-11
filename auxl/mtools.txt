@@ -74,6 +74,7 @@
 ---- matinfo                  : info struct to attach to any automatically generated .mat file
 ---- matrix2string            : converts 2D matrix to text (figure displaying purposes)
 ---- mkdirf                   : extends mkdir.m function (automatic name/overwrite control)
+---- mkdirtmp                 : make directory in Temp files
 ---- msmidnight2hhmmssfff     : convert milisseconds since midnight to hh:mm:ss:fff
 ---- mtools                   : displays index of functions in mtools in the command window
 ---- nameinpath               : isolates name of file(s) from its complete path(s)
@@ -98,7 +99,7 @@
 [nii]
 ---- isnifti                  : lazy nifti file path checker
 ---- niicrop.m                : FSL's fslroi MATLAB wrapper
----- niidotmask               : process NIfTI “dotmask�? file
+---- niidotmask               : process NIfTI “dotmask�? file
 ---- niiloadim                : load NIfTI image volume and fix orientation
 [ext]
 ---- [jsonlab]                : a toolbox to encode/decode JSON files (Copyright (c) 2017, Qianqian Fang)
