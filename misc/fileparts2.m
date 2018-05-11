@@ -7,7 +7,7 @@ function [pathStr, name, ext] = fileparts2(in)
 % Description:
 %    1) [pathStr, name, ext] = fileparts2(in) extends fileparts.m providing
 %        two additional features:
-%        - works in files with 2 extensions (e.g. .nii.gz)
+%        - works with .nii.gz files
 %        - accepts a cell of strings as input
 %
 % Inputs:
@@ -38,6 +38,7 @@ function [pathStr, name, ext] = fileparts2(in)
 %    []
 %
 % fnery, 20170922: original version
+% fnery, 20180511: bugfix
 
 if iscell(in)
     [pathStr, name, ext] = cellfun(@filepartswrap, in, 'UniformOutput', 0);
@@ -54,7 +55,7 @@ function [pathStr, name, ext] = filepartswrap(in)
 [pathStr , name  , ext ] = fileparts(in);
 [      ~ , name2 , ext2] = fileparts(name);
 
-if ~isempty(ext2)
+if ~isempty(ext2) && strcmp(ext2, '.nii')
     name = name2;
     ext = [ext2 ext];
 end
