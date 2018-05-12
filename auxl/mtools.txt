@@ -44,6 +44,7 @@
 ---- cleanstr                 : replace spaces by underscores and remove non-alphanum char
 ---- ctime                    : creates string with current date-time (yyyymmdd_hhmmss[fff])
 ---- dirtree                  : displays directory tree in the command line 
+---- dispcmd                  : human-readable display long dash argument-value command strings
 ---- dispstrcell              : generate matlab code to re-create cell of strings variable
 ---- driveinpath              : extracts drive substring from absolute filepath
 ---- dropbox                  : retrieves path of main dropbox folder

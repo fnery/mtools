@@ -43,6 +43,7 @@ mtools index:
   - `cleanstr.m`: replace spaces by underscores and remove non-alphanum chars <br />
   - `ctime.m`: creates string with current date-time (yyyymmdd_hhmmss[fff]) <br />
   - `dirtree.m`: displays directory tree in the command line <br />
+  - `dispcmd.m`: human-readable display long dash argument-value command strings <br />
   - `dispstrcell.m`: generate matlab code to re-create cell of strings variable <br />
   - `driveinpath.m`: extracts drive substring from absolute filepath <br />
   - `dropbox.m`: retrieves path of main dropbox folder <br />
