@@ -36,8 +36,9 @@ function out = m2sharr(in)
 %   >> string1 string2 string3
 %
 % fnery, 20160219: original version
+% fnery, 20160219: minor bugfix
 
-if iscell(in);
+if iscell(in)
     % process cell input
     out = [];
     for i=1:length(in)
@@ -54,6 +55,11 @@ elseif ischar(in)
 else
     % bad input type check
     error('Error: The input must be a cell of strings or char array');
+end
+
+% Remove initial white space if needed
+if strcmp(out(1), ' ')
+    out(1) = [];
 end
 
 end
