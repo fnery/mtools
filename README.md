@@ -55,7 +55,7 @@ mtools index:
   - `fdirrec.m`: list sub-directories and files within them ([rec]ursive fdir.m) <br />
   - `fileparts2.m`: extends fileparts.m <br />
   - `filesep2.m`: extends filesep.m (user can specify platform) <br />
-  - `filesepfix.m`: ensure input paths have separator suitable for a given system <br />  
+  - `filesepfix.m`: ensure input paths have separator suitable for a given system <br />
   - `findsubim.m`: find region (sub-image) of image with max/min mean intensity <br />  
   - `folderinpath.m`: extracts folder from a full file path <br />
   - `fsl2m.m`: converts 3D coordinates from FSL to MATLAB formats <br />  
@@ -87,6 +87,7 @@ mtools index:
   - `strpad.m`: pad string with spaces to achieve a certain length <br />
   - `system2`: system.m wrapper. If in Windows: redirects cmd.exe commands to bash <br />
   - `sumn.m`: sum of array elements along multiple dimensions (sum in a loop) <br />
+  - `targz.m`: convert list of files into .tar.gz archive <br />
   - `textheading.m`: creates a text heading/separator string for documentation <br />
   - `uniquecols.m`: find unique columns in 2D matrix and their row indexes <br />  
   - `uniquesubstr.m`: remove duplicate substrings from string <br />
