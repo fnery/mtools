@@ -131,7 +131,7 @@ if status ~= 0
     error('Error: There was an error when calling ''command''');
 end
 
-if isWin
+if isWin && ampsd
     % kill resulting command window
     pckillcmd;
 end
