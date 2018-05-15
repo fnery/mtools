@@ -82,7 +82,11 @@ dwi = [outDir filesep2('UNIX') name '.nii.gz'];
 dwis = m2sharr(dwis);
 
 % Build and run fslmerge command
-system2(sprintf('fsl5.0-fslmerge -t %s %s', dwi, dwis)); 
+cmd = sprintf('fslmerge -t %s %s', dwi, dwis);
+status = system2('cmd', cmd, '-echo', false, '&', false);
+if status ~= 0
+    error('Error: There was an error when calling fslmerge');
+end
 
 % dwi back to Windows format
 dwi = wsl2win(dwi);
