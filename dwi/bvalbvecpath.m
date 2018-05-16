@@ -69,6 +69,7 @@ function [bVal, bVec] = bvalbvecpath(in)
 %    %         'im2.bvec'
 %
 % fnery, 20171101: original version
+% fnery, 20180516: renamed from niibvalbec.m to bvalbvecpath.m
 
 EXTS.bval  = '.bval';
 EXTS.bvec  = '.bvec';
