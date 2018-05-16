@@ -1,11 +1,11 @@
-function [bVal, bVec] = niibvalbvec(in)
-% niibvalbvec.m: generate bval/bvec names/paths from corresponding .nii image
+function [bVal, bVec] = bvalbvecpath(in)
+% bvalbvecpath.m: generate bval/bvec names/paths from corresponding .nii image
 %
 % Syntax:
-%    1) [bVal, bVec] = niibvalbvec(in)
+%    1) [bVal, bVec] = bvalbvecpath(in)
 %
 % Description:
-%    1) [bVal, bVec] = niibvalbvec(in) generates bval/bvec names/paths from
+%    1) [bVal, bVec] = bvalbvecpath(in) generates bval/bvec names/paths from
 %       corresponding .nii images. Sometimes we generate a .nii image from
 %       another, and need to use the original bvals/bvecs in the new image.
 %       In this case, we just need to generate the bvals/bvecs file by 
@@ -34,18 +34,18 @@ function [bVal, bVec] = niibvalbvec(in)
 % Examples:
 %    % Example 1: string (full path) input
 %        in1 = '/this/is/a/random/path/im.nii.gz';
-%        [bVal1, bVec1] = niibvalbvec(in1)
+%        [bVal1, bVec1] = bvalbvecpath(in1)
 %    % Example 2: string (name) input
 %        in2 = 'im.nii.gz';
-%        [bVal2, bVec2] = niibvalbvec(in2)
+%        [bVal2, bVec2] = bvalbvecpath(in2)
 %    % Example 3: cell of strings (full paths) input
 %        in3{1} = '/this/is/a/random/path/im1.nii.gz';
 %        in3{2} = '/this/is/a/random/path/im2.nii.gz';
-%        [bVal3, bVec3] = niibvalbvec(in3')
+%        [bVal3, bVec3] = bvalbvecpath(in3')
 %    % Example 4: cell of strings (names) input
 %        in4{1} = 'im1.nii.gz';
 %        in4{2} = 'im2.nii.gz';
-%        [bVal4, bVec4] = niibvalbvec(in4')
+%        [bVal4, bVec4] = bvalbvecpath(in4')
 %    % OUTPUT: 
 %    %     bVal1 =
 %    %         /this/is/a/random/path/im.bval

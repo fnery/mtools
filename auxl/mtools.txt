@@ -16,9 +16,9 @@
 ---- bvalbvecinfo             : get scan parameters from bval and bvec files
 ---- bvalbvecload             : load one pair of bval and bvec files
 ---- bvalbvecparse            : parse a dwi dataset using the bval and bvec files
+---- bvalbvecpath             : generate bval/bvec names/paths from corresponding .nii image
 ---- dwi6d                    : organises a 4D DWI volume into a 6D DWI volume
 ---- dwicat                   : concatenate 3/4D dwi NIfTI files along 4th dimension
----- niibvalbvec              : generate bval/bvec names/paths from corresponding .nii image
 [fig]
 ---- crop                     : crop image and/or sets of coordinates
 ---- formatdatatip            : change format when displaying plot info using data cursor
