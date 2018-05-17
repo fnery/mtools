@@ -35,7 +35,7 @@ function [dwi, bVal, bVec] = dwicat(dwis, name, outDir)
 %    []
 %
 % Required functions:
-%    1) niibvalbvec.m
+%    1) bvalbvecpath.m
 %    2) bvalbveccat.m (lives in this function)
 %    3) win2wsl.m
 %    4) filesep2.m
@@ -58,7 +58,7 @@ elseif nargin == 2
 end
 
 % Init paths of .bvals and .bvecs corresponding to 'dwis' input
-[bVals, bVecs] = niibvalbvec(dwis);
+[bVals, bVecs] = bvalbvecpath(dwis);
 
 % ===================================
 % ===== Concatenate bvals/bvecs ===== -------------------------------------
