@@ -139,8 +139,9 @@ function h = imx(varargin)
 % fnery, 20160629: added <pint> option
 % fnery, 20160917: added <ov> option
 % fnery, 20170206: added option for full crosshair grid (if <ch> argument is 'grid')
+% fnery, 20180528: now works with cmap field of ov from imxov.m
 
-EXPECTED_OV_FIELDS = {'map', 'mask', 'cAx'};
+EXPECTED_OV_FIELDS = {'map', 'mask', 'cAx', 'cmap'};
 CHD_DEFAULT        = 5; % default nGrids per image plane if <ch> = 'grid'
 
 % ==================================
@@ -453,7 +454,7 @@ else
     im = im/(max(im(:)));          % normalize base (anatomical) image
     rgbBase = im(:,:,[1 1 1]);     % converting to RGB (ignore colormaps)
     imshow(map, ov.cAx);           % show parametric image
-    colormap(gca, 'jet');          % apply colormap
+    colormap(gca, ov.cmap);        % apply colormap
     hold on;
     h = imshow(rgbBase);           % superimpose anatomical image
     set(h, 'AlphaData', ~ov.mask); % make pixels in the ROI transparent

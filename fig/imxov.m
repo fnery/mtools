@@ -1,9 +1,10 @@
-function ImxOv = imxov(map, mask, cAx)
+function ImxOv = imxov(map, mask, cAx, cmap)
 % imxov.m: create ImxOv struct for parametric map overlay in imx.m
 %   
 % Syntax:
 %    1) ImxOv = imxov(map, mask)
 %    2) ImxOv = imxov(map, mask, cAx)
+%    3) ImxOv = imxov(map, mask, cAx, cmap)
 %
 % Description:
 %    1) ImxOv = imxov(map, mask) creates an ImxOv struct for use with imx.m
@@ -11,6 +12,8 @@ function ImxOv = imxov(map, mask, cAx)
 %       imx.m and further allows to specify the color axis for displaying
 %       the parametric map with imx.m
 %       Also see Note 1.
+%    2) ImxOv = imxov(map, mask, cAx, cmap) allows to specify cmap using a
+%       colormap string corresponding to one of MATLAB's builtin colormaps
 %
 % Inputs:
 %    1) map:  2-3D array (parametric map)
@@ -18,6 +21,7 @@ function ImxOv = imxov(map, mask, cAx)
 %    3) cAx:  intensity range (IR)
 %             - [1x2]: IR = [int(1) int(2)]
 %               default: [min(im(:)) max(im(:))]]
+%    4) cmap: string corresponding to one of MATLAB's builtin colormaps
 %
 % Outputs:
 %    1) ImxOv: struct containing the input arguments (including default
@@ -49,11 +53,12 @@ function ImxOv = imxov(map, mask, cAx)
 %   []
 %
 % fnery, 20160917: original version
+% fnery, 20180528: now can specify cmap
 
 if nargin < 2 
     error('Error: ''imxov.m'' needs at least 2 input arguments');
-elseif nargin > 3
-    error('Error: ''imxov.m'' accepts 3 input arguments at the most');
+elseif nargin > 4
+    error('Error: ''imxov.m'' accepts 4 input arguments at the most');
 end
 
 if size(map) ~= size(mask)
@@ -63,7 +68,7 @@ end
 map = double(map);
 
 % Default cAxis
-if nargin == 2
+if nargin == 2 || isempty(cAx)
     x = map(:);
     cAx = [min(x) max(x)];
 end
@@ -71,5 +76,11 @@ end
 ImxOv.map = map;
 ImxOv.mask = mask;
 ImxOv.cAx = cAx;
+
+if nargin == 4
+    ImxOv.cmap = cmap;
+else
+    ImxOv.cmap = 'jet';
+end
 
 end
