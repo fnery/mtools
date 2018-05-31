@@ -4,7 +4,7 @@
 % if this file is moved from this directory (auxl), then mtools.m will
 % no longer work (all lines started with '%' are ignored by mtools.m)
 % -------------------------------------------------------------------------
-% 
+%
 [asl]
 ---- asl6d                    : organises a 4D ASL volume into a 6D ASL volume
 ---- aslorder                 : returns order matrix for ASL experiment
@@ -44,7 +44,7 @@
 ---- changewrtbaseline        : change in measurements with respect to a "baseline"
 ---- cleanstr                 : replace spaces by underscores and remove non-alphanum char
 ---- ctime                    : creates string with current date-time (yyyymmdd_hhmmss[fff])
----- dirtree                  : displays directory tree in the command line 
+---- dirtree                  : displays directory tree in the command line
 ---- dispcmd                  : human-readable display long dash argument-value command strings
 ---- dispstrcell              : generate matlab code to re-create cell of strings variable
 ---- driveinpath              : extracts drive substring from absolute filepath
@@ -102,8 +102,9 @@
 [nii]
 ---- isnifti                  : lazy nifti file path checker
 ---- niicrop.m                : FSL's fslroi MATLAB wrapper
----- niidotmask               : process NIfTI “dotmask�? file
+---- niidotmask               : process NIfTI 'dotmask' file
 ---- niiloadim                : load NIfTI image volume and fix orientation
+---- niimaskrep               : replace nii voxels with those from other nii in mask ROIs
 [ext]
 ---- [jsonlab]                : a toolbox to encode/decode JSON files (Copyright (c) 2017, Qianqian Fang)
 ---- [NIfTI_20140122]         : "Tools for NIfTI and ANALYZE image" (Copyright (c) 2014, Jimmy Shen)

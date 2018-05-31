@@ -14,10 +14,10 @@ mtools index:
 - **[dwi]**
   - `bvalbveccopy.m`: copy bval/bvec files (name to match existing NIfTI file) <br />
   - `bvalbvecinfo.m`: get scan parameters from bval and bvec files <br />
-  - `bvalbvecload.m`: load one pair of bval and bvec files <br />  
+  - `bvalbvecload.m`: load one pair of bval and bvec files <br />
   - `bvalbvecparse.m`: parse a dwi dataset using the bval and bvec files <br />
-  - `bvalbvecpath.m`: generate bval/bvec names/paths from corresponding NIfTI image <br /> 
-  - `dwi6d.m`: organises a 4D DWI volume into a 6D DWI volume <br /> 
+  - `bvalbvecpath.m`: generate bval/bvec names/paths from corresponding NIfTI image <br />
+  - `dwi6d.m`: organises a 4D DWI volume into a 6D DWI volume <br />
   - `dwicat.m`: concatenate 3/4D dwi NIfTI files along 4th dimension <br />
 - **[fig]**
   - `crop.m`: crop image and/or sets of coordinates <br />
@@ -50,16 +50,16 @@ mtools index:
   - `dropbox.m`: retrieves path of main dropbox folder <br />
   - `dropboxfix.m`: ensure dropbox substring in preloaded paths matches current machine <br />
   - `ensurecolumnvector.m`: ensure input is a column vector (transpose if needed) <br />
-  - `ensuredrive.m`: ensure drive compatible with desired platform <br /> 
+  - `ensuredrive.m`: ensure drive compatible with desired platform <br />
   - `ensurerowstring.m`: ensure row string (i.e. readable) (transpose if needed) <br />
   - `fdir.m`: custom dir function <br />
   - `fdirrec.m`: list sub-directories and files within them ([rec]ursive fdir.m) <br />
   - `fileparts2.m`: extends fileparts.m <br />
   - `filesep2.m`: extends filesep.m (user can specify platform) <br />
   - `filesepfix.m`: ensure input paths have separator suitable for a given system <br />
-  - `findsubim.m`: find region (sub-image) of image with max/min mean intensity <br />  
+  - `findsubim.m`: find region (sub-image) of image with max/min mean intensity <br />
   - `folderinpath.m`: extracts folder from a full file path <br />
-  - `fsl2m.m`: converts 3D coordinates from FSL to MATLAB formats <br />  
+  - `fsl2m.m`: converts 3D coordinates from FSL to MATLAB formats <br />
   - `fxdoc.m`: prints function documentation template to command window <br />
   - `getabovedir.m`: returns path of directories closer to the root <br />
   - `is1d.m`: check if input is 1D "vector" <br />
@@ -70,7 +70,7 @@ mtools index:
   - `loadfilelines.m`: load each line of a given file into a cell element <br />
   - `logic2str.m`: converts logical scalar to string <br />
   - `lsfile.m`: list files in dir and pick according to file # index <br />
-  - `m2fsl.m`: converts 3D coordinates from MATLAB to FSL formats <br />  
+  - `m2fsl.m`: converts 3D coordinates from MATLAB to FSL formats <br />
   - `m2sharr.m`: convert cell of strings to space-delimited list (like bash arrays) <br />
   - `matinfo.m`: info struct to attach to any automatically generated .mat file <br />
   - `matrix2string.m`: converts 2D matrix to text (figure displaying purposes) <br />
@@ -90,7 +90,7 @@ mtools index:
   - `sumn.m`: sum of array elements along multiple dimensions (sum in a loop) <br />
   - `targz.m`: convert list of files into .tar.gz archive <br />
   - `textheading.m`: creates a text heading/separator string for documentation <br />
-  - `uniquecols.m`: find unique columns in 2D matrix and their row indexes <br />  
+  - `uniquecols.m`: find unique columns in 2D matrix and their row indexes <br />
   - `uniquesubstr.m`: remove duplicate substrings from string <br />
   - `vec2str.m`: converts a 1D-vector to a string <br />
   - `volori.m`: change image volume orientation <br />
@@ -101,8 +101,9 @@ mtools index:
 - **[nii]**
   - `isnifti.m`: lazy NIfTI file path checker <br />
   - `niicrop.m`: FSL's fslroi MATLAB wrapper <br />
-  - `niidotmask.m`: process NIfTI 'dotmask' file <br /> 
-  - `niiloadim.m`: load NIfTI image volume and fix orientation <br />  
+  - `niidotmask.m`: process NIfTI 'dotmask' file <br />
+  - `niiloadim.m`: load NIfTI image volume and fix orientation <br />
+  - `niimaskrep.m`: replace nii voxels with those from other nii in mask ROIs <br />
 
 External code
 -------------
@@ -115,17 +116,17 @@ Some of the functions in the above list use code written by others, which I typi
   - Retrieved from [FEX-JSONlab](https://uk.mathworks.com/matlabcentral/fileexchange/33381-jsonlab--a-toolbox-to-encode-decode-json-files) on 20170325
 - `[NIfTI_20140122]`: "Tools for NIfTI and ANALYZE image"
   - Copyright (c) 2014, Jimmy Shen
-  - Retrieved from [FEX-8797-tools-for-nifti-and-analyze-image](https://uk.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image) on 20180301  
+  - Retrieved from [FEX-8797-tools-for-nifti-and-analyze-image](https://uk.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image) on 20180301
 - `progressbar.m`: simple, efficient, and user friendly replacement for waitbar
   - Copyright (c) 2005, Steve Hoelzer
   - Retrieved from [FEX-progressbar](https://uk.mathworks.com/matlabcentral/fileexchange/6922-progressbar) on 20170324
 
-In addition, some of my functions may incorporate code snippets from others. This will be detailed in the documentation of each function. 
+In addition, some of my functions may incorporate code snippets from others. This will be detailed in the documentation of each function.
 
 Additional dependencies
 -----------------------
 
-  - `niicrop.m` requires FSL (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) to be installed 
+  - `niicrop.m` requires FSL (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) to be installed
 
 ___
 ___
