@@ -52,7 +52,7 @@ mtools index:
   - `ensurecolumnvector.m`: ensure input is a column vector (transpose if needed) <br />
   - `ensuredrive.m`: ensure drive compatible with desired platform <br />
   - `ensurerowstring.m`: ensure row string (i.e. readable) (transpose if needed) <br />
-  - `existerror.m`: check if var/file/dir exists - if not throw error <br />
+  - `exist2.m`: exist.m wrapper (common types + automatic error generation) <br />
   - `fdir.m`: custom dir function <br />
   - `fdirrec.m`: list sub-directories and files within them ([rec]ursive fdir.m) <br />
   - `fileparts2.m`: extends fileparts.m <br />
