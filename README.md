@@ -13,6 +13,7 @@ mtools index:
   - `dcmsiemenscsa.m`: parse DICOM Siemens CSA header (ASCCONV subset only) <br />
 - **[dwi]**
   - `bvalbveccopy.m`: copy bval/bvec files (name to match existing NIfTI file) <br />
+  - `bvalbvecexist.m`: check if bval and bvec files exist <br />
   - `bvalbvecinfo.m`: get scan parameters from bval and bvec files <br />
   - `bvalbvecload.m`: load one pair of bval and bvec files <br />
   - `bvalbvecparse.m`: parse a dwi dataset using the bval and bvec files <br />
