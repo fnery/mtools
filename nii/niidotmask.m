@@ -415,7 +415,6 @@ function out = createniimasks(mask, nii, outDir, outName)
 %
 % fnery, 20180303: original version
 
-MASK_SUFFIX = '_mask';
 OUT_EXT = '.nii.gz';
 
 nMasks = size(mask, 4);
@@ -430,8 +429,8 @@ for iMask = 1:nMasks
     cNii.img = cMask;
     
     % Create and save file path for output
-    out{iMask} = sprintf('%s%s_%02dof%02d%s', ...
-        fullfile(outDir, outName), MASK_SUFFIX, iMask, nMasks, OUT_EXT);
+    out{iMask} = sprintf('%s_%02d%s', ...
+        fullfile(outDir, outName), iMask, OUT_EXT);
     
     % Save new .nii file
     save_untouch_nii(cNii, out{iMask});
