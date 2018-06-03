@@ -109,6 +109,7 @@
 ---- niidotmask               : process NIfTI 'dotmask' file
 ---- niiloadim                : load NIfTI image volume and fix orientation
 ---- niimaskrep               : replace nii voxels with those from other nii in mask ROIs
+---- niimaskrepn              : niimaskrep.m wrapper for the case of multiple source images
 [ext]
 ---- [jsonlab]                : a toolbox to encode/decode JSON files (Copyright (c) 2017, Qianqian Fang)
 ---- [NIfTI_20140122]         : "Tools for NIfTI and ANALYZE image" (Copyright (c) 2014, Jimmy Shen)

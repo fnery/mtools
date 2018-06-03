@@ -107,6 +107,7 @@ mtools index:
   - `niidotmask.m`: process NIfTI 'dotmask' file <br />
   - `niiloadim.m`: load NIfTI image volume and fix orientation <br />
   - `niimaskrep.m`: replace nii voxels with those from other nii in mask ROIs <br />
+  - `niimaskrepn.m`: niimaskrep.m wrapper for the case of multiple source images <br />
 
 External code
 -------------
