@@ -38,5 +38,8 @@ function [out] = isint(in)
 %
 % fnery, 20150729: original version
 % fnery, 20170322: updated documentation
+% fnery, 20180605: bugfix
 
-out = isfinite(in) & isreal(in) & (in == floor(in));
+out = isnumeric(in) & (isfinite(in) & isreal(in) & (in == floor(in)));
+
+end
