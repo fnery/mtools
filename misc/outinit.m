@@ -1,8 +1,9 @@
-function out = outinit(in)
+function out = outinit(in, extRequired)
 % outinit: output path default initialisation
 %
 % Syntax:
 %    1) out = outinit(in)
+%    2) out = outinit(in, extRequired)
 %
 % Description:
 %    1) out = outinit(in) manages input file paths OR file names.
@@ -12,12 +13,21 @@ function out = outinit(in)
 %       If ''in'' is just a file name + extension, this function appends
 %       the pwd to ''in'' to make it a valid file path, as Example 3) shows
 %       below
+%    2) out = outinit(in, extRequired) does the same as 1) but allows to
+%       control whether 'in' requires the extension of out to be specified.
+%       This is the case in most cases. However, an example of where we do
+%       not want to include the extension in out is when generating one
+%       path (i.e. 'out') which will be common to several files (to be 
+%       created later and outside of this function) where the only 
+%       difference between the files is their extension, such as when
+%       creating .bval and bvec .files
 %
 % Inputs:
 %    1) in: (full file path) or (file name + extension)
+%    2) extRequired (optional): logical scalar. Default = true;
 %
 % Outputs:
-%    1) out: full file path
+%    1) out: filepath (with or without extension depending on extRequired)
 %
 % Notes/Assumptions:
 %    1) This function was created to manage input arguments for other
@@ -56,6 +66,13 @@ function out = outinit(in)
 %            'C:\Users\fabio\hello.txt'
 %
 % fnery, 20180603: original version
+% fnery, 20180605: outinit.m new option: extRequired
+
+if nargin == 1
+    extRequired = true;
+elseif nargin == 2 && (~isscalar(extRequired) || ~islogical(extRequired))
+    error('Error: ''extRequired'' must be a logical scalar');
+end
 
 [d, n, e] = fileparts2(in);
 
@@ -71,7 +88,7 @@ if isempty(n)
     error('Error: need to specify the name of ''out''');
 end
 
-if isempty(e)
+if isempty(e) && extRequired
     error('Error: need to specify the extension of ''out''');
 end
 
