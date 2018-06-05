@@ -18,6 +18,7 @@ mtools index:
   - `bvalbvecload.m`: load one pair of bval and bvec files <br />
   - `bvalbvecparse.m`: parse a dwi dataset using the bval and bvec files <br />
   - `bvalbvecpath.m`: generate bval/bvec names/paths from corresponding NIfTI image <br />
+  - `bvalbvecwrite.m`: write .bval and/or .bvec files from MATLAB arrays <br />
   - `dwi6d.m`: organises a 4D DWI volume into a 6D DWI volume <br />
   - `dwicat.m`: concatenate 3/4D dwi NIfTI files along 4th dimension <br />
 - **[fig]**
