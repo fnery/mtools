@@ -1,27 +1,24 @@
-function [dwi, bVal, bVec] = dwicat(dwis, name, outDir)
+function [dwi, bVal, bVec] = dwicat(dwis, out)
 % dwicat.m: concatenate 3/4D dwi NIfTI files along 4th dimension
 %
 % Syntax:
-%    1) [dwi, bVal, bVec] = dwicat(dwis, name)
-%    2) [dwi, bVal, bVec] = dwicat(dwis, name, outDir)
+%    1) [dwi, bVal, bVec] = dwicat(dwis, out)
 %
 % Description:
-%    1) [dwi, bVal, bVec] = dwicat(dwis, name) concatenates 3/4D dwi NIfTI
+%    1) [dwi, bVal, bVec] = dwicat(dwis, out) concatenates 3/4D dwi NIfTI
 %       files along the 4th dimension. Also concatenates their corresponding
 %       .bval and .bvec files (FSL-format) so that the output file is ready
 %       to be used in DWI pipelines. Outputs will be:
-%       - <name>.nii.gz
-%       - <name>.bval
-%       - <name>.bvec
-%       and are saved in the working directory
-%    2) [dwi, bVal, bVec] = dwicat(dwis, name, outDir) does the same as 1)
-%       but allows to specify the output directory where to save the new
-%       files ('outDir')
+%       - <out>.nii.gz
+%       - <out>.bval
+%       - <out>.bvec
+%       Both basename and directory of the resulting files can be specified
+%       in 'out'
 % 
 % Inputs:
 %    1) dwis: cell of strings of paths to . 3D/4D dwi NIfTI files
 %    2) name: string, name for output files
-%    3) outDir: (optional) directory where to save output files
+%    3) out: base path (directory + name OR just name)
 % 
 % Outputs:
 %    1) dwi: full path to new NIfTI file
@@ -37,11 +34,13 @@ function [dwi, bVal, bVec] = dwicat(dwis, name, outDir)
 % Required functions:
 %    1) bvalbvecpath.m
 %    2) bvalbveccat.m (lives in this function)
-%    3) win2wsl.m
-%    4) filesep2.m
+%    3) outinit.m
+%    4) win2wsl.m
 %    5) m2sharr.m
 %    6) system2.m
 %    7) wsl2win.m
+%    8) bvalbvecload.m
+%    9) bvalbvecwrite.m
 %
 % Required files:
 %    []
@@ -50,11 +49,10 @@ function [dwi, bVal, bVec] = dwicat(dwis, name, outDir)
 %    []
 %
 % fnery, 20180420: original version
+% fnery, 20180605: now uses outinit.m and bvalbvecwrite.m
 
-if nargin < 2
-    error('Error: dwicat.m needs at least 2 input arguments');
-elseif nargin == 2
-    outDir = pwd;
+if nargin ~= 2
+    error('Error: dwicat.m needs 2 input arguments');
 end
 
 % Init paths of .bvals and .bvecs corresponding to 'dwis' input
@@ -65,18 +63,20 @@ end
 % ===================================
 % (filepaths in Windows format)
 
-[bVal, bVec] = bvalbveccat(bVals, bVecs, name, outDir);
+[bVal, bVec] = bvalbveccat(bVals, bVecs, out);
 
 % ===================================
 % ===== Concatenate NIfTI files ===== -------------------------------------
 % ===================================
 % (filepaths in UNIX (WSL) format)
 
-dwis   = win2wsl(dwis);
-outDir = win2wsl(outDir);
+basePath = outinit(out, false);
+
+dwis     = win2wsl(dwis);
+basePath = win2wsl(basePath);
 
 % Filepath for output file
-dwi = [outDir filesep2('UNIX') name '.nii.gz'];
+dwi = [basePath '.nii.gz'];
 
 % Convert dwis to space-separated list as fslmerge requires
 dwis = m2sharr(dwis);
@@ -93,33 +93,28 @@ dwi = wsl2win(dwi);
 
 end
 
-function [bVal, bVec] = bvalbveccat(bVals, bVecs, name, outDir)
+function [bVal, bVec] = bvalbveccat(bVals, bVecs, out)
 % bvalbveccat.m: concatenate .bval and .bvec files
 %
 % Syntax:
-%    1) [bVal, bVec] = bvalbveccat(bVals, bVecs, name)
-%    2) [bVal, bVec] = bvalbveccat(bVals, bVecs, name, outDir)
+%    1) [bVal, bVec] = bvalbveccat(bVals, bVecs, out)
 %
 % Description:
 %    1) [bVal, bVec] = bvalbveccat(bVals, bVecs, name) concatenates .bval
-%       and .bvec files and saves the resulting .bval and .bvec files in the 
-%       working directory with the name 'name'
-%    2) [bVal, bVec] = bvalbveccat(bVals, bVecs, name, outDir) does the
-%       same as 1) but allows to specify the output directory where to save
-%       the new files ('outDir')
+%       and .bvec files and saves the resulting .bval and .bvec files in
+%       the directory and with file name specified by 'out'
 %
 % Inputs:
 %    1) bVals: cell of strings of paths to .bval files
 %    2) bVecs: cell of strings of paths to corresponding .bvecs files
-%    3) name: string, name for output files
-%    4) outDir: (optional) directory where to save output files
+%    3) out: base path (directory + name OR just name)
 % 
 % Outputs:
 %    1) bVal: full path to new (concatenated) .bval file
 %    2) bVec: full path to new (concatenated) .bvec file
 %
 % Notes/Assumptions: 
-%    1) Useful when we merge dwi volumes and want to generate the
+%    1) Useful when we merge DWI volumes and want to generate the
 %       corresponding merged .bval/.bvec files
 %
 % References:
@@ -127,6 +122,7 @@ function [bVal, bVec] = bvalbveccat(bVals, bVecs, name, outDir)
 %
 % Required functions:
 %    1) bvalbvecload.m
+%    2) bvalbvecwrite.m
 %
 % Required files:
 %    []
@@ -135,13 +131,10 @@ function [bVal, bVec] = bvalbveccat(bVals, bVecs, name, outDir)
 %    []
 %
 % fnery, 20180420: original version
+% fnery, 20180605: now uses bvalbvecwrite.m
 
-PRECISION = '%.6f';
-
-if nargin < 3
-    error('Error: bvalbveccat.m needs at least 3 input arguments');
-elseif nargin == 3
-    outDir = pwd;
+if nargin ~= 3
+    error('Error: bvalbveccat.m needs 3 input arguments');
 end
 
 nBVals = length(bVals);
@@ -167,12 +160,7 @@ end
 bValArr = horzcat(bValTmp{:}); 
 bVecArr = horzcat(bVecTmp{:});
 
-% Full paths of output files
-bVal = fullfile(outDir, [name '.bval']);
-bVec = fullfile(outDir, [name '.bvec']);
-
-% Write new .bval and .bvec files
-dlmwrite(bVal, bValArr, 'delimiter', ' ', 'precision', PRECISION);
-dlmwrite(bVec, bVecArr, 'delimiter', ' ', 'precision', PRECISION);
+% Write output files
+[bVal, bVec] = bvalbvecwrite(bValArr, bVecArr, out);
 
 end
