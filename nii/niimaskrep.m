@@ -68,6 +68,7 @@ function out = niimaskrep(from, into, mask, out)
 %       where 1s/1v = one slice/volume, Ns/Nv = multiple slices/volumes
 %
 % fnery, 20180531: original version
+% fnery, 20180726: indexation bugfix
 
 %                                      f i m
 EXPECTED_NII_DIM_COMBINATIONS(1, :) = [2 2 2];
@@ -233,7 +234,14 @@ for iMask = 1:nMasks
         [cR, cC] = ind2sub(size(cMaskSlice), cPixelList);
 
         % Replace
-        into(cR, cC, iSlice, :) = fromAux(cR, cC, iSlice, :);
+        nPixels = length(cPixelList);
+        
+        % Slow loop, may be possible to vectorise if bottleneck
+        for iPixel = 1:nPixels
+            ccR = cR(iPixel);
+            ccC = cC(iPixel);
+            into(ccR, ccC, iSlice, :) = fromAux(ccR, ccC, iSlice, :);
+        end
 
     end
 
