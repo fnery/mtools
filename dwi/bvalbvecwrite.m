@@ -39,6 +39,7 @@ function [bvalPath, bvecPath] = bvalbvecwrite(bvalArray, bvecArray, out)
 %    [bvalPath, bvecPath] = bvalbvecwrite(bvalArray, bvecArray, 'out_name')
 %
 % fnery, 20180605: original version
+% fnery, 20180726: bugfix
 
 PRECISION = '%.6f';
 
@@ -62,8 +63,7 @@ end
 
 % If bvalArray was provided, check its format is valid
 if ~bvalArrayIsEmpty
-    if ~is1d(bvalArray) || ...
-       (is1d(bvalArray) && size(bvalArray, 2) < 2)
+    if size(bvalArray, 1) ~= 1
         error('Error: if not empty, bvalArray must be a row vector');
     end
     
@@ -74,8 +74,7 @@ end
 
 % If bvecArray was provided, check its format is valid
 if ~bvecArrayIsEmpty
-    if ~ismatrix(bvecArray) || ...
-       (ismatrix(bvecArray) && (size(bvecArray, 1) ~= 3 || size(bvecArray, 2) < 2))
+    if size(bvecArray, 1) ~= 3
         error('Error: if not empty, bvecArray must be a [3 x nBVecs] matrix');
     end
     
