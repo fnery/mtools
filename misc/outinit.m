@@ -36,6 +36,8 @@ function out = outinit(varargin)
 %    --------------------------------- OPTIONAL -------------------------------
 %    <useext>  logical  :  scalar, control on whether specifying the file
 %                          extension in 'in' is allowed
+%                          passing in an empty ([]) useExt is the same as
+%                          not passing in this argin at all
 %    <nodir>   char     :  Tag describing the behaviour of this function
 %                          if directory in <in> doesn't exist. Options are:
 %                              - 'empty' --> returns empty out
@@ -125,7 +127,8 @@ function out = outinit(varargin)
 %                  means no extension at all
 % fnery, 20180727: added 'nodir' and 'silent' argins'
 %                  modified function to value-pair argin format'
-%                  updated documentation'
+%                  updated documentation'            
+%                  now argin 'useext' can be empty (i.e. [])
 
 POSSIBLE_NODIRS = {'empty', 'error', 'make'};
 
@@ -149,10 +152,10 @@ for iOptIn = 1:2:numel(varargin)
                 error('Error: ''in'' must be string (filepath OR filename)');
             end
         case {'useext'}
-            if islogical(cVal) && isscalar(cVal)
+            if (islogical(cVal) && isscalar(cVal)) || isempty(cVal)
                 useExt = cVal;
             else
-                error('Error: ''useext'' must be a logical scalar');
+                error('Error: ''useext'' must be a logical scalar OR an empty variable (i.e. [])');
             end
         case {'nodir'}
             noDirIsValid = ~isempty(find(strcmp(cVal, POSSIBLE_NODIRS), 1));
@@ -186,7 +189,7 @@ noDirExists  = exist('noDir' , 'var');
 silentExists = exist('silent', 'var');
 
 % By default, the function is not silent
-if ~useExtExists
+if ~useExtExists || isempty(useExt)
     useExtProvided = false;
 else
     useExtProvided = true;
