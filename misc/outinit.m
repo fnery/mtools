@@ -29,10 +29,16 @@ function out = outinit(varargin)
 %               Using this 'out' we then could generate several files,
 %               where the only difference between them is their extension,
 %               such as when creating .bval and bvec .files.
+%    SYNTAX-INDEPENDENT NOTE $1
+%           Regardless of the syntax, this function accepts a cell of
+%           strings in 'in' if multiple output paths need to be initialised
+%           (a recursive call to this function)
 %
 % Inputs:
 %    -------------------------------- MANDATORY -------------------------------
-%    <in>      char     :  filepath OR filename $1
+%    <in>      char     :  filepath OR filename
+%               OR
+%          $1  cell     :  of strings, filepath(s) OR filename(s)
 %    --------------------------------- OPTIONAL -------------------------------
 %    <useext>  logical  :  scalar, control on whether specifying the file
 %                          extension in 'in' is allowed
@@ -118,6 +124,12 @@ function out = outinit(varargin)
 %    out = outinit('in', in, 'useext', useExt, 'nodir', noDir, 'silent', silent)
 %    % >> out = 'C:\Users\fabio\Desktop\non_existent_dir\hello.txt'
 %
+%    **********************************************************************
+%    * NOTE all of the examples above are for the case of a single output *
+%    * path (i.e. passed 'in' being a string). All the same examples are  *
+%    * valid in case 'in' is a cell of strings                            *
+%    **********************************************************************
+%
 % fnery, 20180603: original version
 % fnery, 20180605: outinit.m new option: extRequired
 % fnery, 20180605: modified extension managing approach
@@ -129,6 +141,7 @@ function out = outinit(varargin)
 %                  modified function to value-pair argin format'
 %                  updated documentation'            
 %                  now argin 'useext' can be empty (i.e. [])
+%                  now can generate multiple output paths ('in' can be cell of strings)
 
 POSSIBLE_NODIRS = {'empty', 'error', 'make'};
 
@@ -146,10 +159,10 @@ for iOptIn = 1:2:numel(varargin)
     % attempt to recognise options
     switch lower(cOpt)
         case {'in'}
-            if ischar(cVal)
+            if ischar(cVal) || iscell(cVal)
                 in = cVal;
             else
-                error('Error: ''in'' must be string (filepath OR filename)');
+                error('Error: ''in'' must be string or a cell of strings (filepath(s) OR filename(s))');
             end
         case {'useext'}
             if (islogical(cVal) && isscalar(cVal)) || isempty(cVal)
@@ -191,6 +204,7 @@ silentExists = exist('silent', 'var');
 % By default, the function is not silent
 if ~useExtExists || isempty(useExt)
     useExtProvided = false;
+    useExt = [];
 else
     useExtProvided = true;
 end
@@ -199,6 +213,23 @@ if ~noDirExists
 end
 if ~silentExists
     silent = false;
+end
+
+% Recursive call to this function if 'in' is a cell of strings
+if iscell(in)
+    nIns = length(in);
+    out = cell(nIns, 1);
+    for iIn = 1:nIns
+        cIn = in{iIn};
+        % individual call with current string element from the 'in' cell
+        % here all argins exist regardless how many were provided in the
+        % original call (those not provided took their default values)
+        out{iIn, 1} = outinit('in'     , cIn    , ...
+                              'useext' , useExt , ... 
+                              'nodir'  , noDir  , ...
+                              'silent' , silent);
+    end
+    return;
 end
 
 [d, n, e] = fileparts2(in);
