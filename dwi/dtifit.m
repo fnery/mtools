@@ -1,21 +1,21 @@
-function dtifit(in, mask, baseName, bVal, bVec)
+function Paths = dtifit(in, mask, baseName, bVal, bVec)
 % dtifit.m: FSL's dtifit wrapper
 %
 % Syntax:
-%    1) dtifit(in, mask, baseName)
-%    2) dtifit(in, mask, baseName, bVal, bVec)
+%    1) Paths = dtifit(in, mask, baseName)
+%    2) Paths = dtifit(in, mask, baseName, bVal, bVec)
 %
 % Description:
-%    1) dtifit(in, mask, baseName) wraps around FSL's dtifit with the
-%       following features:
+%    1) Paths = dtifit(in, mask, baseName) wraps around FSL's dtifit with
+%       the following features:
 %       - uses compulsory argins only
 %       - automatic .bval/.bvec path initialisation
 %       - enhanced baseName management using outinit.m
 %       - automatic conversion of Windows paths to WSL
-%    2) dtifit(in, mask, baseName, bVal, bVec) does the same as 1) except
-%       automatically initialising the paths to the .bval/.bvec files.
-%       Useful for cases where the .bval/.bvec files do not have the same
-%       file name.
+%    2) Paths = dtifit(in, mask, baseName, bVal, bVec) does the same as 1)
+%       except automatically initialising the paths to the .bval/.bvec
+%       files. Useful for cases where the .bval/.bvec files do not have the 
+%       same file name.
 %
 % Inputs:
 %    1) in: fullpath to 4D DTI NIfTI file
@@ -25,7 +25,7 @@ function dtifit(in, mask, baseName, bVal, bVec)
 %    5) bVec (optional): fullpath to .bvec file
 %
 % Outputs:
-%    []
+%    Paths: struct with full paths to all output maps (NIfTI files)
 %
 % Notes/Assumptions: 
 %    1) Assumption #1: If .bval and .bvec are not specified, this function
@@ -44,6 +44,7 @@ function dtifit(in, mask, baseName, bVal, bVec)
 %    4) outinit.m
 %    5) win2wsl.m
 %    6) system2.m
+%    7) dtifitpaths.m
 %
 % Required files:
 %    DTI 4D NIfTI image, associated .bval/.bvec files and NIFTI 3D mask
@@ -53,6 +54,7 @@ function dtifit(in, mask, baseName, bVal, bVec)
 %
 % fnery, 20180727: original version
 % fnery, 20180730: now allows .bval/.bvec files to be specified by user
+%                  now can output paths of all generated NIfTI files
 
 SETTINGS.noDir  = 'make';
 SETTINGS.silent = false;
@@ -102,5 +104,8 @@ status = system2('cmd', cmd, '-echo', false, '&', false);
 if status ~= 0
     error('Error: There was an error when calling FSL''s ''dtifit''');
 end
+
+% Generate struct with output paths
+Paths = dtifitpaths(baseName);
 
 end
