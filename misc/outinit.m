@@ -142,6 +142,7 @@ function out = outinit(varargin)
 %                  updated documentation'            
 %                  now argin 'useext' can be empty (i.e. [])
 %                  now can generate multiple output paths ('in' can be cell of strings)
+% fnery, 20170730: now doesn't allow spaces on the file name / extension
 
 POSSIBLE_NODIRS = {'empty', 'error', 'make'};
 
@@ -233,6 +234,17 @@ if iscell(in)
 end
 
 [d, n, e] = fileparts2(in);
+
+% Don't allow spaces on the file name or the file extension
+nameHasSpaces      = any(isspace(n));
+extensionHasSpaces = any(isspace(n));
+
+if nameHasSpaces
+    error('Error: the file name specified in ''in'' can''t have spaces');
+end
+if extensionHasSpaces
+    error('Error: the file extension specified in ''in'' can''t have spaces');
+end
 
 % Manage directory
 if isempty(d)
