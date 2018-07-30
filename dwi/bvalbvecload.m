@@ -12,7 +12,6 @@ function [bval, bvec] = bvalbvecload(bval, bvec)
 %           1) paths are valid
 %           2) structure of the files is valid
 %           3) files likely correspond to the same dataset, i.e. have
-%              - same filename
 %              - same number of volumes
 %
 % Inputs:
@@ -24,7 +23,7 @@ function [bval, bvec] = bvalbvecload(bval, bvec)
 %    2) bvec: matrix of b-vectors
 %
 % Notes/Assumptions: 
-%    1) Assumption 1: both .bval and .bvec files have the same file name
+%    []
 %
 % References:
 %    []
@@ -40,6 +39,9 @@ function [bval, bvec] = bvalbvecload(bval, bvec)
 %    []
 %
 % fnery, 20180126: original version
+% fnery, 20180730: no longer assumes .bval/.bvec files have same file name
+%                  (rotated bvec files may have different file names than
+%                  their corresponding .bval files)
 
 BVAL_EXT = '.bval';
 BVEC_EXT = '.bvec';
@@ -51,7 +53,7 @@ BVEC_EXT = '.bvec';
 if ~ischar(bval)   
     error('Error: input ''bval'' must be string (full path to .bval file)') 
 else
-    [~, bvalName, bvalExt] = fileparts(bval);
+    [~, ~, bvalExt] = fileparts(bval);
     % check correct extension of bval file
     if ~strcmp(bvalExt, BVAL_EXT)
         error('Error: input ''bval'' must have .bval extension')
@@ -62,16 +64,11 @@ end
 if ~ischar(bvec)
     error('Error: input ''bvec'' must be string (fullpath to .bvec file)') 
 else
-    [~, bvecName, bvecExt] = fileparts(bvec); 
+    [~, ~, bvecExt] = fileparts(bvec); 
     % check correct extension of bvec file
     if ~strcmp(bvecExt, BVEC_EXT)
         error('Error: input ''bvec'' must have .bvec extension')
     end
-end
-
-% assumption: both .bval and .bvec files have the same file name
-if ~strcmp(bvalName, bvecName)
-    error('Error: file names of .bval and .bvec files don''t match')
 end
 
 
