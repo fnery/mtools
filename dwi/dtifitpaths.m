@@ -53,7 +53,7 @@ for iMap = 1:length(MAPS)
     Paths.(cMap) = cMapPath;
     
     % Check file given by cMapPath exists
-    exist2(cMapPath, 'file', true)
+    exist2(cMapPath, 'file', true);
     
 end
     
