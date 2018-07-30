@@ -61,6 +61,8 @@ function out = niimaskrepn(from, into, mask, out)
 %
 % fnery, 20180603: original version
 
+SETTINGS.noDir  = 'make';
+
 % Error checks
 if nargin ~= 4
     error('Error: this function needs 4 input arguments');
@@ -82,7 +84,7 @@ if ~ischar(out)
     error('Error: ''out'' must be a string (file path or file name (incl. ext))');
 else
     % Initialise full path of output file
-    out = outinit(out);
+    out = outinit('in', out, 'useext', false, 'nodir', SETTINGS.noDir);
 end
 
 nFrom  = length(from);
@@ -118,7 +120,10 @@ for i = 1:n
     cOut = niimaskrep(cFrom, cInto, cMask, cTmp);
     
 end
-    
+  
+% Add extension to out
+out = [out ext];
+
 % The output of the last call of niimaskrep.m is the file we desire, so we
 % just need to move/rename it to the specified directory/name, given by out
 status = movefile(cOut, out);
