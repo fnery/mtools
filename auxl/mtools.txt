@@ -21,6 +21,7 @@
 ---- bvalbvecpath             : generate bval/bvec names/paths from corresponding .nii image
 ---- bvalbvecwrite.m          : write .bval and/or .bvec files from MATLAB arrays
 ---- dtifit                   : FSL's dtifit wrapper
+---- dtifitnm                 : dtifit and [n] merge [m]
 ---- dtifitpaths              : init paths to dtifit outputs
 ---- dwi6d                    : organises a 4D DWI volume into a 6D DWI volume
 ---- dwicat                   : concatenate 3/4D dwi NIfTI files along 4th dimension

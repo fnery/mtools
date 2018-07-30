@@ -20,6 +20,7 @@ mtools index:
   - `bvalbvecpath.m`: generate bval/bvec names/paths from corresponding NIfTI image <br />
   - `bvalbvecwrite.m`: write .bval and/or .bvec files from MATLAB arrays <br />
   - `dtifit.m`: FSL's dtifit wrapper <br />
+  - `dtifitnm.m`: dtifit and [n] merge [m]  <br />
   - `dtifitpaths.m`: init paths to dtifit outputs <br />
   - `dwi6d.m`: organises a 4D DWI volume into a 6D DWI volume <br />
   - `dwicat.m`: concatenate 3/4D dwi NIfTI files along 4th dimension <br />
