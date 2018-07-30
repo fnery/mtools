@@ -1,8 +1,9 @@
-function dtifit(in, mask, baseName)
+function dtifit(in, mask, baseName, bVal, bVec)
 % dtifit.m: FSL's dtifit wrapper
 %
 % Syntax:
-%    dtifit(in, mask, baseName)
+%    1) dtifit(in, mask, baseName)
+%    2) dtifit(in, mask, baseName, bVal, bVec)
 %
 % Description:
 %    1) dtifit(in, mask, baseName) wraps around FSL's dtifit with the
@@ -11,31 +12,38 @@ function dtifit(in, mask, baseName)
 %       - automatic .bval/.bvec path initialisation
 %       - enhanced baseName management using outinit.m
 %       - automatic conversion of Windows paths to WSL
+%    2) dtifit(in, mask, baseName, bVal, bVec) does the same as 1) except
+%       automatically initialising the paths to the .bval/.bvec files.
+%       Useful for cases where the .bval/.bvec files do not have the same
+%       file name.
 %
 % Inputs:
 %    1) in: fullpath to 4D DTI NIfTI file
 %    2) mask: fullpath to 3D mask NIfTI file
 %    3) baseName: base filepath or filename for dtifit outputs
+%    4) bVal (optional): fullpath to .bval file
+%    5) bVec (optional): fullpath to .bvec file
 %
 % Outputs:
 %    []
 %
 % Notes/Assumptions: 
-%    1) Assumes .bval and .bvec files corresponding to 'in' exist 
-%       in the same directory 'in' is stored and have the same name
-%       as 'in'
-%    2) Assumes FSL (available in [1]) is installed in the Windows
-%       subsystem for Linux
+%    1) Assumption #1: If .bval and .bvec are not specified, this function
+%       will assume  bVecs corresponding to 'in' exist in
+%       the same directory 'in' is stored and have the same name as 'in'
+%    2) Assumption #2: Assumes FSL (available in [1]) is installed in the
+%       Windows subsystem for Linux
 %
 % References:
 %    [1] https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
 %
 % Required functions:
 %    1) bvalbvecpath.m
-%    2) exist2.m
-%    3) outinit.m
-%    4) win2wsl.m
-%    5) system2.m
+%    2) bvalbvecload.m
+%    3) exist2.m
+%    4) outinit.m
+%    5) win2wsl.m
+%    6) system2.m
 %
 % Required files:
 %    DTI 4D NIfTI image, associated .bval/.bvec files and NIFTI 3D mask
@@ -44,12 +52,23 @@ function dtifit(in, mask, baseName)
 %    []
 %
 % fnery, 20180727: original version
+% fnery, 20180730: now allows .bval/.bvec files to be specified by user
 
 SETTINGS.noDir  = 'make';
 SETTINGS.silent = false;
 
-% Init paths to .bval and .bvec files
-[bVal, bVec] = bvalbvecpath(in);
+if nargin == 3
+    % .bval and .bvec not specified: init paths automatically based on
+    % Assumption #1
+    [bVal, bVec] = bvalbvecpath(in);
+elseif nargin == 5
+    % .bval and .bvec specified by user, just do very brief preliminary
+    % checks of their validity using the error checks of bvalbvecload.m
+    bvalbvecload(bVal, bVec); % the files aren't actually loaded
+else
+    error('Error: this function requires either 3 or 5 input arguments');
+end
+    
 
 % Check all files exist
 exist2(in  , 'file', true);
