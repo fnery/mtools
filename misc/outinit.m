@@ -1,12 +1,12 @@
-function out = outinit(varargin)
+function [out, d] = outinit(varargin)
 % outinit: output path default initialisation
 %
 % Syntax:
-%    1) out = outinit('in',in,'nodir',noDir,'silent',silent)
-%    2) out = outinit('in',in,'useext',useExt,'nodir',noDir,'silent',silent)
+%    1) [out, d] = outinit('in',in,'nodir',noDir,'silent',silent)
+%    2) [out, d] = outinit('in',in,'useext',useExt,'nodir',noDir,'silent',silent)
 %
 % Description:
-%    1) out = outinit('in',in,'useext',useExt,'nodir',noDir,'silent',silent)
+%    1) [out, d] = outinit('in',in,'useext',useExt,'nodir',noDir,'silent',silent)
 %       generates an output path from an input file path OR file name
 %       for a function which will generate other files
 %       Case 1: If 'in': valid file-to-be path (i.e. full path), this
@@ -18,7 +18,7 @@ function out = outinit(varargin)
 %       ''in'' (or no extension if ''in'' doesn't have one)
 %       If 'in' specifies a directory which does not exist, this function
 %       will behave according to the choice of 'nodir' (see inputs below)
-%    2) out = outinit('in',in,'useext',useExt,'nodir',noDir,'silent',silent)
+%    2) [out, d] = outinit('in',in,'useext',useExt,'nodir',noDir,'silent',silent)
 %           provides further control on whether specifying the file extension
 %           in 'in' is allowed (and subsequently used outside this function),
 %           regardless of Case 1 or Case 2 and 'nodir' behaviour
@@ -57,6 +57,7 @@ function out = outinit(varargin)
 % Outputs:
 %    1) out: filepath (with/without extension depending whether 'useext' is
 %       provided and if so on its value)
+%    2) d: directory corresponding to 'out' (output #1)
 %
 % Notes/Assumptions:
 %    1) This was created to manage input arguments for other functions as
@@ -143,6 +144,7 @@ function out = outinit(varargin)
 %                  now argin 'useext' can be empty (i.e. [])
 %                  now can generate multiple output paths ('in' can be cell of strings)
 % fnery, 20170730: now doesn't allow spaces on the file name / extension
+% fnery, 20170731: outinit.m now also outputs out's directory if necessary
 
 POSSIBLE_NODIRS = {'empty', 'error', 'make'};
 
