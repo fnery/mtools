@@ -49,6 +49,7 @@
 ---- cf                       : [c]urrent [f]older - dir where calling function lives
 ---- changewrtbaseline        : change in measurements with respect to a "baseline"
 ---- cleanstr                 : replace spaces by underscores and remove non-alphanum char
+---- copyfiles                : copies multiple files (MATLAB's copyfile wrapper)
 ---- ctime                    : creates string with current date-time (yyyymmdd_hhmmss[fff])
 ---- dirtree                  : displays directory tree in the command line
 ---- dispcmd                  : human-readable display long dash argument-value command strings
@@ -85,6 +86,7 @@
 ---- matrix2string            : converts 2D matrix to text (figure displaying purposes)
 ---- mkdirf                   : extends mkdir.m function (automatic name/overwrite control)
 ---- mkdirtmp                 : make directory in Temp files
+---- movefiles                : moves multiple files (MATLAB's movefile wrapper)
 ---- msmidnight2hhmmssfff     : convert milisseconds since midnight to hh:mm:ss:fff
 ---- mtools                   : displays index of functions in mtools in the command window
 ---- nameinpath               : isolates name of file(s) from its complete path(s)

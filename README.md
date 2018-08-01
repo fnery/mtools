@@ -48,6 +48,7 @@ mtools index:
   - `cf`: [c]urrent [f]older - dir where calling function lives <br />
   - `changewrtbaseline.m`: change in measurements with respect to a "baseline" <br />
   - `cleanstr.m`: replace spaces by underscores and remove non-alphanum chars <br />
+  - `copyfiles.m`: copies multiple files (MATLAB's copyfile wrapper) <br />
   - `ctime.m`: creates string with current date-time (yyyymmdd_hhmmss[fff]) <br />
   - `dirtree.m`: displays directory tree in the command line <br />
   - `dispcmd.m`: human-readable display long dash argument-value command strings <br />
@@ -83,6 +84,7 @@ mtools index:
   - `matrix2string.m`: converts 2D matrix to text (figure displaying purposes) <br />
   - `mkdirf.m`: extends mkdir.m function (automatic name/overwrite control) <br />
   - `mkdirtmp.m`: make directory in Temp files <br />
+  - `movefiles.m`: moves multiple files (MATLAB's movefile wrapper) <br />
   - `msmidnight2hhmmssfff.m`: convert milisseconds since midnight to hh:mm:ss:fff <br />
   - `mtools.m`: displays index of functions in mtools in the command window <br />
   - `nameinpath.m`: isolates name of file(s) from its complete path(s) <br />
