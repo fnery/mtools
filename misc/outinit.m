@@ -4,6 +4,7 @@ function [out, d] = outinit(varargin)
 % Syntax:
 %    1) [out, d] = outinit('in',in,'nodir',noDir,'silent',silent)
 %    2) [out, d] = outinit('in',in,'useext',useExt,'nodir',noDir,'silent',silent)
+%    3) [out, d] = outinit('in',in,'usename',useName,'nodir',noDir,'silent',silent)
 %
 % Description:
 %    1) [out, d] = outinit('in',in,'useext',useExt,'nodir',noDir,'silent',silent)
@@ -29,6 +30,12 @@ function [out, d] = outinit(varargin)
 %               Using this 'out' we then could generate several files,
 %               where the only difference between them is their extension,
 %               such as when creating .bval and bvec .files.
+%    3) [out, d] = outinit('in',in,'usename',useName,'nodir',noDir,'silent',silent)
+%       is one of the possible syntax variations using the 'usename' argin.
+%       This allows to control whether the user is allowed to specify a
+%       filename in 'in'. We may want to prevent this if a subsequent
+%       function which uses the output of outinit.m generates the complete
+%       file name independently (including any prefixes or suffices).
 %    SYNTAX-INDEPENDENT NOTE $1
 %           Regardless of the syntax, this function accepts a cell of
 %           strings in 'in' if multiple output paths need to be initialised
@@ -40,10 +47,14 @@ function [out, d] = outinit(varargin)
 %               OR
 %          $1  cell     :  of strings, filepath(s) OR filename(s)
 %    --------------------------------- OPTIONAL -------------------------------
+%    <usename> logical  :  scalar, control on whether specifying the file
+%                          name in 'in' is allowed
+%                          passing in an empty ([]) useName causes the
+%                          function to assume its default value
 %    <useext>  logical  :  scalar, control on whether specifying the file
 %                          extension in 'in' is allowed
-%                          passing in an empty ([]) useExt is the same as
-%                          not passing in this argin at all
+%                          passing in an empty ([]) useExt causes the
+%                          function to assume its default value
 %    <nodir>   char     :  Tag describing the behaviour of this function
 %                          if directory in <in> doesn't exist. Options are:
 %                              - 'empty' --> returns empty out
@@ -105,7 +116,6 @@ function [out, d] = outinit(varargin)
 %    noDir  = 'error';
 %    silent = false;
 %    out = outinit('in', in, 'useext', useExt, 'nodir', noDir, 'silent', silent)
-%    % >> Error using exist2 (line 67)
 %    % >> Error: dir 'C:\Users\fabio\Desktop\non_existent_dir' doesn't exist
 %
 %    % EXAMPLE 5: other non-existing directory (make it) (not silent)
@@ -124,6 +134,26 @@ function [out, d] = outinit(varargin)
 %    silent = true;
 %    out = outinit('in', in, 'useext', useExt, 'nodir', noDir, 'silent', silent)
 %    % >> out = 'C:\Users\fabio\Desktop\non_existent_dir\hello.txt'
+%
+%    % EXAMPLE 7: other existing directory (throw error if name is specified)
+%    in      = 'C:\Users\fabio\Desktop\hello.txt';
+%    useName = false
+%    useExt  = true;
+%    noDir   = 'error';
+%    silent  = false;
+%    out = outinit('in', in, 'usename', useName, 'useext', useExt, ...
+%                  'nodir', noDir, 'silent', silent)
+%    % >> Error: specifying the file name in 'C:\Users\fabio\Desktop\hello.txt' (i.e. 'hello') is not allowed
+%
+%    % EXAMPLE 8: other existing directory
+%    in     = 'C:\Users\fabio\Desktop\';
+%    useName = true
+%    useExt  = false;
+%    noDir   = 'error';
+%    silent  = false;
+%    out = outinit('in', in, 'usename', useName, 'useext', useExt, ...
+%                  'nodir', noDir, 'silent', silent)
+%    % >> Error: need to specify the file name in 'C:\Users\fabio\Desktop\'
 %
 %    **********************************************************************
 %    * NOTE all of the examples above are for the case of a single output *
@@ -145,6 +175,7 @@ function [out, d] = outinit(varargin)
 %                  now can generate multiple output paths ('in' can be cell of strings)
 % fnery, 20170730: now doesn't allow spaces on the file name / extension
 % fnery, 20170731: outinit.m now also outputs out's directory if necessary
+% fnery, 20180801: outinit.m: added 'usename' argin
 
 POSSIBLE_NODIRS = {'empty', 'error', 'make'};
 
@@ -167,6 +198,12 @@ for iOptIn = 1:2:numel(varargin)
             else
                 error('Error: ''in'' must be string or a cell of strings (filepath(s) OR filename(s))');
             end
+        case {'usename'}
+            if (islogical(cVal) && isscalar(cVal)) || isempty(cVal)
+                useName = cVal;
+            else
+                error('Error: ''usename'' must be a logical scalar OR an empty variable (i.e. [])');
+            end            
         case {'useext'}
             if (islogical(cVal) && isscalar(cVal)) || isempty(cVal)
                 useExt = cVal;
@@ -200,11 +237,15 @@ if ~allMandatoryOptsExist
 end
 
 % Check which optional arguments exist
-useExtExists = exist('useExt', 'var');
-noDirExists  = exist('noDir' , 'var');
-silentExists = exist('silent', 'var');
+useNameExists = exist('useName', 'var');
+useExtExists  = exist('useExt', 'var');
+noDirExists   = exist('noDir' , 'var');
+silentExists  = exist('silent', 'var');
 
-% By default, the function is not silent
+% Defaults
+if ~useNameExists
+    useName = true;
+end
 if ~useExtExists || isempty(useExt)
     useExtProvided = false;
     useExt = [];
@@ -271,8 +312,10 @@ else
 end
 
 % Manage name
-if isempty(n)
-    error('Error: need to specify the name of ''%s''', in);
+if useName && isempty(n)
+    error('Error: need to specify the file name in ''%s''', in);
+elseif ~useName && ~isempty(n)
+    error('Error: specifying the file name in ''%s'' (i.e. ''%s'') is not allowed', in, n);    
 end
 
 % Manage extension
