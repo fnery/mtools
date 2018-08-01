@@ -145,7 +145,7 @@ function [out, d] = outinit(varargin)
 %                  'nodir', noDir, 'silent', silent)
 %    % >> Error: specifying the file name in 'C:\Users\fabio\Desktop\hello.txt' (i.e. 'hello') is not allowed
 %
-%    % EXAMPLE 8: other existing directory
+%    % EXAMPLE 8: other existing directory (throw error if name is not specified)
 %    in     = 'C:\Users\fabio\Desktop\';
 %    useName = true
 %    useExt  = false;
