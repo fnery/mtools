@@ -29,7 +29,7 @@ function Paths = dtifit(in, mask, baseName, bVal, bVec)
 %
 % Notes/Assumptions: 
 %    1) Assumption #1: If .bval and .bvec are not specified, this function
-%       will assume  bVecs corresponding to 'in' exist in
+%       will assume bVals/bVecs corresponding to 'in' exist in
 %       the same directory 'in' is stored and have the same name as 'in'
 %    2) Assumption #2: Assumes FSL (available in [1]) is installed in the
 %       Windows subsystem for Linux
