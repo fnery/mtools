@@ -2,44 +2,52 @@ function out = niidotmask(varargin)
 % niidotmask.m: process NIfTI 'dotmask' file
 %
 % Syntax:
-%    1) paths = niidotmask('in', in, 'oris', oriS, 'orif', oriF, 'outtype', 'mask', ...
-%                          'outdir', outDir, 'outname', outName)
-%    2) slice = niidotmask('in', in, 'oris', oriS, 'orif', oriF, 'outtype', 'slice')
-%    3) fics  = niidotmask('in', in, 'oris', oriS, 'orif', oriF, 'outtype', 'fics')
+%    1) paths = niidotmask('in', in, 'oris', oriS, 'orif', oriF, ...
+%           'outtype', 'mask', 'outdir', outDir, 'outname', outName)
+%    2) slice = niidotmask('in', in, 'oris', oriS, 'orif', oriF, ...
+%           'outtype', 'slice')
+%    3) fics  = niidotmask('in', in, 'oris', oriS, 'orif', oriF, ...
+%           'outtype', 'fics')
+%    4) swk   = niidotmask('in', in, 'oris', oriS, 'orif', oriF, ...
+%           'outtype', 'swk')
 %
 % Description:
-%    1) creates NIfTI logical files with masks as defined in the NIfTI dotmask
-%       file. The NIfTI dotmask is a logical file where the only 1-valued voxels
-%       are extreme points that define rectangles around regions of interest.
-%       There are several ways to define the dotmask file. These are described
-%       (with examples) in [1]
-%    2) allows one slice to be highlighted by adding one 1-valued voxel to the
-%       boundary of the desired slice (see [1] for an example). No mask files
-%       will be created. The only output would be a scalar corresponding to the
-%       index of the slice of interest (see Note 1), in the "post-cropping" 
-%       volumes (and using 0-indexing).
-%    3) Instead of creating NIfTI mask files, the output will be sets of [1x6]
-%       coordinate vectors that can be directly fed to fslroi to crop the NIfTI
-%       file used to generate dotmask, as specified in dropmask to crop NIfTI
-%       datasets with FSL's fslroi function [2].
+%    1) creates NIfTI logical files with masks as defined in the NIfTI
+%       dotmask file. The NIfTI dotmask is a logical file where the only
+%       1-valued voxels are extreme points that define rectangles around
+%       regions of interest. There are several ways to define the dotmask
+%       file. These are described (with examples) in [1]
+%    2) allows one slice to be highlighted by adding one 1-valued voxel to
+%       the boundary of the desired slice (see [1] for an example). No mask
+%       files will be created. The only output would be a scalar
+%       corresponding to the index of the slice of interest (see Note 1),
+%       in the "post-cropping" volumes (and using 0-indexing).
+%    3) Instead of creating NIfTI mask files, the output will be sets of
+%       [1x6] coordinate vectors that can be directly fed to fslroi to crop
+%       the NIfTI file used to generate dotmask, as specified in dropmask
+%       to crop NIfTI datasets with FSL's fslroi function [2].
+%    4) Instead of creating NIfTI mask files, the output will be a vector
+%       whose elements corresponds to slice indexes where kidneys are in
+%       the FOV according to dotmask
 %
 % Inputs:
-%    -------------------------------- MANDATORY -------------------------------
+%    -------------------------------- MANDATORY ---------------------------
 %    <in>       string  :  path to dotmask file
-%    <oris>     cell    :  (of strings) start orientation descriptor - see volori.m
-%    <orif>     cell    :  (of strings) final orientation descriptor - see volori.m
+%    <oris>     cell    :  (of strings) start orientation - see volori.m
+%    <orif>     cell    :  (of strings) final orientation - see volori.m
 %    <outtype>  string  :  string which can be:
-%                              - mask  : to create NIfTI mask files
-%                              - slice : to retrieve the highlighted slice
-%                              - fics  : compute '[f]slroi [i]nput [c]oordinate[s]'
-%    -------------------------------- OPTIONAL --------------------------------
-%    <outdir>   string  :  directory where created NIfTI mask files are to be 
-%                          saved (only allowed when <outtype> is 'mask')
-%    <outname>  string  :  base name for to-be-created NIfTI mask files (only
-%                          allowed when <outtype> is 'mask')
-%                          Example: say i) 'outname'='mask' and ii) the dotmask
-%                          file defines two masks: the absolute paths of the 
-%                          output files will be:
+%                          - mask  : to create NIfTI mask files
+%                          - slice : to retrieve the highlighted slice
+%                          - fics  : '[f]slroi [i]nput [c]oordinate[s]'
+%                          - swk   : '[s]lices [w]ith [k]idneys�?
+%    -------------------------------- OPTIONAL ----------------------------
+%    <outdir>   string  :  directory where created NIfTI mask files are to
+%                          be saved (only allowed when <outtype> is 'mask')
+%    <outname>  string  :  base name for to-be-created NIfTI mask files
+%                          (only allowed when <outtype> is 'mask'=
+%                          Example: say i) 'outname'='mask' and ii) the
+%                          dotmask file defines two masks: the absolute
+%                          paths of the output files will be:
 %                          >> fullfile(outdir, 'mask_01of02')
 %                          >> fullfile(outdir, 'mask_02of02')
 %    --------------------------------------------------------------------------
@@ -56,8 +64,10 @@ function out = niidotmask(varargin)
 %                   format to use in the terminal) with format:
 %                       <xmin> <xsize> <ymin> <ysize> <zmin> <zsize>
 %                   which defines one cropping operation
-%    
-% Notes/Assumptions: 
+%       - If <outtype> is ‘swk’
+%             swk: vector with slice indexes where kidneys are in the FOV
+%
+% Notes/Assumptions:
 %    1) Unlike MATLAB, this function follows the same indexing convention as
 %       FSL, i.e. 0-indexing (since as of now my plan is to create dotmask
 %       files using FSLview).
@@ -67,7 +77,7 @@ function out = niidotmask(varargin)
 %
 % References:
 %    [1] mtools/auxl/richdoc/niidotmask.pdf
-%    [2] https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils 
+%    [2] https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
 %    [3] mathworks.com/matlabcentral/fileexchange/8797
 %
 % Required functions:
@@ -84,17 +94,18 @@ function out = niidotmask(varargin)
 %
 % fnery, 20180303: original version
 % fnery, 20180328: now outputs 'highlightIdxAfterCrop'
+% fnery, 20180808: added 'swk' 'outtype' option'
 
-POSSIBLE_OUTTYPES = {'mask', 'slice', 'fics'};
+POSSIBLE_OUTTYPES = {'mask', 'slice', 'fics', 'swk'};
 
 % _________________________________________________________________________
-%                          Manage input arguments                              
+%                          Manage input arguments
 % _________________________________________________________________________
 for iOptIn = 1:2:numel(varargin)
     % init option name and value
     cOpt = varargin{iOptIn};
     if ~ischar(cOpt)
-        error('Error: Invalid argument list');
+        error('Invalid argument list');
     end
     cVal = varargin{iOptIn+1};
     % attempt to recognise options
@@ -103,43 +114,43 @@ for iOptIn = 1:2:numel(varargin)
             if ischar(cVal)
                 in = cVal;
             else
-                error('Error: ''in'' must be string (path to dotmask NIfTI file)');
+                error('''in'' must be string (dotmask NIfTI file path)');
             end
         case {'oris'}
             if iscell(cVal)
                 oriS = cVal;
             else
-                error('Error: ''oris'' must be a cell of strings (see volori.m for description)');
+                error('''oris'' must be cell of strings (see volori.m)');
             end
         case {'orif'}
             if iscell(cVal)
                 oriF = cVal;
             else
-                error('Error: ''orif'' must be a cell of strings (see volori.m for description)');
-            end            
+                error('''orif'' must be cell of strings (see volori.m)');
+            end
         case {'outtype'}
-            outTypeIsValid = ~isempty(find(strcmp(cVal, POSSIBLE_OUTTYPES), 1));
-            if outTypeIsValid
+            outTypeValid = ~isempty(find(strcmp(cVal,POSSIBLE_OUTTYPES),1));
+            if outTypeValid
                 outType = cVal;
             else
                 outTypeOpts = sprintf('''%s'', ', POSSIBLE_OUTTYPES{:});
                 outTypeOpts(end-1:end) = [];
-                error('Error: ''outtype'' must be string (one of the following: %s)', outTypeOpts);
+                error('''outtype'' must be string (%s)', outTypeOpts);
             end
         case {'outdir'}
             if ischar(cVal)
                 outDir = cVal;
             else
-                error('Error: ''outdir'' must be string (absolute path to directory where output files are to be saved)');
+                error('''outdir'' must be string (path to output dir)');
             end
         case {'outname'}
             if ischar(cVal)
                 outName = cVal;
             else
-                error('Error: ''outname'' must be string (name to give output files)');
-            end          
+                error('''outname'' must be string (name for output files)');
+            end
         otherwise
-            error('Error: input argument not recognized');
+            error('Input argument not recognized');
     end
 end
 
@@ -148,30 +159,31 @@ allMandatoryOptsExist =        ...
     exist('in'      , 'var') & ...
     exist('oriS'    , 'var') & ...
     exist('oriF'    , 'var') & ...
-    exist('outType' , 'var'); 
+    exist('outType' , 'var');
 if ~allMandatoryOptsExist
-    error('Error: One or more mandatory options are missing');
+    error('One or more mandatory options are missing');
 end
 
-% Input arguments 'outdir' and 'outname' only allowed when creating mask files
+% Input arguments 'outdir'/'outname' only allowed when creating mask files
 outDirExists  = exist('outDir' , 'var');
 outNameExists = exist('outName', 'var');
 
 outTypeIsMask  = strcmp(outType, 'mask');
 outTypeIsSlice = strcmp(outType, 'slice');
 outTypeIsFics  = strcmp(outType, 'fics');
+outTypeIsSwk   = strcmp(outType, 'swk');
 
 if ~outTypeIsMask && outDirExists
-    error('Error: ''outdir'' input argument is only allowed when ''outtype'' is ''mask''');
+    error('''outdir'' input only allowed if ''outtype'' is ''mask''');
 elseif ~outTypeIsMask && outNameExists
-    error('Error: ''outname'' input argument is only allowed when ''outtype'' is ''mask''');
+    error('''outname'' input only allowed if ''outtype'' is ''mask''');
 elseif outTypeIsMask && ~outDirExists
-    error('Error: ''outdir'' input argument must be provided when ''outtype'' is ''mask''');
+    error('''outdir'' input must be provided if ''outtype'' is ''mask''');
 elseif outTypeIsMask && ~outNameExists
-    error('Error: ''outname'' input argument must be provided when ''outtype'' is ''mask''');
+    error('''outname'' input must be provided if ''outtype'' is ''mask''');
 end
 
-% Load NIfTI file (requires toolbox in [1]TKD)
+% Load NIfTI file (requires toolbox in [3])
 nii = load_untouch_nii(in);
 
 % Change orientation of volume to as required (see note TKD)
@@ -185,24 +197,31 @@ dotMask = volori(nii.img, oriS, oriF);
 mask = processmask(dotMaskNoHighlight);
 
 if outTypeIsSlice
-    
-    % Here all needed is to get the highlighted slice index (already calculated)
+
+    % Here just need to get the highlighted slice index (already calculated)
     out = highlightIdxAfterCrop;
     return;
-    
+
 elseif outTypeIsMask
-    
+
     % Go back to original orientation for saving mask as NIfTIs
     mask = volori(mask, oriF, oriS);
-    
+
     % Save mask as NIfTI files
     out = createniimasks(mask, nii, outDir, outName);
-    
+
 elseif outTypeIsFics
-    
+
     % Compute fslroi input coordinates
     out = computefics(mask);
-    
+
+elseif outTypeIsSwk
+
+    % Compute fslroi input coordinates
+    fics = computefics(mask);
+    % Compute slices with kidneys (swk) vector
+    out = fics2swk(fics);
+
 else
     error('Error: this point should never be reached');
 end
@@ -501,5 +520,63 @@ for iMask = 1:nMasks
         cxMin, cxSz, cyMin, cySz, czMin, czSz);
     
 end
+
+end
+
+% ====================
+% ===== fics2swk ===== ----------------------------------------------------
+% ====================
+
+function swk = fics2swk(fics)
+% fics2swk.m: converts fsl input coordinates to slices with kidneys vector
+%
+% Syntax:
+%    1) swk = fics2s(fics)
+%
+% Description:
+%    1) swk = fics2s(fics) converts fsl input coordinates to slices with
+%       kidneys vector
+%
+% Inputs:
+%    1) fics: cell output from niidotmask.m when 'outtype' is 'fics'
+%
+% Outputs:
+%    1) swk: vector whose elements are the indices of slices where the
+%       kidneys are in the field-of-view (FOV)
+%
+% Notes/Assumptions:
+%    []]
+%
+% References:
+%    []
+%
+% Required functions:
+%    []
+%
+% Required files:
+%    []
+%
+% Examples:
+%    []
+%
+% fnery, 20180808: original version
+
+nFics = length(fics);
+
+ficsMat = NaN(nFics, 6);
+
+for iFics = 1:nFics
+    cFics = fics{iFics};
+    ficsMat(iFics, :) = str2num(cFics); %#ok<ST2NM>
+end
+
+if any(isnan(ficsMat(:)))
+    error('ficsMat should not have NaNs at this stage');
+end
+
+zMin  = min(ficsMat(:, 5)) + 1; % +1 accounts for FSL's zero-based numbering
+zSize = max(ficsMat(:, 6));
+
+swk = zMin:zMin+(zSize-1);
 
 end
