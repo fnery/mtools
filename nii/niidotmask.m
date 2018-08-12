@@ -291,8 +291,8 @@ elseif numel(matchingRows) == 1
     highlightIdx = s(boundaryDotIdx)-1; % -1: 0-indexing  
     
     % Get index of highlighted slice (after cropping)
-    sAfterCrop = s-min(s);
-    highlightIdxAfterCrop = sAfterCrop(boundaryDotIdx)-1; % -1: 0-indexing  
+    sAfterCrop = s-min(s)+1;
+    highlightIdxAfterCrop = sAfterCrop(boundaryDotIdx);
     
     % Remove
     dotMaskNoHighlight = dotMask;
