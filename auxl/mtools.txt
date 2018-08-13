@@ -13,6 +13,7 @@
 ---- dcmsiemensisolateascconv : isolates ASCCONV part in Siemens CSA headers
 ---- dcmsiemenscsa            : parse DICOM Siemens CSA header (ASCCONV subset only)
 [dwi]
+---- bvalbveccheck            : validity checks on .bval and .bvec files/matrices
 ---- bvalbveccopy             : copy bval/bvec files (name to match existing NIfTI file)
 ---- bvalbvecexist            : check if bval and bvec files exist
 ---- bvalbvecinfo             : get scan parameters from bval and bvec files

@@ -12,6 +12,7 @@ mtools index:
   - `dcmsiemensisolateascconv.m`: isolates ASCCONV part in Siemens CSA headers <br />
   - `dcmsiemenscsa.m`: parse DICOM Siemens CSA header (ASCCONV subset only) <br />
 - **[dwi]**
+  - `bvalbveccheck.m`: validity checks on .bval and .bvec files/matrices <br />
   - `bvalbveccopy.m`: copy bval/bvec files (name to match existing NIfTI file) <br />
   - `bvalbvecexist.m`: check if bval and bvec files exist <br />
   - `bvalbvecinfo.m`: get scan parameters from bval and bvec files <br />
