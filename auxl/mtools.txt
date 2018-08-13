@@ -27,6 +27,7 @@
 ---- dwi6d                    : organises a 4D DWI volume into a 6D DWI volume
 ---- dwicat                   : concatenate 3/4D dwi NIfTI files along 4th dimension
 ---- dwiextract               : extract subset of adjacent time points from DWI dataset
+---- dwiin                    : dwi input parser
 [fig]
 ---- crop                     : crop image and/or sets of coordinates
 ---- formatdatatip            : change format when displaying plot info using data cursor
