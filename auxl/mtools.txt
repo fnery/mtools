@@ -117,6 +117,7 @@
 ---- niicrop.m                : FSL's fslroi MATLAB wrapper
 ---- niidotmask               : process NIfTI 'dotmask' file
 ---- niiloadim                : load NIfTI image volume and fix orientation
+---- niimakeblank             : create NIfTI image of zeros using existing NIfTI image
 ---- niimaskmerge             : merge non-overlapping 3D masks into a single 3D mask file
 ---- niimaskrep               : replace nii voxels with those from other nii in mask ROIs
 ---- niimaskrepn              : niimaskrep.m wrapper for the case of multiple source images

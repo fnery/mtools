@@ -116,6 +116,7 @@ mtools index:
   - `niicrop.m`: FSL's fslroi MATLAB wrapper <br />
   - `niidotmask.m`: process NIfTI 'dotmask' file <br />
   - `niiloadim.m`: load NIfTI image volume and fix orientation <br />
+  - `niimakeblank.m`: create NIfTI image of zeros using existing NIfTI image <br />
   - `niimaskmerge.m`: merge non-overlapping 3D masks into a single 3D mask file <br />
   - `niimaskrep.m`: replace nii voxels with those from other nii in mask ROIs <br />
   - `niimaskrepn.m`: niimaskrep.m wrapper for the case of multiple source images <br />
