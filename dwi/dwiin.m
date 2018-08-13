@@ -10,6 +10,28 @@ function Dwi = dwiin(in, doChecks)
 %       to its corresponding .bval and .bvec files. The goal is to use this
 %       function within other functions (parent functions) to minimise the
 %       number of input arguments the parent function needs.
+%       Here's a practical example where this function would be used.
+%       Say I want to create a function named 'fx' which requires 1) a path
+%       to a LTE DWI NIfTI file, 2) a path to its .bval file, 3) a path
+%       to its .bvec file AND then the same for a STE DWI NIfTI file.
+%       I could do:
+%       >> fx(imLte, imSte)
+%       and assume the .bvals and .bvecs have the same name as the image
+%       files. But I do not want to assume this as in the future I may want
+%       to modify the names of one of the files (e.g. if I rotate .bvec)
+%       In this case I'd need to specify all 6 input arguments, like this:
+%       >> fx(imLte, bvalLte, bvecLte, imSte, bvalSte, bvecSte)
+%       It is bad practice to have such a large number of input arguments.
+%       This function (dwiin.m), when used inside 'fx' allows both
+%       >> fx(imLte, imSte)
+%       making the same file name assumption as above, but also allows
+%       >> fx(ImLte, ImSte)
+%       where both ImLte and ImSte are structs with with fields
+%           |---- im  : path to dwi image file (NIfTI)
+%           |---- bval: path to corresponding .bval file
+%           |---- bvec: path to corresponding .bvec file
+%       allowing specific names for the .bvals / .bvecs to be used while
+%       keeping the list of input arguments short
 %
 % Inputs:
 %    1) in: can be
@@ -19,7 +41,7 @@ function Dwi = dwiin(in, doChecks)
 %                 |---- bvec: path to corresponding .bvec file
 %           - char (fullpath to dwi image file (NIfTI))
 %    2) doChecks (optional): logical scalar that determines whether several
-%       checks are performed to ensure the existence of all files and the 
+%       checks are performed to ensure the existence of all files and the
 %       validity of the .bval/.bvec pair which will be saved in the output
 %       ('Dwi'). Default = true.
 %
