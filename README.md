@@ -27,6 +27,7 @@ mtools index:
   - `dwicat.m`: concatenate 3/4D dwi NIfTI files along 4th dimension <br />
   - `dwiextract.m`: extract subset of adjacent time points from DWI dataset <br />
   - `dwiin.m`: dwi input parser <br />
+  - `dwiinn.m`: dwiin.m wrapper (for 'n' inputs) <br />
 - **[fig]**
   - `crop.m`: crop image and/or sets of coordinates <br />
   - `formatdatatip.m`: change format when displaying plot info using data cursor <br />
