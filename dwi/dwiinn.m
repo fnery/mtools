@@ -2,12 +2,14 @@ function Dwi = dwiinn(in, doChecks)
 % dwiinn.m: dwiin.m wrapper (for 'n' inputs)
 %
 % Syntax:
-%    1) Dwi = dwiinn(in, doChecks)
+%    1) Dwi = dwiinn(in)
+%    2) Dwi = dwiinn(in, doChecks)
 %
 % Description:
-%    1) Dwi = dwiinn(in, doChecks) is a quick wrapper for allowing multiple
-%       inputs (cell of strings of paths or structs of length > 1) to be
-%       fed to dwiin.m.
+%    1) Dwi = dwiinn(in) is a quick wrapper for allowing multiple inputs
+%       (cell of strings of paths or structs of length > 1) to be fed to
+%       dwiin.m. 
+%    2) Dwi = dwiinn(in, doChecks) passes 'doChecks' directly to dwiin.m
 %
 % Inputs:
 %    1) in: cell of strings OR struct of length > 1
@@ -34,7 +36,7 @@ function Dwi = dwiinn(in, doChecks)
 %    in{2} = 'C:\imaginary_path\imaginary_file_02.nii.gz';
 %    Dwi = dwiinn(in, false)
 %        >> Dwi =
-%        >>   1×2 struct array with fields:
+%        >>   [1x2] struct array with fields:
 %        >>     im
 %        >>     bval
 %        >>     bvec
@@ -53,11 +55,14 @@ function Dwi = dwiinn(in, doChecks)
 %    % Easy to put things in a cell after this, e.g.:
 %    {Dwi(:).bval}'
 %        >> ans =
-%        >>   2×1 cell array
+%        >>   [2x1] cell array
 %        >>     {'C:\imaginary_path\imaginary_file_01.bval'}
 %        >>     {'C:\imaginary_path\imaginary_file_02.bval'}
 %
 % fnery, 20180813: original version
+%                  minor bugfix
+
+oneArgin = (nargin == 1);
 
 inIsStruct = isstruct(in);
 inIsCell   = iscell(in);
@@ -65,7 +70,7 @@ inIsCell   = iscell(in);
 nIn = length(in);
 
 for iIn = nIn:-1:1 % backwards pre-allocation
-
+    
     if inIsStruct
         cIn = in(iIn);
     elseif inIsCell
@@ -73,8 +78,13 @@ for iIn = nIn:-1:1 % backwards pre-allocation
     else
         error('''in'' must be cell or struct');
     end
-
-    Dwi(iIn) = dwiin(cIn, doChecks);
+    
+    if oneArgin
+        Dwi(iIn) = dwiin(cIn);
+    else
+        Dwi(iIn) = dwiin(cIn, doChecks);
+    end
+    
 end
 
 end
