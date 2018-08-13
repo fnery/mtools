@@ -40,6 +40,9 @@ function Dwi = dwiin(in, doChecks)
 %                 |---- bval: path to corresponding .bval file
 %                 |---- bvec: path to corresponding .bvec file
 %           - char (fullpath to dwi image file (NIfTI))
+%                 in this case the corresponding .bval and .bvec files are
+%                 assumed to be in the same directory and have the same
+%                 file name as 'in'
 %    2) doChecks (optional): logical scalar that determines whether several
 %       checks are performed to ensure the existence of all files and the
 %       validity of the .bval/.bvec pair which will be saved in the output
