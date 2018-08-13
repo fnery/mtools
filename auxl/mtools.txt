@@ -60,7 +60,6 @@
 ---- ensurecolumnvector       : ensure input is a column vector (transpose if needed)
 ---- ensuredrive              : ensure drive compatible with desired platform
 ---- ensurerowstring          : ensure row string (i.e. readable) (transpose if needed)
----- existerror               : check if var/file/dir exists - if not throw error
 ---- exist2                   : exist.m wrapper (common types + automatic error generation)
 ---- fdir                     : custom dir function
 ---- fdirrec                  : list sub-directories and files within them ([rec]ursive fdir.m)
