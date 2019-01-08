@@ -78,6 +78,7 @@ mtools index:
   - `isext.m`: check if file matches extension(s) <br />
   - `isint.m`: checks if the input is an integer <br />
   - `iswinpath.m`: checks if input path is from a file in a windows filesystem <br />
+  - `json2struct.m`: load .json file into MATLAB struct <br />
   - `loadfilelines.m`: load each line of a given file into a cell element <br />
   - `logic2str.m`: converts logical scalar to string <br />
   - `lsfile.m`: list files in dir and pick according to file # index <br />
