@@ -101,6 +101,7 @@ mtools index:
   - `sortstruct.m`: sorts struct according to one of its fields <br />
   - `squeezext.m`: extends squeeze.m (specify singleton dimensions keep/remove) <br />
   - `strpad.m`: pad string with spaces to achieve a certain length <br />
+  - `struct2json.m`: convert MATLAB struct into .json file <br /> 
   - `system2`: system.m wrapper. If in Windows: redirects cmd.exe commands to bash <br />
   - `sumn.m`: sum of array elements along multiple dimensions (sum in a loop) <br />
   - `targz.m`: convert list of files into .tar.gz archive <br />
