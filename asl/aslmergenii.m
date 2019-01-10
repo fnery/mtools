@@ -101,14 +101,14 @@ SEQ_NAMES = {'grs3d3d1_1080t0', 'MGj03C3d1_512t0', 'MGj03C3d1_1080t'};
 % To find ss and ns files
 SSNS_REGEXP = '.s_TE00_(TI\d{4})';
           
-ASL_EXTENSION_SOFTWARE_TAG = 'fn';
+ASL_EXTRA_HEADER_SOFTWARE_TAG = 'fn';
 
 % ---------------------------------------------------
 % Ensure input directories exist, if not: throw error
 % ---------------------------------------------------
 
-exist2(inDir, 'dir', true)
-exist2(outDir, 'dir', true)
+exist2(inDir, 'dir', true);
+exist2(outDir, 'dir', true);
 
 % --------------------------------
 % Remove semicolons from filenames
@@ -259,7 +259,7 @@ for iGroup = 1:nGroups
     % file in the group with the following additions:
     % - ASLControlTag: list of control ('c') or tag ('t') characters
     % - ASLPostLabelDelay: list of post-labelling delay times in [ms]
-    % - ASLHdrExtensionSoftware: tag to mark .jsons created w/ this method
+    % - ASLExtraHdrSoftware: tag to mark .jsons created w/ this method
     
     % Generate ASLControlTag and ASLPostLabelDelay variables for .json file
     [cCt, cPld] = parseimagecomments(cImageComments);    
@@ -269,7 +269,8 @@ for iGroup = 1:nGroups
     cFirstJSON = json2struct(cJSONPaths{1});
     cFirstJSON.ASLControlTag = cCt;
     cFirstJSON.ASLPostLabelDelay = cPld;
-    cFirstJSON.ASLHdrExtensionSoftware = ASL_EXTENSION_SOFTWARE_TAG;
+    cFirstJSON.ASLSeriesNumbers = cell2mat(cSeriesNumbers);
+    cFirstJSON.ASLExtraHdrSoftware = ASL_EXTRA_HEADER_SOFTWARE_TAG;
     
     cOutJSONPath = fullfile(outDir, cName);
     
