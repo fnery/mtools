@@ -187,6 +187,7 @@ if isempty(List)
         fprintf('''%s'' is empty\n', in);
     end
     List = [];
+    n = 0;
     return;
 end
 
