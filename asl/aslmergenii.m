@@ -151,7 +151,14 @@ for iPath = 1:n
     
     % Check if file corresponds to data acquired with desired sequences $1
     cPulseSequenceDetails = CJson.PulseSequenceDetails;
-    cSequenceName = CJson.SequenceName;
+    
+    try
+        cSequenceName = CJson.SequenceName;
+    catch
+        % If there is not SequenceName field in the .json assume this is
+        % not a file which we are looking for
+        continue;
+    end
 
     seqDetailsValid = contains(cPulseSequenceDetails, PULSE_SEQ_DETAILS);
     seqNameValid = ismember(cSequenceName, SEQ_NAMES);
@@ -293,7 +300,7 @@ for iGroup = 1:nGroups
     cNIfTINameExt = m2sharr(cNIfTINameExt); % 
     
     % Build and run fslmerge command
-    cmd = sprintf('cd %s; fslmerge -t %s %s', ...
+    cmd = sprintf('cd ''%s''; fslmerge -t %s %s', ...
         inputDirWsl, niiPathWsl, cNIfTINameExt);
     
     % debug string below to check if commands are too long 
