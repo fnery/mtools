@@ -120,6 +120,7 @@
 ---- isnifti                  : lazy nifti file path checker
 ---- niicrop.m                : FSL's fslroi MATLAB wrapper
 ---- niidotmask               : process NIfTI 'dotmask' file
+---- niijsonvals              : get values from specific fields from .json sidecar
 ---- niiloadim                : load NIfTI image volume and fix orientation
 ---- niimakeblank             : create NIfTI image of zeros using existing NIfTI image
 ---- niimaskmerge             : merge non-overlapping 3D masks into a single 3D mask file

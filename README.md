@@ -119,6 +119,7 @@ mtools index:
   - `isnifti.m`: lazy NIfTI file path checker <br />
   - `niicrop.m`: FSL's fslroi MATLAB wrapper <br />
   - `niidotmask.m`: process NIfTI 'dotmask' file <br />
+  - `niijsonvals.m`: get values from specific fields from .json sidecar <br />
   - `niiloadim.m`: load NIfTI image volume and fix orientation <br />
   - `niimakeblank.m`: create NIfTI image of zeros using existing NIfTI image <br />
   - `niimaskmerge.m`: merge non-overlapping 3D masks into a single 3D mask file <br />
