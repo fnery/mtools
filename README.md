@@ -121,6 +121,7 @@ mtools index:
   - `niidotmask.m`: process NIfTI 'dotmask' file <br />
   - `niijsonvals.m`: get values from specific fields from .json sidecar <br />
   - `niiloadim.m`: load NIfTI image volume and fix orientation <br />
+  - `niiloadimn.m`: load multiple 2D or 3D NIfTI images into a single 4D matrix <br />
   - `niimakeblank.m`: create NIfTI image of zeros using existing NIfTI image <br />
   - `niimaskmerge.m`: merge non-overlapping 3D masks into a single 3D mask file <br />
   - `niimaskrep.m`: replace nii voxels with those from other nii in mask ROIs <br />
