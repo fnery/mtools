@@ -75,6 +75,7 @@
 ---- fsl2m                    : converts 3D coordinates from FSL to MATLAB formats
 ---- fxdoc                    : prints function documentation template to command window
 ---- getabovedir              : returns path of directories closer to the root
+---- imori                    : change image volume orientation
 ---- is1d                     : check if input is 1D "vector"
 ---- isallequal               : checks if all elements in the array are equal
 ---- isext                    : check if file matches extension(s)
@@ -111,7 +112,6 @@
 ---- uniquecols               : find unique columns in 2D matrix and their row indexes
 ---- uniquesubstr             : remove duplicate substrings from string
 ---- vec2str                  : converts a 1D-vector to a string
----- volori                   : change image volume orientation
 ---- win2wsl                  : convert Windows path(s) to Windows Subsystem for Linux (WSL) equivalent
 ---- wsl2win                  : convert Windows Subsystem for Linux (WSL) path(s) to Windows equivalent
 ---- yyyymmdddiff             : difference (days) between two dates of format 'yyyymmdd'

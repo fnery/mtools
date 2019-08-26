@@ -74,6 +74,7 @@ mtools index:
   - `fsl2m.m`: converts 3D coordinates from FSL to MATLAB formats <br />
   - `fxdoc.m`: prints function documentation template to command window <br />
   - `getabovedir.m`: returns path of directories closer to the root <br />
+  - `imori.m`: change image volume orientation <br />
   - `is1d.m`: check if input is 1D "vector" <br />
   - `isallequal.m`: checks if all elements in the array are equal <br />
   - `isext.m`: check if file matches extension(s) <br />
@@ -110,7 +111,6 @@ mtools index:
   - `uniquecols.m`: find unique columns in 2D matrix and their row indexes <br />
   - `uniquesubstr.m`: remove duplicate substrings from string <br />
   - `vec2str.m`: converts a 1D-vector to a string <br />
-  - `volori.m`: change image volume orientation <br />
   - `win2wsl.m`: convert Windows path(s) to Windows Subsystem for Linux (WSL) equivalent <br />
   - `wsl2win.m`: convert Windows Subsystem for Linux (WSL) path(s) to Windows equivalent <br />
   - `yyyymmdddiff.m`: difference (days) between two dates of format 'yyyymmdd' <br />
