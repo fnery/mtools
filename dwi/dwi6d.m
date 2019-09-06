@@ -27,7 +27,7 @@ function Out = dwi6d(im4d, bval, bvec)
 %    1) im4d is the dwi after loading with an appropriate NIfTI, which loads
 %       the different orders in the DWI experiment (in the 4th dimension), 
 %       in the order given in the corresponding bval/bvec pair
-%    2) Format of output 6D volume: [row, col, slice, bval, bvec, measurement]
+%    2) Format of output 6D volume: [row, col, slice, bval, bvec, measurement] 
 %
 % References:
 %    []
@@ -43,8 +43,8 @@ function Out = dwi6d(im4d, bval, bvec)
 %    []
 %
 % fnery, 20180127: original version
-
-%#ok<*AGROW> optimise later
+% fnery, 20190906: now preallocates output volume with NaNs to simplify
+%                  further calculations (e.g. powder averaging)
 
 if ~isnumeric(im4d) || ndims(im4d) ~= 4
     error('Error: the first input (''im4d'') must be a 4D numeric matrix');
@@ -53,7 +53,9 @@ end
 % Parse .bval and .bvec file
 [bvals, bvecs, idxs] = bvalbvecparse(bval, bvec);
 
-nBvals = length(bvals);
+% Pre-allocate output volume with NaNs
+[nR, nC, nS, nBvals, nDirsMax, nAvgsMax] = getpreallocdims(im4d, idxs);
+im6d = NaN(nR, nC, nS, nBvals, nDirsMax, nAvgsMax);
 
 % Build 6D dwi volume
 for iBval = 1:nBvals  
@@ -82,5 +84,31 @@ Out.data  = im6d;
 Out.bvals = bvals;
 Out.bvecs = bvecs;
 Out.idxs  = idxs;
+
+end
+
+function [nR, nC, nS, nBvals, nDirsMax, nAvgsMax] = getpreallocdims(im4d, idxs)
+% getpreallocdims: Get length of different dimensions for the output volume
+
+[nR, nC, nS, ~] = size(im4d);
+
+nBvals = length(idxs);
+
+nDirs = NaN(1, nBvals);
+nAvgs = NaN(1, nBvals);
+for iBVal = 1:nBvals
+    cIdxs = idxs{iBVal};
+    nDirs(iBVal) = length(cIdxs);
+    cNAvgs = cellfun(@(x) size(x,2), cIdxs);
+    
+    if length(cNAvgs) > 1 && ~isallequal(cNAvgs)
+        error('Error: why would different directions of the same bval have a different number of averages?')
+    else           
+        nAvgs(iBVal) = cNAvgs(1);
+    end
+end
+    
+nDirsMax = max(nDirs);
+nAvgsMax = max(nAvgs);
 
 end
