@@ -29,6 +29,7 @@ mtools index:
   - `dwiextract.m`: extract subset of adjacent time points from DWI dataset <br />
   - `dwiin.m`: dwi input parser <br />
   - `dwiinn.m`: dwiin.m wrapper (for 'n' inputs) <br />
+  - `dwimean.m`: average repeated measurements or directions of 4D DWI volume <br />
 - **[fig]**
   - `crop.m`: crop image and/or sets of coordinates <br />
   - `formatdatatip.m`: change format when displaying plot info using data cursor <br />

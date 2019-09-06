@@ -30,6 +30,7 @@
 ---- dwiextract               : extract subset of adjacent time points from DWI dataset
 ---- dwiin                    : dwi input parser
 ---- dwiinn                   : dwiin.m wrapper (for 'n' inputs)
+---- dwimean                  : average repeated measurements or directions of 4D DWI volume
 [fig]
 ---- crop                     : crop image and/or sets of coordinates
 ---- formatdatatip            : change format when displaying plot info using data cursor
