@@ -94,7 +94,7 @@ end
 % ===== Writing files ===== -----------------------------------------------
 % =========================
 
-basePath = outinit(out, false);
+basePath = outinit('in', out, 'useext', false);
 
 % .bval
 if ~bvalArrayIsEmpty

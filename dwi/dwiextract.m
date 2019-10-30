@@ -73,7 +73,7 @@ if isempty(d)
     error('Error: the directory of ''niiIn'' must be specified');
 end
 
-out = outinit(out, false);
+out = outinit('in', out, 'useext', false);
 
 % Check bvals/bvecs associated to niiIn exist
 bvalbvecexist(niiIn, true)
