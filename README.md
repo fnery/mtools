@@ -6,7 +6,6 @@ mtools index:
 -------------
 - **[asl]**
   - `asl6d.m`: organises a 4D ASL volume into a 6D ASL volume <br />
-  - `aslmergenii.m`: sorts and merges 3D ASL NIfTIs into 4D NIfTIs <br />
   - `aslorder.m`: returns order matrix for ASL experiment <br />
 - **[dcm]**
   - `dcmfind.m`: List DICOM files in dir (and its subdirs) <br />
