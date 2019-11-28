@@ -118,7 +118,6 @@ mtools index:
 - **[nii]**
   - `isnifti.m`: lazy NIfTI file path checker <br />
   - `niicrop.m`: FSL's fslroi MATLAB wrapper <br />
-  - `niidotmask.m`: process NIfTI 'dotmask' file <br />
   - `niijsonvals.m`: get values from specific fields from .json sidecar <br />
   - `niiloadim.m`: load NIfTI image volume and fix orientation <br />
   - `niiloadimn.m`: load multiple 2D or 3D NIfTI images into a single 4D matrix <br />

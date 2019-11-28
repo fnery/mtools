@@ -119,7 +119,6 @@
 [nii]
 ---- isnifti                  : lazy nifti file path checker
 ---- niicrop.m                : FSL's fslroi MATLAB wrapper
----- niidotmask               : process NIfTI 'dotmask' file
 ---- niijsonvals              : get values from specific fields from .json sidecar
 ---- niiloadim                : load NIfTI image volume and fix orientation
 ---- niiloadimn               : load multiple 2D or 3D NIfTI images into a single 4D matrix
